@@ -39,7 +39,7 @@ class ProductDetailViewController: UIViewController {
         
         image.image = UIImage(named: product.article)
         name.text = product.name
-        price.text = "\(product.price)₽/шт"
+        price.text = "\(product.price)₽"
         productDescription.text = product.description
         
         
