@@ -56,15 +56,71 @@
 		485EC6022891255600C95807 /* FiveStarShop */ = {
 			isa = PBXGroup;
 			children = (
-				485EC6032891255600C95807 /* AppDelegate.swift */,
-				485EC6052891255600C95807 /* SceneDelegate.swift */,
-				485EC6072891255600C95807 /* ViewController.swift */,
-				485EC6092891255600C95807 /* Main.storyboard */,
-				485EC60C2891255700C95807 /* Assets.xcassets */,
-				485EC60E2891255700C95807 /* LaunchScreen.storyboard */,
-				485EC6112891255700C95807 /* Info.plist */,
+				485EC61C289125F200C95807 /* Views */,
+				485EC618289125B100C95807 /* ViewControllers */,
+				485EC61B289125DA00C95807 /* Models */,
+				485EC619289125BF00C95807 /* Storyboards */,
+				485EC61D289125FB00C95807 /* Services */,
+				485EC617289125AA00C95807 /* App */,
+				485EC61A289125CA00C95807 /* Resources */,
 			);
 			path = FiveStarShop;
+			sourceTree = "<group>";
+		};
+		485EC617289125AA00C95807 /* App */ = {
+			isa = PBXGroup;
+			children = (
+				485EC6032891255600C95807 /* AppDelegate.swift */,
+				485EC6052891255600C95807 /* SceneDelegate.swift */,
+				485EC6112891255700C95807 /* Info.plist */,
+			);
+			path = App;
+			sourceTree = "<group>";
+		};
+		485EC618289125B100C95807 /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				485EC6072891255600C95807 /* ViewController.swift */,
+			);
+			path = ViewControllers;
+			sourceTree = "<group>";
+		};
+		485EC619289125BF00C95807 /* Storyboards */ = {
+			isa = PBXGroup;
+			children = (
+				485EC6092891255600C95807 /* Main.storyboard */,
+				485EC60E2891255700C95807 /* LaunchScreen.storyboard */,
+			);
+			path = Storyboards;
+			sourceTree = "<group>";
+		};
+		485EC61A289125CA00C95807 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				485EC60C2891255700C95807 /* Assets.xcassets */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		485EC61B289125DA00C95807 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		485EC61C289125F200C95807 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		485EC61D289125FB00C95807 /* Services */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Services;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -289,7 +345,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 78KK8BLN83;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = FiveStarShop/Info.plist;
+				INFOPLIST_FILE = FiveStarShop/App/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
@@ -317,7 +373,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 78KK8BLN83;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = FiveStarShop/Info.plist;
+				INFOPLIST_FILE = FiveStarShop/App/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
