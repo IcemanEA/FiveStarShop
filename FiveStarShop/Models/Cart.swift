@@ -9,7 +9,6 @@ import Foundation
 
 
 struct Cart {
-    
     let produсt: Product
     let count: Int
     var totalPrice: Int {

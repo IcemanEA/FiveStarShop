@@ -165,7 +165,5 @@ class DataStore {
             price: 6800
         )
     ]
-    
-    
     private init() {}
 }

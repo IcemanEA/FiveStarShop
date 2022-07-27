@@ -8,7 +8,6 @@
 import Foundation
 
 struct Product {
-    
     let article: String
     let company: String
     let model: String
