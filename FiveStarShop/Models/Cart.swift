@@ -10,9 +10,6 @@ import Foundation
 
 struct Cart {
     
-    let prodcuts: [Product]
+    let produсts: [Product]
     
-    var countOfProducts: String {
-        "\(prodcuts.count)"
-    }
 }
