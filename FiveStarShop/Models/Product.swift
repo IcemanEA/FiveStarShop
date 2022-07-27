@@ -18,4 +18,8 @@ struct Product {
     var name: String {
         "\(model) \(company)"
     }
+    
+    var rubleCurrency: String {
+        "\(price)₽"
+    }
 }
