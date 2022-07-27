@@ -13,6 +13,10 @@
 		485EC60B2891255600C95807 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 485EC6092891255600C95807 /* Main.storyboard */; };
 		485EC60D2891255700C95807 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 485EC60C2891255700C95807 /* Assets.xcassets */; };
 		485EC6102891255700C95807 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 485EC60E2891255700C95807 /* LaunchScreen.storyboard */; };
+		8E7FD734289157A30022A14F /* Product.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E7FD733289157A30022A14F /* Product.swift */; };
+		8E7FD737289158F00022A14F /* Cart.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E7FD736289158F00022A14F /* Cart.swift */; };
+		8E7FD73928915A010022A14F /* Order.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E7FD73828915A010022A14F /* Order.swift */; };
+		8E7FD73C28915A870022A14F /* DataStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E7FD73B28915A870022A14F /* DataStore.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +28,10 @@
 		485EC60C2891255700C95807 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		485EC60F2891255700C95807 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		485EC6112891255700C95807 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		8E7FD733289157A30022A14F /* Product.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Product.swift; sourceTree = "<group>"; };
+		8E7FD736289158F00022A14F /* Cart.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Cart.swift; sourceTree = "<group>"; };
+		8E7FD73828915A010022A14F /* Order.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Order.swift; sourceTree = "<group>"; };
+		8E7FD73B28915A870022A14F /* DataStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataStore.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -56,11 +64,11 @@
 		485EC6022891255600C95807 /* FiveStarShop */ = {
 			isa = PBXGroup;
 			children = (
+				8E7FD73A28915A700022A14F /* Services */,
+				8E7FD735289157AA0022A14F /* Models */,
 				485EC61C289125F200C95807 /* Views */,
 				485EC618289125B100C95807 /* ViewControllers */,
-				485EC61B289125DA00C95807 /* Models */,
 				485EC619289125BF00C95807 /* Storyboards */,
-				485EC61D289125FB00C95807 /* Services */,
 				485EC617289125AA00C95807 /* App */,
 				485EC61A289125CA00C95807 /* Resources */,
 			);
@@ -102,13 +110,6 @@
 			path = Resources;
 			sourceTree = "<group>";
 		};
-		485EC61B289125DA00C95807 /* Models */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Models;
-			sourceTree = "<group>";
-		};
 		485EC61C289125F200C95807 /* Views */ = {
 			isa = PBXGroup;
 			children = (
@@ -116,9 +117,20 @@
 			path = Views;
 			sourceTree = "<group>";
 		};
-		485EC61D289125FB00C95807 /* Services */ = {
+		8E7FD735289157AA0022A14F /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				8E7FD733289157A30022A14F /* Product.swift */,
+				8E7FD736289158F00022A14F /* Cart.swift */,
+				8E7FD73828915A010022A14F /* Order.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		8E7FD73A28915A700022A14F /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				8E7FD73B28915A870022A14F /* DataStore.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -194,7 +206,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8E7FD73C28915A870022A14F /* DataStore.swift in Sources */,
+				8E7FD73928915A010022A14F /* Order.swift in Sources */,
 				485EC6082891255600C95807 /* ViewController.swift in Sources */,
+				8E7FD734289157A30022A14F /* Product.swift in Sources */,
+				8E7FD737289158F00022A14F /* Cart.swift in Sources */,
 				485EC6042891255600C95807 /* AppDelegate.swift in Sources */,
 				485EC6062891255600C95807 /* SceneDelegate.swift in Sources */,
 			);
