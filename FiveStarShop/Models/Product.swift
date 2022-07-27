@@ -9,11 +9,11 @@ import Foundation
 
 struct Product {
     
-    let model: String
+    let article: String
     let company: String
+    let model: String
     let description: String
     let price: Int
-    let article: String
     
     var name: String {
         "\(model) \(company)"
