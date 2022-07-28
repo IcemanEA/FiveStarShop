@@ -2,7 +2,7 @@
 //  Order.swift
 //  FiveStarShop
 //
-//  Created by Dimondr on 27.07.2022.
+//  Created by Асанкул Садыков on 27/7/22.
 //
 
 import Foundation

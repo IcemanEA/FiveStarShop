@@ -2,7 +2,7 @@
 //  DataStore.swift
 //  FiveStarShop
 //
-//  Created by Dimondr on 27.07.2022.
+//  Created by Асанкул Садыков on 27/7/22.
 //
 
 import Foundation
@@ -165,5 +165,32 @@ class DataStore {
             price: 6800
         )
     ]
+    
+//    let orders: [Order] = [
+//        Order(
+//            id: 1,
+//            date: "01.06.22",
+//            carts: DataStore().getGoods(products: DataStore().products)
+//        )
+//    ]
+    
     private init() {}
+    
+    func getGoods(_ products: [Product]) -> [Cart] {
+        var goods: [Cart] = []
+        
+//        let products = products.shuffled().prefix(Int.random(in: 1...products.count))
+        let products = products.shuffled().prefix(5)
+        
+        for product in products {
+            goods.append(
+                Cart(
+                    product: product,
+                    count: Int.random(in: 1...3)
+                )
+            )
+        }
+        return goods
+    }
+
 }

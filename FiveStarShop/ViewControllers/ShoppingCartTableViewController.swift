@@ -50,6 +50,17 @@ extension ShoppingCartTableViewController: UITableViewDataSource {
             {
                 return UITableViewCell()
             }
+            
+            let goods = DataStore.shared.getGoods(DataStore.shared.products)
+            let good = goods[indexPath.row]
+            
+            cell.counterGoods.text = good.count.formatted()
+            cell.goodsModel.text = good.product.model
+            cell.goodsCompany.text = good.product.company
+            cell.goodsArticle.text = good.product.article
+            cell.goodsPrice.text = good.product.rubleCurrency
+            cell.goodsSum.text = good.rubleCurrency
+            
             return cell
             
         default:
@@ -70,6 +81,11 @@ extension ShoppingCartTableViewController: UITableViewDelegate {
     //    tableView.allowsSelection = false
         tableView.deselectRow(at: indexPath, animated: true)
     }
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        120
+    }
+    
 }
 
 
