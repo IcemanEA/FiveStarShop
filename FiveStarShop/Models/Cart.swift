@@ -18,20 +18,3 @@ struct Cart {
         "\(price) ₽"
     }
 }
-
-extension Cart {
-    static func getGoods(_ products: [Product]) -> [Cart] {
-        var goods: [Cart] = []
-        let products = products.shuffled().prefix(5)
-        
-        for product in products {
-            goods.append(
-                Cart(
-                    product: product,
-                    count: Int.random(in: 1...3)
-                )
-            )
-        }
-        return goods
-    }
-}
