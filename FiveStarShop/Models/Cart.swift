@@ -9,10 +9,10 @@ import Foundation
 
 
 struct Cart {
-    let produсt: Product
+    let product: Product
     let count: Int
     var totalPrice: Int {
-        produсt.price * count
+        product.price * count
     }
     var rubleCurrency: String {
         "\(price) ₽"
