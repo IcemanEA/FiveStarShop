@@ -8,7 +8,7 @@
 import Foundation
 
 
-struct Cart {
+struct Cart: Equatable {
     let product: Product
     var count: Int
     var totalPrice: Int {
@@ -16,5 +16,9 @@ struct Cart {
     }
     var rubleCurrency: String {
         "\(price) ₽"
+    }
+    
+    static func ==(lhs: Cart, rhs: Cart) -> Bool {
+        return lhs.product.article == rhs.product.article
     }
 }
