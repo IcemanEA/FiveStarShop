@@ -10,7 +10,7 @@ import Foundation
 
 struct Cart {
     let product: Product
-    let count: Int
+    var count: Int
     var totalPrice: Int {
         product.price * count
     }
