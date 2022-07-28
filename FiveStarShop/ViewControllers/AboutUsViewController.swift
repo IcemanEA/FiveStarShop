@@ -14,11 +14,6 @@ protocol CellViewDelegate {
 class AboutUsViewController: UITableViewController {
 
     private let authors = Author.getAuthors()
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        // Do any additional setup after loading the view.
-    }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         authors.count
@@ -62,6 +57,7 @@ class AboutUsViewController: UITableViewController {
     }
 }
 
+// MARK: - CellViewDelegate
 extension AboutUsViewController: CellViewDelegate {
     func openLink(_ link: String) {
         let alertVC = UIAlertController(
