@@ -22,25 +22,25 @@ struct Author {
     static func getAuthors() -> [Author] {
         [
             Author(firstName: "Егор",
-                               lastName: "Ледков",
-                               post: "Верстальщик конечного продукта и подгоняльщик отстающих",
-                               nickname: "IcemanEA")
-            , Author (firstName: "",
-                      lastName: "",
-                      post: "",
-                      nickname: "")
-            , Author (firstName: "",
-                      lastName: "",
-                      post: "",
-                      nickname: "")
-            , Author (firstName: "",
-                      lastName: "",
-                      post: "",
-                      nickname: "")
-            , Author (firstName: "",
-                      lastName: "",
-                      post: "",
-                      nickname: "")
+                   lastName: "Ледков",
+                   post: "TeamLead, Git, код ревью, раздел О нас",
+                   nickname: "IcemanEA")
+            , Author(firstName: "Сергей",
+                     lastName: "",
+                     post: "ремонт ноутбуков на выезде, гарантия работ",
+                     nickname: "seleza1")
+            , Author(firstName: "Асанкул",
+                     lastName: "Садыков",
+                     post: "Model&DataStore manager, раздел каталог, продукт",
+                     nickname: "asankul")
+            , Author(firstName: "Дмитрий",
+                     lastName: "",
+                     post: "раздел Заказы и форма логина",
+                     nickname: "DmitryPsycho")
+            , Author(firstName: "Дмитрий",
+                     lastName: "Карих",
+                     post: "раздел Корзина и детализация заказов",
+                     nickname: "Dim0ndr")
         ]
     }
 }

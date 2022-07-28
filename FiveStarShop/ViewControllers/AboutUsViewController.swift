@@ -7,6 +7,10 @@
 
 import UIKit
 
+protocol CellViewDelegate {
+    func openLink(_ link: String)
+}
+
 class AboutUsViewController: UITableViewController {
 
     private let authors = Author.getAuthors()
@@ -21,7 +25,7 @@ class AboutUsViewController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        116
+        120
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -44,10 +48,11 @@ class AboutUsViewController: UITableViewController {
             cell.linkButton.setTitle(author.nickname, for: .normal)
         }
         
-        if author.nickname != "", let image = UIImage(named: author.nickname) {
-            cell.authorImageView.image = image
-            cell.authorImageView.layer.cornerRadius = cell.authorImageView.frame.height / 2
-        }
+        let image = UIImage(named: author.nickname) ?? UIImage(named: "imagePlaceholder.png")
+        cell.authorImageView.image = image
+        cell.authorImageView.layer.cornerRadius = cell.authorImageView.frame.height / 2
+                
+        cell.delegate = self
                 
         return cell
     }
@@ -55,6 +60,25 @@ class AboutUsViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
     }
-
 }
 
+extension AboutUsViewController: CellViewDelegate {
+    func openLink(_ link: String) {
+        let alertVC = UIAlertController(
+                title: "Сайт",
+                message: "Вы уверены, что хотите перейти на страницу автора?",
+                preferredStyle: .alert
+        )
+        let actionYes = UIAlertAction(title: "Да", style: .default) {_ in
+            if let url = URL(string: link) {
+                UIApplication.shared.open(url)
+            }
+        }
+        alertVC.addAction(actionYes)
+        
+        let actionNo = UIAlertAction(title: "Нет", style: .cancel)
+        alertVC.addAction(actionNo)
+        
+        present(alertVC, animated: true)
+    }
+}
