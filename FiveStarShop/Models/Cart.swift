@@ -15,7 +15,7 @@ struct Cart: Equatable {
         product.price * count
     }
     var rubleCurrency: String {
-        "\(price) ₽"
+        "\(product.price) ₽"
     }
     
     static func ==(lhs: Cart, rhs: Cart) -> Bool {
