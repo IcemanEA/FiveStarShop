@@ -14,4 +14,7 @@ struct Cart {
     var totalPrice: Int {
         produсt.price * count
     }
+    var rubleCurrency: String {
+        "\(price) ₽"
+    }
 }
