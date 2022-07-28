@@ -19,6 +19,6 @@ struct Product {
     }
     
     var rubleCurrency: String {
-        "\(price)₽"
+        "\(price) ₽"
     }
 }
