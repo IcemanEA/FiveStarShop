@@ -17,8 +17,14 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Ваша корзина пуста" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zeC-Dn-og1">
+                                <rect key="frame" x="16" y="194" width="288" height="20.5"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" systemColor="secondaryLabelColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="bRB-Xr-8Xn">
-                                <rect key="frame" x="0.0" y="44" width="320" height="454"/>
+                                <rect key="frame" x="0.0" y="91" width="320" height="407"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="0.0" reuseIdentifier="GoodCell" rowHeight="120" id="yrL-rX-852" customClass="GoodsCartTableViewCell" customModule="FiveStarShop" customModuleProvider="target">
@@ -187,6 +193,9 @@
                                         <state key="normal" title="Оформить">
                                             <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         </state>
+                                        <connections>
+                                            <action selector="cartInButtonPressed" destination="BYZ-38-t0r" eventType="touchUpInside" id="hg7-bn-6A9"/>
+                                        </connections>
                                     </button>
                                 </subviews>
                             </stackView>
@@ -196,15 +205,32 @@
                         <constraints>
                             <constraint firstItem="4NY-6m-k3x" firstAttribute="top" secondItem="bRB-Xr-8Xn" secondAttribute="bottom" constant="5" id="0Br-pm-gwk"/>
                             <constraint firstItem="bRB-Xr-8Xn" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="0qB-mI-UNZ"/>
+                            <constraint firstItem="zeC-Dn-og1" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" constant="-80" id="D3k-aq-e9p"/>
+                            <constraint firstItem="zeC-Dn-og1" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="16" id="DOH-OC-bgr"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="4NY-6m-k3x" secondAttribute="bottom" constant="20" id="Gma-Nw-r5X"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="4NY-6m-k3x" secondAttribute="trailing" constant="16" id="Veb-nD-1Tx"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="bRB-Xr-8Xn" secondAttribute="bottom" constant="70" id="cIm-6J-Pdq"/>
                             <constraint firstItem="bRB-Xr-8Xn" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="gWR-O6-54Y"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="zeC-Dn-og1" secondAttribute="trailing" constant="16" id="jnH-KK-4wy"/>
                             <constraint firstItem="bRB-Xr-8Xn" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="pV0-SA-8P0"/>
                             <constraint firstItem="4NY-6m-k3x" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="16" id="qYs-xs-fbq"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="Корзина" id="DBE-av-AUX"/>
+                    <navigationItem key="navigationItem" title="Корзина" id="DBE-av-AUX">
+                        <barButtonItem key="rightBarButtonItem" title="Item" id="4M4-GT-pFO">
+                            <imageReference key="image" image="trash" catalog="system" renderingMode="original"/>
+                            <connections>
+                                <action selector="clearButtonPressed" destination="BYZ-38-t0r" id="bQ8-DU-OQT"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="cartInButton" destination="27a-a9-nKR" id="RbV-4Z-yzw"/>
+                        <outlet property="clearButton" destination="4M4-GT-pFO" id="V2g-PY-Ai7"/>
+                        <outlet property="orderTextLabel" destination="siW-IM-2Tb" id="lYX-dy-15c"/>
+                        <outlet property="tableView" destination="bRB-Xr-8Xn" id="cfC-Ny-FFO"/>
+                        <outlet property="totalSumLabel" destination="XAd-0i-vZt" id="96q-2b-7TQ"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
@@ -232,6 +258,10 @@
     <resources>
         <image name="minus" catalog="system" width="128" height="24"/>
         <image name="plus" catalog="system" width="128" height="113"/>
+        <image name="trash" catalog="system" width="121" height="128"/>
+        <systemColor name="secondaryLabelColor">
+            <color red="0.23529411764705882" green="0.23529411764705882" blue="0.2627450980392157" alpha="0.59999999999999998" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>

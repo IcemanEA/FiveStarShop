@@ -19,6 +19,11 @@ struct Product {
     }
     
     var rubleCurrency: String {
-        "\(price) ₽"
+        price.formatted(
+            .number.grouping(.automatic)
+            .locale(
+                Locale(identifier: "ru_RU")
+            )
+        ) + "₽"
     }
 }

@@ -166,31 +166,63 @@ class DataStore {
         )
     ]
     
+    let users: [User] = [
+        User(userId: "Dim", login: "Dim", name: "Dmitry"),
+        User(userId: "EgrLdk", login: "EgrLdk", name: "Egor")
+    ]
+    
 //    let orders: [Order] = [
 //        Order(
+//            userId: "EgrLdk",
 //            id: 1,
 //            date: "01.06.22",
-//            carts: DataStore().getGoods(products: DataStore().products)
+//            carts: Cart.getCartGoods(DataStore.shared.products )
+//        )
+//        Order(
+//            userId: "EgrLdk",
+//            id: 2,
+//            date: "12.07.22",
+//            carts: [
+//                Cart(product: DataStore.shared.products[9], count: 2),
+//                Cart(product: DataStore.shared.products[7], count: 1),
+//                Cart(product: DataStore.shared.products[2], count: 1)
+//                ]
+//        ),
+//        Order(
+//            userId: "EgrLdk",
+//            id: 3,
+//            date: "12.07.22",
+//            carts: [
+//                Cart(product: DataStore.shared.products[3], count: 1),
+//                Cart(product: DataStore.shared.products[5], count: 1),
+//                Cart(product: DataStore.shared.products[4], count: 2),
+//                Cart(product: DataStore.shared.products[0], count: 1),
+//                ]
+//        ),
+//        Order(
+//            userId: "Dim",
+//            id: 1,
+//            date: "29.05.22",
+//            carts: [
+//                Cart(product: DataStore.shared.products[3], count: 2),
+//                Cart(product: DataStore.shared.products[5], count: 1),
+//                Cart(product: DataStore.shared.products[2], count: 1),
+//                Cart(product: DataStore.shared.products[7], count: 1),
+//                Cart(product: DataStore.shared.products[0], count: 2),
+//                Cart(product: DataStore.shared.products[4], count: 1)
+//                ]
+//        ),
+//        Order(
+//            userId: "Dim",
+//            id: 2,
+//            date: "13.06.22",
+//            carts: [
+//                Cart(product: DataStore.shared.products[1], count: 1),
+//                Cart(product: DataStore.shared.products[8], count: 3),
+//
+//                ]
 //        )
 //    ]
     
     private init() {}
-    
-    func getGoods(_ products: [Product]) -> [Cart] {
-        var goods: [Cart] = []
-        
-//        let products = products.shuffled().prefix(Int.random(in: 1...products.count))
-        let products = products.shuffled().prefix(5)
-        
-        for product in products {
-            goods.append(
-                Cart(
-                    product: product,
-                    count: Int.random(in: 1...3)
-                )
-            )
-        }
-        return goods
-    }
-
 }

@@ -9,6 +9,7 @@ import Foundation
 
 
 struct Order {
+    let userId: String
     let id: Int
     let date: String
     let carts: [Cart]
