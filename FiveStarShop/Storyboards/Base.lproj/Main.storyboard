@@ -4,6 +4,7 @@
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="20020"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="Stack View standard spacing" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -16,8 +17,8 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="74C-63-1F9">
-                                <rect key="frame" x="20" y="134" width="374" height="30"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="13" translatesAutoresizingMaskIntoConstraints="NO" id="74C-63-1F9">
+                                <rect key="frame" x="20" y="284" width="374" height="30"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="25"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
@@ -26,7 +27,7 @@
                         <viewLayoutGuide key="safeArea" id="AGp-ii-anw"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="74C-63-1F9" firstAttribute="centerY" secondItem="AGp-ii-anw" secondAttribute="centerY" constant="-300" id="aZM-OB-yag"/>
+                            <constraint firstItem="74C-63-1F9" firstAttribute="centerY" secondItem="AGp-ii-anw" secondAttribute="centerY" constant="-150" id="aZM-OB-yag"/>
                             <constraint firstItem="AGp-ii-anw" firstAttribute="trailing" secondItem="74C-63-1F9" secondAttribute="trailing" constant="20" id="fNv-9P-MRn"/>
                             <constraint firstItem="74C-63-1F9" firstAttribute="leading" secondItem="AGp-ii-anw" secondAttribute="leading" constant="20" id="hUg-1q-ndQ"/>
                         </constraints>
@@ -84,11 +85,11 @@
                                             <action selector="loginBtnPressed" destination="BYZ-38-t0r" eventType="touchUpInside" id="bcn-Um-N20"/>
                                         </connections>
                                     </button>
-                                    <stackView opaque="NO" contentMode="scaleToFill" distribution="fillProportionally" spacing="100" translatesAutoresizingMaskIntoConstraints="NO" id="W4j-tm-rGm">
+                                    <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacingType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="W4j-tm-rGm">
                                         <rect key="frame" x="0.0" y="152" width="344" height="31"/>
                                         <subviews>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="SGp-fo-wNf">
-                                                <rect key="frame" x="0.0" y="0.0" width="109.5" height="31"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="168" height="31"/>
                                                 <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <state key="normal" title="Button"/>
                                                 <buttonConfiguration key="configuration" style="plain" title="Ваш логин">
@@ -99,7 +100,7 @@
                                                 </connections>
                                             </button>
                                             <button opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UxO-Qf-Zd3">
-                                                <rect key="frame" x="209.5" y="0.0" width="134.5" height="31"/>
+                                                <rect key="frame" x="176" y="0.0" width="168" height="31"/>
                                                 <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <state key="normal" title="Button"/>
                                                 <buttonConfiguration key="configuration" style="plain" title="Ваш пароль">
