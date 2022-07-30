@@ -43,5 +43,4 @@ class UserMenuViewController: UIViewController {
     @IBAction func backBtnPressed() {
         dismiss(animated: true)
     }
-    
 }

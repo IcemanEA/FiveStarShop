@@ -18,7 +18,12 @@ class OrderListViewController: UITableViewController {
     private let users = User.getUsers()
     private var activeUser: User? = nil {
         didSet {
-            self.navigationItem.rightBarButtonItem?.title = activeUser?.name
+            if activeUser != nil {
+                navigationItem.rightBarButtonItem?.title = activeUser?.name
+            } else {
+                navigationItem.rightBarButtonItem?.title = "Авторизация"
+            }
+            tableView.reloadData()
         }
     }
     
@@ -38,7 +43,6 @@ class OrderListViewController: UITableViewController {
         content.text = "Заказ №\(String(order.id))"
         content.secondaryText = order.date
         cell.contentConfiguration = content
-        cell.isHidden = false
         return cell
     }
     
@@ -72,8 +76,6 @@ class OrderListViewController: UITableViewController {
             performSegue(withIdentifier: "userMenu", sender: nil)
         }
     }
-    
-    
 }
 
 // MARK: - User login/logout logic setup
@@ -81,12 +83,9 @@ class OrderListViewController: UITableViewController {
 extension OrderListViewController: LoginViewControllerDelegate {
     func setUser(_ user: User) {
         activeUser = user
-        tableView.reloadData()
     }
     
     func logOutUser() {
         activeUser = nil
-        tableView.reloadData()
-        self.navigationItem.rightBarButtonItem?.title = "Авторизация"
     }
 }
