@@ -8,13 +8,13 @@
 
 /* Begin PBXBuildFile section */
 		402BDEE12892E5F200693052 /* UserMenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 402BDEE02892E5F200693052 /* UserMenuViewController.swift */; };
-		402BDEE32893065E00693052 /* Orders.swift in Sources */ = {isa = PBXBuildFile; fileRef = 402BDEE22893065E00693052 /* Orders.swift */; };
+		402BDEE32893065E00693052 /* Order.swift in Sources */ = {isa = PBXBuildFile; fileRef = 402BDEE22893065E00693052 /* Order.swift */; };
 		402BDEE52893067E00693052 /* Cart.swift in Sources */ = {isa = PBXBuildFile; fileRef = 402BDEE42893067E00693052 /* Cart.swift */; };
 		402BDEE7289306AC00693052 /* Product.swift in Sources */ = {isa = PBXBuildFile; fileRef = 402BDEE6289306AC00693052 /* Product.swift */; };
 		402BDEE9289309C200693052 /* DataStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 402BDEE8289309C200693052 /* DataStore.swift */; };
 		408B7A9D2891AF2D00FB0D9B /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 408B7A9C2891AF2D00FB0D9B /* LoginViewController.swift */; };
-		408B7A9F2891B09300FB0D9B /* Users.swift in Sources */ = {isa = PBXBuildFile; fileRef = 408B7A9E2891B09300FB0D9B /* Users.swift */; };
-		408B7AA32891BD2000FB0D9B /* OrderTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 408B7AA22891BD2000FB0D9B /* OrderTableViewController.swift */; };
+		408B7A9F2891B09300FB0D9B /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 408B7A9E2891B09300FB0D9B /* User.swift */; };
+		408B7AA32891BD2000FB0D9B /* OrderListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 408B7AA22891BD2000FB0D9B /* OrderListViewController.swift */; };
 		485EC6042891255600C95807 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 485EC6032891255600C95807 /* AppDelegate.swift */; };
 		485EC6062891255600C95807 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 485EC6052891255600C95807 /* SceneDelegate.swift */; };
 		485EC60B2891255600C95807 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 485EC6092891255600C95807 /* Main.storyboard */; };
@@ -24,13 +24,13 @@
 
 /* Begin PBXFileReference section */
 		402BDEE02892E5F200693052 /* UserMenuViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserMenuViewController.swift; sourceTree = "<group>"; };
-		402BDEE22893065E00693052 /* Orders.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Orders.swift; sourceTree = "<group>"; };
+		402BDEE22893065E00693052 /* Order.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Order.swift; sourceTree = "<group>"; };
 		402BDEE42893067E00693052 /* Cart.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Cart.swift; sourceTree = "<group>"; };
 		402BDEE6289306AC00693052 /* Product.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Product.swift; sourceTree = "<group>"; };
 		402BDEE8289309C200693052 /* DataStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataStore.swift; sourceTree = "<group>"; };
 		408B7A9C2891AF2D00FB0D9B /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
-		408B7A9E2891B09300FB0D9B /* Users.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Users.swift; sourceTree = "<group>"; };
-		408B7AA22891BD2000FB0D9B /* OrderTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderTableViewController.swift; sourceTree = "<group>"; };
+		408B7A9E2891B09300FB0D9B /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		408B7AA22891BD2000FB0D9B /* OrderListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderListViewController.swift; sourceTree = "<group>"; };
 		485EC6002891255600C95807 /* FiveStarShop.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FiveStarShop.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		485EC6032891255600C95807 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		485EC6052891255600C95807 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -94,7 +94,7 @@
 		485EC618289125B100C95807 /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
-				408B7AA22891BD2000FB0D9B /* OrderTableViewController.swift */,
+				408B7AA22891BD2000FB0D9B /* OrderListViewController.swift */,
 				408B7A9C2891AF2D00FB0D9B /* LoginViewController.swift */,
 				402BDEE02892E5F200693052 /* UserMenuViewController.swift */,
 			);
@@ -121,8 +121,8 @@
 		485EC61B289125DA00C95807 /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				408B7A9E2891B09300FB0D9B /* Users.swift */,
-				402BDEE22893065E00693052 /* Orders.swift */,
+				408B7A9E2891B09300FB0D9B /* User.swift */,
+				402BDEE22893065E00693052 /* Order.swift */,
 				402BDEE42893067E00693052 /* Cart.swift */,
 				402BDEE6289306AC00693052 /* Product.swift */,
 			);
@@ -218,13 +218,13 @@
 				408B7A9D2891AF2D00FB0D9B /* LoginViewController.swift in Sources */,
 				402BDEE52893067E00693052 /* Cart.swift in Sources */,
 				402BDEE12892E5F200693052 /* UserMenuViewController.swift in Sources */,
-				408B7AA32891BD2000FB0D9B /* OrderTableViewController.swift in Sources */,
+				408B7AA32891BD2000FB0D9B /* OrderListViewController.swift in Sources */,
 				402BDEE9289309C200693052 /* DataStore.swift in Sources */,
-				408B7A9F2891B09300FB0D9B /* Users.swift in Sources */,
+				408B7A9F2891B09300FB0D9B /* User.swift in Sources */,
 				485EC6042891255600C95807 /* AppDelegate.swift in Sources */,
 				485EC6062891255600C95807 /* SceneDelegate.swift in Sources */,
 				402BDEE7289306AC00693052 /* Product.swift in Sources */,
-				402BDEE32893065E00693052 /* Orders.swift in Sources */,
+				402BDEE32893065E00693052 /* Order.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

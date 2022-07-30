@@ -5,9 +5,6 @@
 //  Created by Psycho on 28.07.2022.
 //
 
-import Foundation
-
-
 struct Cart {
     let product: Product
     let count: Int

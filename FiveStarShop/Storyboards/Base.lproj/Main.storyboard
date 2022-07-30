@@ -36,7 +36,13 @@
                         <barButtonItem key="leftBarButtonItem" title="Назад" id="oxb-9P-sJY">
                             <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <connections>
-                                <action selector="cancelBtnPressed" destination="MPQ-E3-f7W" id="fqp-k5-5ws"/>
+                                <action selector="backBtnPressed" destination="MPQ-E3-f7W" id="vCd-7Z-8Wj"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" title="Выйти" id="1k6-W9-136">
+                            <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <connections>
+                                <action selector="logOutBtnPressed" destination="MPQ-E3-f7W" id="IKm-ud-GTV"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -57,7 +63,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="JwB-VN-3RJ" userLabel="LoginStackView">
-                                <rect key="frame" x="35" y="317.5" width="344" height="183"/>
+                                <rect key="frame" x="35" y="277.5" width="344" height="183"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="13J-o3-I5x">
                                         <rect key="frame" x="0.0" y="0.0" width="344" height="88"/>
@@ -119,11 +125,18 @@
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="JwB-VN-3RJ" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="35" id="I0d-VP-Gey"/>
-                            <constraint firstItem="JwB-VN-3RJ" firstAttribute="centerY" secondItem="6Tk-OE-BBY" secondAttribute="centerY" constant="-40" id="PxK-7a-QDF"/>
+                            <constraint firstItem="JwB-VN-3RJ" firstAttribute="centerY" secondItem="6Tk-OE-BBY" secondAttribute="centerY" constant="-80" id="PxK-7a-QDF"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="JwB-VN-3RJ" secondAttribute="trailing" constant="35" id="WqL-EV-odi"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" id="GQD-2T-5Xz"/>
+                    <navigationItem key="navigationItem" id="GQD-2T-5Xz">
+                        <barButtonItem key="leftBarButtonItem" title="Отмена" id="Dr2-Pd-Bp9">
+                            <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <connections>
+                                <action selector="cancelBtnPressed" destination="BYZ-38-t0r" id="XxW-ci-7Lh"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="passwordTextField" destination="jPb-a8-Zbo" id="LB1-mA-ZYg"/>
                         <outlet property="userTextField" destination="WHA-lP-KXe" id="IRV-bV-WlO"/>
@@ -131,12 +144,12 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4380" y="163"/>
+            <point key="canvasLocation" x="4380" y="115"/>
         </scene>
         <!--Заказы-->
         <scene sceneID="KrS-cH-GE8">
             <objects>
-                <tableViewController id="rEV-Dd-9JS" customClass="OrderTableViewController" customModule="FiveStarShop" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController id="rEV-Dd-9JS" customClass="OrderListViewController" customModule="FiveStarShop" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" id="gZK-YF-elH">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -165,6 +178,9 @@
                                         </label>
                                     </subviews>
                                 </tableViewCellContentView>
+                                <connections>
+                                    <segue destination="rdU-Yg-RC6" kind="show" id="TGc-hO-aqO"/>
+                                </connections>
                             </tableViewCell>
                         </prototypes>
                         <connections>
@@ -173,37 +189,20 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="Заказы" id="UAG-tJ-K2h">
-                        <rightBarButtonItems>
-                            <barButtonItem title="Авторизация" id="TLz-rM-wcN">
-                                <connections>
-                                    <segue destination="N5M-cw-BXd" kind="presentation" id="bt0-g4-d8b"/>
-                                </connections>
-                            </barButtonItem>
-                            <barButtonItem id="d4i-YK-SLX">
-                                <connections>
-                                    <segue destination="eFu-L5-fXp" kind="presentation" id="jeK-XH-yYx"/>
-                                </connections>
-                            </barButtonItem>
-                        </rightBarButtonItems>
+                        <barButtonItem key="rightBarButtonItem" title="Авторизация" id="TLz-rM-wcN">
+                            <connections>
+                                <action selector="authorizeBtnPressed:" destination="rEV-Dd-9JS" id="FoG-Kb-qMn"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                     <connections>
-                        <outlet property="authorizeBtn" destination="TLz-rM-wcN" id="2y0-Nt-6zY"/>
-                        <outlet property="userBtn" destination="d4i-YK-SLX" id="nhI-nl-zsW"/>
+                        <segue destination="N5M-cw-BXd" kind="presentation" identifier="login" id="Lgz-z3-8Zo"/>
+                        <segue destination="eFu-L5-fXp" kind="presentation" identifier="userMenu" id="Z6e-ug-3tW"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Pif-Yx-c4J" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2618.840579710145" y="114.50892857142857"/>
-        </scene>
-        <!--Storyboard Reference-->
-        <scene sceneID="DBC-YL-IwF">
-            <objects>
-                <viewControllerPlaceholder id="4Jt-wA-176" sceneMemberID="viewController">
-                    <navigationItem key="navigationItem" id="Xj0-eg-lAl"/>
-                </viewControllerPlaceholder>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="nMI-IY-tap" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="4259" y="537"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="lEf-AV-Xsa">
@@ -242,6 +241,16 @@
             </objects>
             <point key="canvasLocation" x="1813" y="115"/>
         </scene>
+        <!--Storyboard Reference-->
+        <scene sceneID="8i8-Cn-Yls">
+            <objects>
+                <viewControllerPlaceholder id="rdU-Yg-RC6" sceneMemberID="viewController">
+                    <navigationItem key="navigationItem" id="0ck-oc-TyN"/>
+                </viewControllerPlaceholder>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="NvA-qh-csr" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2620" y="578"/>
+        </scene>
         <!--Navigation Controller-->
         <scene sceneID="FzM-pJ-dZC">
             <objects>
@@ -276,7 +285,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="JqH-MM-A4L" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3506" y="163"/>
+            <point key="canvasLocation" x="3470" y="115"/>
         </scene>
     </scenes>
     <resources>

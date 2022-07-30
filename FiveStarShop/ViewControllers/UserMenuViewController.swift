@@ -11,7 +11,7 @@ class UserMenuViewController: UIViewController {
     
     @IBOutlet var welcomeLabel: UILabel!
     
-    var user: Users!
+    var user: User!
     var delegate: LoginViewControllerDelegate!
    
     private let primaryColor = UIColor(
@@ -33,7 +33,12 @@ class UserMenuViewController: UIViewController {
         welcomeLabel.text = "Приятных покупок, \(user.name)!"
     }
     
-    @IBAction func cancelBtnPressed() {
+    @IBAction func logOutBtnPressed() {
+        delegate.logOutUser()
+        dismiss(animated: true)
+    }
+    
+    @IBAction func backBtnPressed() {
         dismiss(animated: true)
     }
     

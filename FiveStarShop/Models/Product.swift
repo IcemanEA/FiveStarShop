@@ -5,9 +5,6 @@
 //  Created by Psycho on 28.07.2022.
 //
 
-
-import Foundation
-
 struct Product {
     let article: String
     let company: String

@@ -12,9 +12,10 @@ class LoginViewController: UIViewController {
     @IBOutlet var userTextField: UITextField!
     @IBOutlet var passwordTextField: UITextField!
     
-    var user: Users!
+    var users: [User]!
     var delegate: LoginViewControllerDelegate!
-    var tableViewDelegate: UITableViewDelegate!
+    
+    private var user: User!
     
     private let primaryColor = UIColor(
         red: 210/255,
@@ -29,15 +30,15 @@ class LoginViewController: UIViewController {
         alpha: 1
     )
     
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        view.addVerticalGradientLayer(topColor: primaryColor, bottomColor: secondaryColor)
+        user = users.first
+    }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         super.touchesBegan(touches, with: event)
         view.endEditing(true)
-    }
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        view.addVerticalGradientLayer(topColor: primaryColor, bottomColor: secondaryColor)
-        
     }
     
     @IBAction func loginBtnPressed() {
@@ -49,7 +50,7 @@ class LoginViewController: UIViewController {
             return
         }
         
-        delegate.setUser(user.name)
+        delegate.setUser(user)
         dismiss(animated: true)
     }
     
@@ -57,6 +58,10 @@ class LoginViewController: UIViewController {
         sender.tag == 0
         ? showAlert(title: "Ой!", message: "Ваш логин - \(user.userName)")
         : showAlert(title: "Ой!", message: "Ваш пароль - \(user.password)")
+    }
+    
+    @IBAction func cancelBtnPressed() {
+        dismiss(animated: true)
     }
     
     private func showAlert(title: String, message: String, textField: UITextField? = nil) {
