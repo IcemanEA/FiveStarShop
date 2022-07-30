@@ -17,19 +17,27 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="13" translatesAutoresizingMaskIntoConstraints="NO" id="74C-63-1F9">
-                                <rect key="frame" x="20" y="284" width="374" height="30"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="25"/>
-                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <nil key="highlightedColor"/>
-                            </label>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="USw-1b-62Q">
+                                <rect key="frame" x="20" y="220.5" width="374" height="397"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="13" translatesAutoresizingMaskIntoConstraints="NO" id="74C-63-1F9">
+                                        <rect key="frame" x="157.5" y="0.0" width="59" height="30"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="25"/>
+                                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="cart" translatesAutoresizingMaskIntoConstraints="NO" id="fnC-Nd-WrX">
+                                        <rect key="frame" x="3.5" y="30" width="367" height="367"/>
+                                    </imageView>
+                                </subviews>
+                            </stackView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="AGp-ii-anw"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="74C-63-1F9" firstAttribute="centerY" secondItem="AGp-ii-anw" secondAttribute="centerY" constant="-150" id="aZM-OB-yag"/>
-                            <constraint firstItem="AGp-ii-anw" firstAttribute="trailing" secondItem="74C-63-1F9" secondAttribute="trailing" constant="20" id="fNv-9P-MRn"/>
-                            <constraint firstItem="74C-63-1F9" firstAttribute="leading" secondItem="AGp-ii-anw" secondAttribute="leading" constant="20" id="hUg-1q-ndQ"/>
+                            <constraint firstItem="USw-1b-62Q" firstAttribute="leading" secondItem="AGp-ii-anw" secondAttribute="leading" constant="20" id="1Ab-XU-ih4"/>
+                            <constraint firstItem="AGp-ii-anw" firstAttribute="trailing" secondItem="USw-1b-62Q" secondAttribute="trailing" constant="20" id="3Xw-dz-M1o"/>
+                            <constraint firstItem="USw-1b-62Q" firstAttribute="centerY" secondItem="AGp-ii-anw" secondAttribute="centerY" constant="-30" id="ksu-Ri-PET"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="Gsr-ZQ-BY8">
@@ -289,6 +297,7 @@
         </scene>
     </scenes>
     <resources>
+        <image name="cart" width="366.66665649414062" height="366.66665649414062"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>

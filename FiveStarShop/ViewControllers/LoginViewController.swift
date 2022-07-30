@@ -41,6 +41,9 @@ class LoginViewController: UIViewController {
         view.endEditing(true)
     }
     
+    
+    // MARK: - Login screen buttons setup
+    
     @IBAction func loginBtnPressed() {
         guard userTextField.text == user.userName, passwordTextField.text == user.password else {
             showAlert(
@@ -63,6 +66,8 @@ class LoginViewController: UIViewController {
     @IBAction func cancelBtnPressed() {
         dismiss(animated: true)
     }
+    
+    // MARK: - Alert message setup
     
     private func showAlert(title: String, message: String, textField: UITextField? = nil) {
         let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)

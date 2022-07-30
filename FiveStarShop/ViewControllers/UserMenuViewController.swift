@@ -32,6 +32,8 @@ class UserMenuViewController: UIViewController {
         view.addVerticalGradientLayer(topColor: primaryColor, bottomColor: secondaryColor)
         welcomeLabel.text = "Приятных покупок, \(user.name)!"
     }
+  
+    // MARK: - User menu buttons setup
     
     @IBAction func logOutBtnPressed() {
         delegate.logOutUser()

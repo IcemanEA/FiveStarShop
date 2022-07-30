@@ -22,14 +22,6 @@ class OrderListViewController: UITableViewController {
         }
     }
     
-    @IBAction func authorizeBtnPressed(_ sender: Any) {
-        if activeUser == nil {
-            performSegue(withIdentifier: "login", sender: nil)
-        } else {
-            performSegue(withIdentifier: "userMenu", sender: nil)
-        }
-    }
-    
     // MARK: - Table view data source
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -40,8 +32,8 @@ class OrderListViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "orderCell", for: indexPath)
         guard let user = activeUser else { return cell }
-        
         let order = user.orders[indexPath.row]
+        
         var content = cell.defaultContentConfiguration()
         content.text = "Заказ №\(String(order.id))"
         content.secondaryText = order.date
@@ -68,11 +60,23 @@ class OrderListViewController: UITableViewController {
         }
         /* else if let indexPath = tableView.indexPathForSelectedRow {
          guard let orderDetailsVC = segue.destination as? OrderTableViewController else { return }
-         orderDetailsVC.activeUser?.order = order[indexPath.row]
          */
     }
+    
+    // MARK: - Authorize button setup
+    
+    @IBAction func authorizeBtnPressed(_ sender: Any) {
+        if activeUser == nil {
+            performSegue(withIdentifier: "login", sender: nil)
+        } else {
+            performSegue(withIdentifier: "userMenu", sender: nil)
+        }
+    }
+    
+    
 }
 
+// MARK: - User login/logout logic setup
 
 extension OrderListViewController: LoginViewControllerDelegate {
     func setUser(_ user: User) {
