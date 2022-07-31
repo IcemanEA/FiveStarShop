@@ -20,23 +20,10 @@ class OrderViewCell: UITableViewCell {
     
     @IBOutlet var purchaseSum: UILabel!
     
-    var orderDelegate: OrderViewCellDelegate!
     var purchase: Purchase! {
         didSet {
             purchaseSum.text = purchase.totalPrice.toRubleCurrency()
         }
     }
-
-    
-//    override func awakeFromNib() {
-//        super.awakeFromNib()
-//        // Initialization code
-//    }
-//
-//    override func setSelected(_ selected: Bool, animated: Bool) {
-//        super.setSelected(selected, animated: animated)
-//
-//        // Configure the view for the selected state
-//    }
     
 }

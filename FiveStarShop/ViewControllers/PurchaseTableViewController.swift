@@ -146,14 +146,14 @@ extension PurchaseTableViewController: UITableViewDelegate {
         120
     }
 
-// TODO: на этой функции приложение крашится в момент удаления ячейки смахиванием
-//    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
-//        if editingStyle == .delete {
-//            tableView.deleteRows(at: [indexPath], with: .left)
-//                purchases.remove(at: indexPath.row)
-//                clearIfCartIsEmpty()
-//        }
-//    }
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+        if editingStyle == .delete {
+            purchases.remove(at: indexPath.row)
+            tableView.deleteRows(at: [indexPath], with: .left)
+            clearIfCartIsEmpty()
+            getTotalCartSum()
+        }
+    }
     
 }
 

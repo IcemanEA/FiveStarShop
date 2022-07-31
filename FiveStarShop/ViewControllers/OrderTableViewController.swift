@@ -7,11 +7,6 @@
 
 import UIKit
 
-protocol OrderViewCellDelegate {
-    func calculateTotalSum(with cart: Purchase)
-    func deleteFromCart(_ cart: Purchase)
-}
-
 class OrderTableViewController: UIViewController {
         
     @IBOutlet var tableView: UITableView!
@@ -20,11 +15,8 @@ class OrderTableViewController: UIViewController {
     @IBOutlet var totalSumLabel: UILabel!
     @IBOutlet var cartInButton: UIButton!
     
-    var purchases: [Purchase]! {
-        didSet {
-            title = "Корзина (\(purchases.count))"
-        }
-    }
+    var purchases: [Purchase]!
+    var order: Order!
     
     private var totalSum = 0 {
         didSet {
@@ -34,22 +26,39 @@ class OrderTableViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+
+// TODO: order должен прилететь с экрана Заказы
+        order = Order.testOrder
+        purchases = order.purchases
         
-// TODO: purchases должны прилететь с экрана товары
-        purchases = Purchase.getPurchases(DataStore.shared.products)
-// до этой строки
+        title = "Заказ № \(order.id) от \(order.date)"
         
         cartInButton.layer.cornerRadius = 15
-        
-        clearIfCartIsEmpty()
         
         getTotalCartSum()
         
     }
     
-    @IBAction func cartInButtonPressed() {
+    @IBAction func repeatOrderButtonPressed() {
 
+        
+        let alert = UIAlertController(
+            title: "Повторить заказ?",
+            message: "Товары будут перемещены в Корзину",
+            preferredStyle: .alert
+        )
+        
+        let okAction = UIAlertAction(title: "Да", style: .default)
+        
+        let cancelAction = UIAlertAction(title: "Отмена", style: .cancel)
+        
+        alert.addAction(cancelAction)
+        alert.addAction(okAction)
+        
+        present(alert, animated: true)
+        
 // TODO: тут надо перейти в заказы и передать туда сформированный заказ
+// желательно пометить этот заказ как "новый"
         
         for purchase in purchases {
             print("\(purchase.product.article) - \(purchase.count)")
@@ -58,35 +67,6 @@ class OrderTableViewController: UIViewController {
         
     }
 // до этой строки
-    
-    @IBAction func clearButtonPressed() {
-
-        let alert = UIAlertController(
-            title: "Очистить корзину?",
-            message: "Из корзины будут удалены все товары",
-            preferredStyle: .alert
-        )
-        
-        let okAction = UIAlertAction(title: "OK", style: .destructive) { [weak self] _ in
-                    self?.purchases = []
-                    self?.clearIfCartIsEmpty()
-                }
-        
-        let cancelAction = UIAlertAction(title: "Отмена", style: .cancel)
-        
-        alert.addAction(cancelAction)
-        alert.addAction(okAction)
-        
-        present(alert, animated: true)
-    }
-    
-    private func clearIfCartIsEmpty() {
-        if purchases.isEmpty {
-            tableView.isHidden = true
-            orderTextStack.isHidden = true
-            navigationItem.rightBarButtonItem = .none
-        }
-    }
     
     private func getTotalCartSum() {
         totalSum = 0
@@ -117,7 +97,6 @@ extension OrderTableViewController: UITableViewDataSource {
         
         let purchase = purchases[indexPath.row]
         
-        cell.orderDelegate = self
         cell.purchase = purchase
         
         cell.counterGoods.text = purchase.count.formatted() + " шт."
@@ -144,36 +123,6 @@ extension OrderTableViewController: UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         120
-    }
-
-// TODO: на этой функции приложение крашится в момент удаления ячейки смахиванием
-//    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
-//        if editingStyle == .delete {
-//            tableView.deleteRows(at: [indexPath], with: .left)
-//                purchases.remove(at: indexPath.row)
-//                clearIfCartIsEmpty()
-//        }
-//    }
-    
-}
-
-// MARK: - OrderViewCellDelegate
-extension OrderTableViewController: OrderViewCellDelegate {
-
-    func deleteFromCart(_ purchase: Purchase) {
-        if let index = purchases.firstIndex(where: { $0 == purchase }) {
-            purchases.remove(at: index)
-            let indexPath = IndexPath(row: index, section: 0)
-            tableView.deleteRows(at: [indexPath], with: .fade)
-            clearIfCartIsEmpty()
-        }
-    }
-    
-    func calculateTotalSum(with purchase: Purchase) {
-        if let index = purchases.firstIndex(where: { $0 == purchase }) {
-            purchases[index] = purchase
-        }
-        getTotalCartSum()
     }
     
 }

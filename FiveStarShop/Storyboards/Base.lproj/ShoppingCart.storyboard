@@ -262,8 +262,9 @@
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="Cdy-Mh-TgZ" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" largeTitles="YES" id="Gz8-q4-eDv">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="91"/>
+                    <navigationItem key="navigationItem" id="8te-pi-VdJ"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="Gz8-q4-eDv">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
@@ -273,7 +274,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="MOr-09-qqT" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="137" y="808"/>
+            <point key="canvasLocation" x="137" y="1013"/>
         </scene>
         <!--Заказ N от 01.01.2022-->
         <scene sceneID="GZB-ed-Hmn">
@@ -290,7 +291,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="3q1-Jk-zGC">
-                                <rect key="frame" x="0.0" y="91" width="320" height="402"/>
+                                <rect key="frame" x="0.0" y="44" width="320" height="449"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="0.0" reuseIdentifier="PurchaseOrderCell" rowHeight="120" id="RAF-i7-QuV" customClass="OrderViewCell" customModule="FiveStarShop" customModuleProvider="target">
@@ -402,7 +403,7 @@
                                 <rect key="frame" x="16" y="503" width="288" height="45"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" spacing="2" translatesAutoresizingMaskIntoConstraints="NO" id="9Lw-sJ-0EG">
-                                        <rect key="frame" x="0.0" y="0.0" width="160.5" height="45"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="149.5" height="45"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" text="Ваш заказ на сумму:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RYQ-vv-4Wo">
                                                 <rect key="frame" x="0.0" y="0.0" width="149" height="20"/>
@@ -418,16 +419,17 @@
                                             </label>
                                         </subviews>
                                     </stackView>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZA8-L0-r7H">
-                                        <rect key="frame" x="199.5" y="0.0" width="88.5" height="45"/>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZA8-L0-r7H">
+                                        <rect key="frame" x="188.5" y="0.0" width="99.5" height="45"/>
                                         <color key="backgroundColor" systemColor="systemIndigoColor"/>
-                                        <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="15"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                        <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
-                                        <state key="normal" title="Оформить">
+                                        <state key="normal" title="Повторить" image="arrow.clockwise" catalog="system">
                                             <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         </state>
                                         <connections>
-                                            <action selector="cartInButtonPressed" destination="2NF-SR-uih" eventType="touchUpInside" id="vjK-1E-1xf"/>
+                                            <action selector="repeatOrderButtonPressed" destination="2NF-SR-uih" eventType="touchUpInside" id="vjK-1E-1xf"/>
                                         </connections>
                                     </button>
                                 </subviews>
@@ -459,10 +461,11 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="9Jt-mv-JSG" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="892" y="808"/>
+            <point key="canvasLocation" x="893" y="1014"/>
         </scene>
     </scenes>
     <resources>
+        <image name="arrow.clockwise" catalog="system" width="115" height="128"/>
         <image name="minus" catalog="system" width="128" height="24"/>
         <image name="plus" catalog="system" width="128" height="113"/>
         <image name="trash" catalog="system" width="121" height="128"/>
