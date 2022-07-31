@@ -7,7 +7,7 @@
 import Foundation
 
 
-struct Cart: Equatable {
+struct Purchase: Equatable {
     let product: Product
     var count: Int
     
@@ -15,38 +15,29 @@ struct Cart: Equatable {
         product.price * count
     }
     
-    var rubleCurrency: String {
-        totalPrice.formatted(
-            .number.grouping(.automatic)
-            .locale(
-                Locale(identifier: "ru_RU")
-            )
-        ) + "₽"
-    }
-    
-    static func ==(lhs: Cart, rhs: Cart) -> Bool {
+    static func ==(lhs: Purchase, rhs: Purchase) -> Bool {
         return lhs.product.article == rhs.product.article
     }
     
 }
 
 // если кто-то таки запилит модель заказов - это можно удалить:
-extension Cart {
+extension Purchase {
     
-    static func getCartGoods(_ products: [Product]) -> [Cart] {
-        var goods: [Cart] = []
+    static func getPurchases(_ products: [Product]) -> [Purchase] {
+        var purchases: [Purchase] = []
         
         let products = products.shuffled().prefix(Int.random(in: 1...products.count))
         
         for product in products {
-            goods.append(
-                Cart(
+            purchases.append(
+                Purchase(
                     product: product,
                     count: Int.random(in: 1...3)
                 )
             )
         }
-        return goods
+        return purchases
     }
     
 }

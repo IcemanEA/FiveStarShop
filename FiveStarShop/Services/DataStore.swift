@@ -5,8 +5,6 @@
 //  Created by Асанкул Садыков on 27/7/22.
 //
 
-import Foundation
-
 class DataStore {
     
     static let shared = DataStore()
@@ -166,23 +164,23 @@ class DataStore {
         )
     ]
     
-    let users: [User] = [
-        User(userId: "Dim", login: "Dim", name: "Dmitry"),
-        User(userId: "EgrLdk", login: "EgrLdk", name: "Egor")
-    ]
+//    let users: [User] = [
+//        User(userId: "Dim", login: "Dim", name: "Dmitry"),
+//        User(userId: "EgrLdk", login: "EgrLdk", name: "Egor")
+//    ]
     
 //    let orders: [Order] = [
 //        Order(
 //            userId: "EgrLdk",
 //            id: 1,
 //            date: "01.06.22",
-//            carts: Cart.getCartGoods(DataStore.shared.products )
+//            purchases: Cart.getPurchases(DataStore.shared.products )
 //        )
 //        Order(
 //            userId: "EgrLdk",
 //            id: 2,
 //            date: "12.07.22",
-//            carts: [
+//            purchases: [
 //                Cart(product: DataStore.shared.products[9], count: 2),
 //                Cart(product: DataStore.shared.products[7], count: 1),
 //                Cart(product: DataStore.shared.products[2], count: 1)
@@ -192,7 +190,7 @@ class DataStore {
 //            userId: "EgrLdk",
 //            id: 3,
 //            date: "12.07.22",
-//            carts: [
+//            purchases: [
 //                Cart(product: DataStore.shared.products[3], count: 1),
 //                Cart(product: DataStore.shared.products[5], count: 1),
 //                Cart(product: DataStore.shared.products[4], count: 2),
@@ -203,7 +201,7 @@ class DataStore {
 //            userId: "Dim",
 //            id: 1,
 //            date: "29.05.22",
-//            carts: [
+//            purchases: [
 //                Cart(product: DataStore.shared.products[3], count: 2),
 //                Cart(product: DataStore.shared.products[5], count: 1),
 //                Cart(product: DataStore.shared.products[2], count: 1),
@@ -216,7 +214,7 @@ class DataStore {
 //            userId: "Dim",
 //            id: 2,
 //            date: "13.06.22",
-//            carts: [
+//            purchases: [
 //                Cart(product: DataStore.shared.products[1], count: 1),
 //                Cart(product: DataStore.shared.products[8], count: 3),
 //
