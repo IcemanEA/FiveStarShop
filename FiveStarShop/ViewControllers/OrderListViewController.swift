@@ -18,11 +18,7 @@ class OrderListViewController: UITableViewController {
     private let users = User.getUsers()
     private var activeUser: User? = nil {
         didSet {
-            if activeUser != nil {
-                navigationItem.rightBarButtonItem?.title = activeUser?.name
-            } else {
-                navigationItem.rightBarButtonItem?.title = "Авторизация"
-            }
+            navigationItem.rightBarButtonItem?.title = activeUser?.name ?? "Авторизация"
             tableView.reloadData()
         }
     }
