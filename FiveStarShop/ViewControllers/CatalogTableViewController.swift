@@ -8,84 +8,76 @@
 import UIKit
 
 protocol CatalogViewCellDelegate {
-    func calculateTotalSum(with cart: Purchase)
-    func deleteFromCart(_ cart: Purchase)
+    func calculateTotalSum(with purchase: Purchase)
 }
 
 class CatalogTableViewController: UIViewController {
         
+// MARK: - IBOutlets and public properties
+    
     @IBOutlet var tableView: UITableView!
     
-    @IBOutlet var orderTextStack: UIStackView!
     @IBOutlet var totalSumLabel: UILabel!
+    @IBOutlet var purchaseInfo: UIView!
     @IBOutlet var cartInButton: UIButton!
     
-    var purchases: [Purchase]! {
-        didSet {
-            title = "Корзина (\(purchases.count))"
-        }
-    }
+    var purchases: [Purchase]!
+    
+// MARK: - Private properties
     
     private var totalSum = 0 {
         didSet {
             totalSumLabel.text = totalSum.toRubleCurrency()
+            updateUI()
         }
     }
+    
+    private let products: [Product]! = DataStore.shared.products
+    
+// MARK: - Override methods
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-// TODO: purchases должны прилететь с экрана товары
-        purchases = Purchase.getPurchases(DataStore.shared.products)
-// до этой строки
-        
         cartInButton.layer.cornerRadius = 15
         
-        clearIfCartIsEmpty()
+        purchases = []
         
-        getTotalCartSum()
+        for product in products {
+            purchases.append(Purchase(product: product, count: 0))
+        }
         
+        updateUI()
     }
+    
+// MARK: - IBActions
     
     @IBAction func cartInButtonPressed() {
-
-// TODO: тут надо перейти в заказы и передать туда сформированный заказ
         
-        for purchase in purchases {
+        let cart = purchases.filter { purchase in
+            purchase.count > 0
+        }
+        
+        for purchase in cart {
             print("\(purchase.product.article) - \(purchase.count)")
         }
-        
-        
-    }
-// до этой строки
     
-    @IBAction func clearButtonPressed() {
-
-        let alert = UIAlertController(
-            title: "Очистить корзину?",
-            message: "Из корзины будут удалены все товары",
-            preferredStyle: .alert
-        )
-        
-        let okAction = UIAlertAction(title: "OK", style: .destructive) { [weak self] _ in
-                    self?.purchases = []
-                    self?.clearIfCartIsEmpty()
-                }
-        
-        let cancelAction = UIAlertAction(title: "Отмена", style: .cancel)
-        
-        alert.addAction(cancelAction)
-        alert.addAction(okAction)
-        
-        present(alert, animated: true)
     }
     
-    private func clearIfCartIsEmpty() {
-        if purchases.isEmpty {
-            tableView.isHidden = true
-            orderTextStack.isHidden = true
-            navigationItem.rightBarButtonItem = .none
+// MARK: - Private methods
+    
+    private func updateUI() {
+        var bottom: CGFloat
+        
+        if totalSum == 0 {
+            purchaseInfo.isHidden = true
+            bottom = 0
+        } else {
+            purchaseInfo.isHidden = false
+            bottom = CGFloat(purchaseInfo.frame.height - 20)
         }
+        
+        tableView.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: bottom, right: 0)
     }
     
     private func getTotalCartSum() {
@@ -107,7 +99,7 @@ extension CatalogTableViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
 
         guard let cell = tableView.dequeueReusableCell(
-            withIdentifier: "PurchaseCell",
+            withIdentifier: "CatalogCell",
             for: indexPath
         ) as? CatalogViewCell
         else
@@ -127,7 +119,6 @@ extension CatalogTableViewController: UITableViewDataSource {
         cell.purchasePrice.text = purchase.product.price.toRubleCurrency() + "/шт."
         cell.purchaseSum.text = purchase.totalPrice.toRubleCurrency()
         cell.purchaseImage.image = UIImage(named: purchase.product.article)
-        cell.purchaseImage.layer.cornerRadius = 10
         
         return cell
     }
@@ -136,38 +127,14 @@ extension CatalogTableViewController: UITableViewDataSource {
 // MARK: - UITableViewDelegate
 extension CatalogTableViewController: UITableViewDelegate {
     
-// TODO: удалить может этот блок ???????
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        tableView.deselectRow(at: indexPath, animated: true)
-    }
-// ибо мы по нажатию на ячейку уходим в детализацию и снятие выделения не так необходимо
-    
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         120
     }
-
-// TODO: на этой функции приложение крашится в момент удаления ячейки смахиванием
-//    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
-//        if editingStyle == .delete {
-//            tableView.deleteRows(at: [indexPath], with: .left)
-//                purchases.remove(at: indexPath.row)
-//                clearIfCartIsEmpty()
-//        }
-//    }
     
 }
 
 // MARK: - PurchaseViewCellDelegate
 extension CatalogTableViewController: CatalogViewCellDelegate {
-
-    func deleteFromCart(_ purchase: Purchase) {
-        if let index = purchases.firstIndex(where: { $0 == purchase }) {
-            purchases.remove(at: index)
-            let indexPath = IndexPath(row: index, section: 0)
-            tableView.deleteRows(at: [indexPath], with: .fade)
-            clearIfCartIsEmpty()
-        }
-    }
     
     func calculateTotalSum(with purchase: Purchase) {
         if let index = purchases.firstIndex(where: { $0 == purchase }) {

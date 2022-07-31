@@ -9,6 +9,8 @@ import UIKit
 
 class CatalogViewCell: UITableViewCell {
     
+// MARK: - IBOutlets and public properties
+    
     @IBOutlet var counterGoods: UILabel!
     
     @IBOutlet var purchaseImage: UIImageView!
@@ -19,20 +21,24 @@ class CatalogViewCell: UITableViewCell {
     @IBOutlet var purchasePrice: UILabel!
     
     @IBOutlet var purchaseSum: UILabel!
+    @IBOutlet var purchaseCountStack: UIStackView!
+    @IBOutlet var cartButton: UIButton!
     
     var purchaseDelegate: CatalogViewCellDelegate!
     var purchase: Purchase! {
         didSet {
             purchaseSum.text = purchase.totalPrice.toRubleCurrency()
+        
+            cartButton.isHidden = purchase.count > 0
+            purchaseCountStack.isHidden = !cartButton.isHidden
         }
     }
+    
+// MARK: - IBActions
     
     @IBAction func minusButtonPressed() {
         var counter = purchase.count
         counter = counter - 1 <= 0 ? 0 : counter - 1
-        if counter == 0 {
-            purchaseDelegate.deleteFromCart(purchase)
-        }
         counterGoods.text = counter.formatted()
         purchase.count = counter
         purchaseDelegate.calculateTotalSum(with: purchase)
