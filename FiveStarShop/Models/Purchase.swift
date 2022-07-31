@@ -8,14 +8,14 @@
 import Foundation
 
 
-struct Cart: Equatable {
+struct Purchase: Equatable {
     let product: Product
     var count: Int
     var totalPrice: Int {
         product.price * count
     }
     
-    static func ==(lhs: Cart, rhs: Cart) -> Bool {
+    static func ==(lhs: Purchase, rhs: Purchase) -> Bool {
         return lhs.product.article == rhs.product.article
     }
 }

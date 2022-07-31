@@ -22,7 +22,7 @@ class ProductDetailViewController: UIViewController {
         
         image.image = UIImage(named: product?.article ?? "")
         name.text = product?.name
-        price.text = product?.rubleCurrency
+        price.text = product?.price.toRubleCurrency()
         productDescription.text = product?.description
     }
 }
