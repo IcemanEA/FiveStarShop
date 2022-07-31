@@ -1,5 +1,5 @@
 //
-//  PurchaseViewCell.swift
+//  CatalogViewCell.swift
 //  FiveStarShop
 //
 //  Created by Dimondr on 27.07.2022.
@@ -7,7 +7,7 @@
 
 import UIKit
 
-class PurchaseViewCell: UITableViewCell {
+class CatalogViewCell: UITableViewCell {
     
     @IBOutlet var counterGoods: UILabel!
     
@@ -20,7 +20,7 @@ class PurchaseViewCell: UITableViewCell {
     
     @IBOutlet var purchaseSum: UILabel!
     
-    var purchaseDelegate: PurchaseViewCellDelegate!
+    var purchaseDelegate: CatalogViewCellDelegate!
     var purchase: Purchase! {
         didSet {
             purchaseSum.text = purchase.totalPrice.toRubleCurrency()

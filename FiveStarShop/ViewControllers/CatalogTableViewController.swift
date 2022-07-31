@@ -1,18 +1,18 @@
 //
-//  PurchaseTableViewController.swift
+//  CatalogTableViewController.swift
 //  FiveStarShop
 //
-//  Created by Dimondr on 30.07.2022.
+//  Created by Dimondr on 27.07.2022.
 //
 
 import UIKit
 
-protocol OrderViewCellDelegate {
+protocol CatalogViewCellDelegate {
     func calculateTotalSum(with cart: Purchase)
     func deleteFromCart(_ cart: Purchase)
 }
 
-class OrderTableViewController: UIViewController {
+class CatalogTableViewController: UIViewController {
         
     @IBOutlet var tableView: UITableView!
     
@@ -98,7 +98,7 @@ class OrderTableViewController: UIViewController {
 }
 
 // MARK: - UITableViewDataSource
-extension OrderTableViewController: UITableViewDataSource {
+extension CatalogTableViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         purchases.count
@@ -107,9 +107,9 @@ extension OrderTableViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
 
         guard let cell = tableView.dequeueReusableCell(
-            withIdentifier: "PurchaseOrderCell",
+            withIdentifier: "PurchaseCell",
             for: indexPath
-        ) as? OrderViewCell
+        ) as? CatalogViewCell
         else
         {
             return UITableViewCell()
@@ -117,10 +117,10 @@ extension OrderTableViewController: UITableViewDataSource {
         
         let purchase = purchases[indexPath.row]
         
-        cell.orderDelegate = self
+        cell.purchaseDelegate = self
         cell.purchase = purchase
         
-        cell.counterGoods.text = purchase.count.formatted() + " шт."
+        cell.counterGoods.text = purchase.count.formatted()
         cell.purchaseModel.text = purchase.product.model
         cell.purchaseCompany.text = purchase.product.company
         cell.purchaseArticle.text = purchase.product.article
@@ -134,7 +134,7 @@ extension OrderTableViewController: UITableViewDataSource {
 }
 
 // MARK: - UITableViewDelegate
-extension OrderTableViewController: UITableViewDelegate {
+extension CatalogTableViewController: UITableViewDelegate {
     
 // TODO: удалить может этот блок ???????
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
@@ -157,8 +157,8 @@ extension OrderTableViewController: UITableViewDelegate {
     
 }
 
-// MARK: - OrderViewCellDelegate
-extension OrderTableViewController: OrderViewCellDelegate {
+// MARK: - PurchaseViewCellDelegate
+extension CatalogTableViewController: CatalogViewCellDelegate {
 
     func deleteFromCart(_ purchase: Purchase) {
         if let index = purchases.firstIndex(where: { $0 == purchase }) {
