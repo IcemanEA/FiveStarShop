@@ -7,27 +7,35 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4839B8892897BCC90095CD30 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4839B8872897BCC90095CD30 /* Main.storyboard */; };
 		485EC6042891255600C95807 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 485EC6032891255600C95807 /* AppDelegate.swift */; };
 		485EC6062891255600C95807 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 485EC6052891255600C95807 /* SceneDelegate.swift */; };
 		485EC6082891255600C95807 /* AboutUsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 485EC6072891255600C95807 /* AboutUsViewController.swift */; };
 		485EC60B2891255600C95807 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 485EC6092891255600C95807 /* Main.storyboard */; };
+		485EC6082891255600C95807 /* CatalogTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 485EC6072891255600C95807 /* CatalogTableViewController.swift */; };
+		485EC60B2891255600C95807 /* Catalog.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 485EC6092891255600C95807 /* Catalog.storyboard */; };
 		485EC60D2891255700C95807 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 485EC60C2891255700C95807 /* Assets.xcassets */; };
 		485EC6102891255700C95807 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 485EC60E2891255700C95807 /* LaunchScreen.storyboard */; };
 		485EC6222891A6BE00C95807 /* Author.swift in Sources */ = {isa = PBXBuildFile; fileRef = 485EC6212891A6BE00C95807 /* Author.swift */; };
 		485EC6242891AAC900C95807 /* AuthorViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 485EC6232891AAC900C95807 /* AuthorViewCell.swift */; };
+		A75D0C0028915A6700344E96 /* CatalogViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A75D0BFF28915A6700344E96 /* CatalogViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		4839B8882897BCC90095CD30 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		485EC6002891255600C95807 /* FiveStarShop.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FiveStarShop.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		485EC6032891255600C95807 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		485EC6052891255600C95807 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		485EC6072891255600C95807 /* AboutUsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutUsViewController.swift; sourceTree = "<group>"; };
 		485EC60A2891255600C95807 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		485EC6072891255600C95807 /* CatalogTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CatalogTableViewController.swift; sourceTree = "<group>"; };
+		485EC60A2891255600C95807 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Catalog.storyboard; sourceTree = "<group>"; };
 		485EC60C2891255700C95807 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		485EC60F2891255700C95807 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		485EC6112891255700C95807 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		485EC6212891A6BE00C95807 /* Author.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Author.swift; sourceTree = "<group>"; };
 		485EC6232891AAC900C95807 /* AuthorViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthorViewCell.swift; sourceTree = "<group>"; };
+		A75D0BFF28915A6700344E96 /* CatalogViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CatalogViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -62,9 +70,7 @@
 			children = (
 				485EC61C289125F200C95807 /* Views */,
 				485EC618289125B100C95807 /* ViewControllers */,
-				485EC61B289125DA00C95807 /* Models */,
 				485EC619289125BF00C95807 /* Storyboards */,
-				485EC61D289125FB00C95807 /* Services */,
 				485EC617289125AA00C95807 /* App */,
 				485EC61A289125CA00C95807 /* Resources */,
 			);
@@ -85,6 +91,7 @@
 			isa = PBXGroup;
 			children = (
 				485EC6072891255600C95807 /* AboutUsViewController.swift */,
+				485EC6072891255600C95807 /* CatalogTableViewController.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -93,7 +100,9 @@
 			isa = PBXGroup;
 			children = (
 				485EC6092891255600C95807 /* Main.storyboard */,
+				485EC6092891255600C95807 /* Catalog.storyboard */,
 				485EC60E2891255700C95807 /* LaunchScreen.storyboard */,
+				4839B8872897BCC90095CD30 /* Main.storyboard */,
 			);
 			path = Storyboards;
 			sourceTree = "<group>";
@@ -106,27 +115,13 @@
 			path = Resources;
 			sourceTree = "<group>";
 		};
-		485EC61B289125DA00C95807 /* Models */ = {
-			isa = PBXGroup;
-			children = (
-				485EC6212891A6BE00C95807 /* Author.swift */,
-			);
-			path = Models;
-			sourceTree = "<group>";
-		};
 		485EC61C289125F200C95807 /* Views */ = {
 			isa = PBXGroup;
 			children = (
 				485EC6232891AAC900C95807 /* AuthorViewCell.swift */,
+				A75D0BFF28915A6700344E96 /* CatalogViewCell.swift */,
 			);
 			path = Views;
-			sourceTree = "<group>";
-		};
-		485EC61D289125FB00C95807 /* Services */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Services;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -189,7 +184,8 @@
 			files = (
 				485EC6102891255700C95807 /* LaunchScreen.storyboard in Resources */,
 				485EC60D2891255700C95807 /* Assets.xcassets in Resources */,
-				485EC60B2891255600C95807 /* Main.storyboard in Resources */,
+				485EC60B2891255600C95807 /* Catalog.storyboard in Resources */,
+				4839B8892897BCC90095CD30 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -201,6 +197,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				485EC6082891255600C95807 /* AboutUsViewController.swift in Sources */,
+				A75D0C0028915A6700344E96 /* CatalogViewCell.swift in Sources */,
+				485EC6082891255600C95807 /* CatalogTableViewController.swift in Sources */,
 				485EC6042891255600C95807 /* AppDelegate.swift in Sources */,
 				485EC6242891AAC900C95807 /* AuthorViewCell.swift in Sources */,
 				485EC6222891A6BE00C95807 /* Author.swift in Sources */,
@@ -211,12 +209,20 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
-		485EC6092891255600C95807 /* Main.storyboard */ = {
+		4839B8872897BCC90095CD30 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				4839B8882897BCC90095CD30 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		485EC6092891255600C95807 /* Catalog.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
 				485EC60A2891255600C95807 /* Base */,
 			);
-			name = Main.storyboard;
+			name = Catalog.storyboard;
 			sourceTree = "<group>";
 		};
 		485EC60E2891255700C95807 /* LaunchScreen.storyboard */ = {
@@ -351,7 +357,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = 78KK8BLN83;
+				DEVELOPMENT_TEAM = T4BFRR442Y;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = FiveStarShop/App/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -364,7 +370,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = org.ledkov.FiveStarShop;
+				PRODUCT_BUNDLE_IDENTIFIER = "org.ledkov.FiveStarShop-2";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
