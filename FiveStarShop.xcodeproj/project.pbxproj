@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4839B8892897BCC90095CD30 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4839B8872897BCC90095CD30 /* Main.storyboard */; };
 		485EC6042891255600C95807 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 485EC6032891255600C95807 /* AppDelegate.swift */; };
 		485EC6062891255600C95807 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 485EC6052891255600C95807 /* SceneDelegate.swift */; };
 		485EC6082891255600C95807 /* CatalogTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 485EC6072891255600C95807 /* CatalogTableViewController.swift */; };
@@ -17,6 +18,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		4839B8882897BCC90095CD30 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		485EC6002891255600C95807 /* FiveStarShop.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FiveStarShop.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		485EC6032891255600C95807 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		485EC6052891255600C95807 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -90,6 +92,7 @@
 			children = (
 				485EC6092891255600C95807 /* Catalog.storyboard */,
 				485EC60E2891255700C95807 /* LaunchScreen.storyboard */,
+				4839B8872897BCC90095CD30 /* Main.storyboard */,
 			);
 			path = Storyboards;
 			sourceTree = "<group>";
@@ -171,6 +174,7 @@
 				485EC6102891255700C95807 /* LaunchScreen.storyboard in Resources */,
 				485EC60D2891255700C95807 /* Assets.xcassets in Resources */,
 				485EC60B2891255600C95807 /* Catalog.storyboard in Resources */,
+				4839B8892897BCC90095CD30 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -191,6 +195,14 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
+		4839B8872897BCC90095CD30 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				4839B8882897BCC90095CD30 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
 		485EC6092891255600C95807 /* Catalog.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -336,7 +348,7 @@
 				INFOPLIST_FILE = FiveStarShop/App/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UIMainStoryboardFile = Catalog;
+				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -364,7 +376,7 @@
 				INFOPLIST_FILE = FiveStarShop/App/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UIMainStoryboardFile = Catalog;
+				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				LD_RUNPATH_SEARCH_PATHS = (
