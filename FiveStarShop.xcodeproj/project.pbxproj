@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		402BDEE12892E5F200693052 /* UserMenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 402BDEE02892E5F200693052 /* UserMenuViewController.swift */; };
-		402BDEE9289309C200693052 /* DataStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 402BDEE8289309C200693052 /* DataStore.swift */; };
 		408B7A9D2891AF2D00FB0D9B /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 408B7A9C2891AF2D00FB0D9B /* LoginViewController.swift */; };
 		408B7A9F2891B09300FB0D9B /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 408B7A9E2891B09300FB0D9B /* User.swift */; };
 		408B7AA32891BD2000FB0D9B /* OrderListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 408B7AA22891BD2000FB0D9B /* OrderListViewController.swift */; };
@@ -21,7 +20,6 @@
 
 /* Begin PBXFileReference section */
 		402BDEE02892E5F200693052 /* UserMenuViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserMenuViewController.swift; sourceTree = "<group>"; };
-		402BDEE8289309C200693052 /* DataStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataStore.swift; sourceTree = "<group>"; };
 		408B7A9C2891AF2D00FB0D9B /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		408B7A9E2891B09300FB0D9B /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		408B7AA22891BD2000FB0D9B /* OrderListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderListViewController.swift; sourceTree = "<group>"; };
@@ -64,11 +62,9 @@
 		485EC6022891255600C95807 /* FiveStarShop */ = {
 			isa = PBXGroup;
 			children = (
-				485EC61C289125F200C95807 /* Views */,
 				485EC618289125B100C95807 /* ViewControllers */,
 				485EC61B289125DA00C95807 /* Models */,
 				485EC619289125BF00C95807 /* Storyboards */,
-				485EC61D289125FB00C95807 /* Services */,
 				485EC617289125AA00C95807 /* App */,
 				485EC61A289125CA00C95807 /* Resources */,
 			);
@@ -118,21 +114,6 @@
 				408B7A9E2891B09300FB0D9B /* User.swift */,
 			);
 			path = Models;
-			sourceTree = "<group>";
-		};
-		485EC61C289125F200C95807 /* Views */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Views;
-			sourceTree = "<group>";
-		};
-		485EC61D289125FB00C95807 /* Services */ = {
-			isa = PBXGroup;
-			children = (
-				402BDEE8289309C200693052 /* DataStore.swift */,
-			);
-			path = Services;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -209,7 +190,6 @@
 				408B7A9D2891AF2D00FB0D9B /* LoginViewController.swift in Sources */,
 				402BDEE12892E5F200693052 /* UserMenuViewController.swift in Sources */,
 				408B7AA32891BD2000FB0D9B /* OrderListViewController.swift in Sources */,
-				402BDEE9289309C200693052 /* DataStore.swift in Sources */,
 				408B7A9F2891B09300FB0D9B /* User.swift in Sources */,
 				485EC6042891255600C95807 /* AppDelegate.swift in Sources */,
 				485EC6062891255600C95807 /* SceneDelegate.swift in Sources */,
