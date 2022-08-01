@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4013F3E42897F8A20029ACEA /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4013F3E32897F8A10029ACEA /* Main.storyboard */; };
 		402BDEE12892E5F200693052 /* UserMenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 402BDEE02892E5F200693052 /* UserMenuViewController.swift */; };
 		408B7A9D2891AF2D00FB0D9B /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 408B7A9C2891AF2D00FB0D9B /* LoginViewController.swift */; };
 		408B7A9F2891B09300FB0D9B /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 408B7A9E2891B09300FB0D9B /* User.swift */; };
@@ -19,6 +20,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		4013F3E32897F8A10029ACEA /* Main.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 		402BDEE02892E5F200693052 /* UserMenuViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserMenuViewController.swift; sourceTree = "<group>"; };
 		408B7A9C2891AF2D00FB0D9B /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		408B7A9E2891B09300FB0D9B /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
@@ -94,6 +96,7 @@
 		485EC619289125BF00C95807 /* Storyboards */ = {
 			isa = PBXGroup;
 			children = (
+				4013F3E32897F8A10029ACEA /* Main.storyboard */,
 				485EC6092891255600C95807 /* Orders.storyboard */,
 				485EC60E2891255700C95807 /* LaunchScreen.storyboard */,
 			);
@@ -177,6 +180,7 @@
 				485EC6102891255700C95807 /* LaunchScreen.storyboard in Resources */,
 				485EC60D2891255700C95807 /* Assets.xcassets in Resources */,
 				485EC60B2891255600C95807 /* Orders.storyboard in Resources */,
+				4013F3E42897F8A20029ACEA /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -346,7 +350,7 @@
 				INFOPLIST_FILE = FiveStarShop/App/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UIMainStoryboardFile = Orders;
+				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -374,7 +378,7 @@
 				INFOPLIST_FILE = FiveStarShop/App/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UIMainStoryboardFile = Orders;
+				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				LD_RUNPATH_SEARCH_PATHS = (
