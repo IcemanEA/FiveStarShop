@@ -97,7 +97,17 @@
                 </viewControllerPlaceholder>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="g4A-b2-ewP" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="464" y="-619"/>
+            <point key="canvasLocation" x="539" y="-468"/>
+        </scene>
+        <!--TabCart-->
+        <scene sceneID="91G-oq-6Oj">
+            <objects>
+                <viewControllerPlaceholder storyboardName="ShoppingCart" referencedIdentifier="TabCart" id="O55-lU-1iD" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Item" id="32t-yV-YVl"/>
+                </viewControllerPlaceholder>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="3oA-GG-fp4" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="518" y="-337"/>
         </scene>
         <!--О нас-->
         <scene sceneID="4nF-C3-vbr">
@@ -119,7 +129,7 @@
         <!--Tab Bar Controller-->
         <scene sceneID="3GJ-Gn-9cP">
             <objects>
-                <tabBarController automaticallyAdjustsScrollViewInsets="NO" id="Lkb-ZE-gad" sceneMemberID="viewController">
+                <tabBarController automaticallyAdjustsScrollViewInsets="NO" id="Lkb-ZE-gad" customClass="TabBarController" customModule="FiveStarShop" customModuleProvider="target" sceneMemberID="viewController">
                     <toolbarItems/>
                     <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="gy2-DE-bsZ">
                         <rect key="frame" x="0.0" y="0.0" width="1000" height="1000"/>
@@ -128,6 +138,7 @@
                     </tabBar>
                     <connections>
                         <segue destination="GV4-7L-cYs" kind="relationship" relationship="viewControllers" id="xoF-si-eOM"/>
+                        <segue destination="O55-lU-1iD" kind="relationship" relationship="viewControllers" id="NXo-Eh-zqo"/>
                         <segue destination="lY3-8a-McQ" kind="relationship" relationship="viewControllers" id="d0y-wg-Aef"/>
                     </connections>
                 </tabBarController>

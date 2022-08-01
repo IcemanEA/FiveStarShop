@@ -35,29 +35,28 @@ class PurchaseTableViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-// TODO: purchases должны прилететь с экрана товары
-        purchases = Purchase.getPurchases(DataStore.shared.products)
-// до этой строки
-        
         cartInButton.layer.cornerRadius = 15
         
+        
+        
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        
+        print("Всего в корзине \(purchases!.count)")
+        tableView.reloadData()
         clearIfCartIsEmpty()
-        
         getTotalCartSum()
-        
+
     }
     
     @IBAction func cartInButtonPressed() {
 
-// TODO: тут надо перейти в заказы и передать туда сформированный заказ
         
         for purchase in purchases {
             print("\(purchase.product.article) - \(purchase.count)")
         }
-        
-        
     }
-// до этой строки
     
     @IBAction func clearButtonPressed() {
 

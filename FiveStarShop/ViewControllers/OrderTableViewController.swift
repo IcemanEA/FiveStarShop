@@ -26,10 +26,6 @@ class OrderTableViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
-// TODO: order должен прилететь с экрана Заказы
-        order = Order.testOrder
-        purchases = order.purchases
         
         title = "Заказ № \(order.id) от \(order.date)"
         

@@ -21,7 +21,9 @@ class CatalogTableViewController: UIViewController {
     @IBOutlet var purchaseInfo: UIView!
     @IBOutlet var cartInButton: UIButton!
     
+    var delegate: TabBarControllerDelegate!
     var purchases: [Purchase]!
+    
     
 // MARK: - Private properties
     
@@ -57,6 +59,8 @@ class CatalogTableViewController: UIViewController {
         let cart = purchases.filter { purchase in
             purchase.count > 0
         }
+        
+        delegate.setPurchasesInCart(cart, andOpenIt: true)
         
         for purchase in cart {
             print("\(purchase.product.article) - \(purchase.count)")
@@ -147,6 +151,12 @@ extension CatalogTableViewController: CatalogViewCellDelegate {
         if let index = purchases.firstIndex(where: { $0 == purchase }) {
             purchases[index] = purchase
         }
+        
+        let cart = purchases.filter { purchase in
+            purchase.count > 0
+        }
+        delegate.setPurchasesInCart(cart, andOpenIt: false)
+        
         getTotalCartSum()
     }
     

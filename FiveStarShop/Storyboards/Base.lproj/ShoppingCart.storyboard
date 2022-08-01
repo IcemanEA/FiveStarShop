@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="20037" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="iYO-Bi-buN">
-    <device id="retina4_0" orientation="portrait" appearance="dark"/>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="20037" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_0" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="20020"/>
         <capability name="Image references" minToolsVersion="12.0"/>
@@ -9,10 +9,11 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Navigation Controller-->
+        <!--Корзина-->
         <scene sceneID="xyT-SQ-zUw">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="iYO-Bi-buN" sceneMemberID="viewController">
+                <navigationController storyboardIdentifier="TabCart" automaticallyAdjustsScrollViewInsets="NO" id="iYO-Bi-buN" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Корзина" image="cart" catalog="system" id="gwN-k4-gb6"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" largeTitles="YES" id="z3s-ar-WXw">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="91"/>
@@ -25,7 +26,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="6gH-xr-BwJ" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="137.68115942028987" y="122.54464285714285"/>
+            <point key="canvasLocation" x="1134.375" y="122.53521126760563"/>
         </scene>
         <!--Корзина-->
         <scene sceneID="tne-QT-ifu">
@@ -255,12 +256,13 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="892.5" y="122.53521126760563"/>
+            <point key="canvasLocation" x="1890" y="122.53521126760563"/>
         </scene>
-        <!--Navigation Controller-->
+        <!--Item-->
         <scene sceneID="a7N-cl-Ryn">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="Cdy-Mh-TgZ" sceneMemberID="viewController">
+                <navigationController storyboardIdentifier="NavOrder" automaticallyAdjustsScrollViewInsets="NO" id="Cdy-Mh-TgZ" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Item" id="oVR-8W-gEX"/>
                     <toolbarItems/>
                     <navigationItem key="navigationItem" id="8te-pi-VdJ"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="Gz8-q4-eDv">
@@ -274,7 +276,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="MOr-09-qqT" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="137" y="1013"/>
+            <point key="canvasLocation" x="1134.375" y="1011.9718309859155"/>
         </scene>
         <!--Заказ N от 01.01.2022-->
         <scene sceneID="GZB-ed-Hmn">
@@ -461,11 +463,12 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="9Jt-mv-JSG" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="893" y="1014"/>
+            <point key="canvasLocation" x="1890" y="1013.0281690140845"/>
         </scene>
     </scenes>
     <resources>
         <image name="arrow.clockwise" catalog="system" width="115" height="128"/>
+        <image name="cart" catalog="system" width="128" height="102"/>
         <image name="minus" catalog="system" width="128" height="24"/>
         <image name="plus" catalog="system" width="128" height="113"/>
         <image name="trash" catalog="system" width="121" height="128"/>
