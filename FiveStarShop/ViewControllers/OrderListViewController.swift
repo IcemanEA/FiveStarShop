@@ -50,17 +50,20 @@ class OrderListViewController: UITableViewController {
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         guard let navigationVC = segue.destination as? UINavigationController else { return }
+        
         if let loginVC = navigationVC.topViewController as? LoginViewController {
             loginVC.delegate = self
             loginVC.users = users
-        }
-        else if let userMenuVC = navigationVC.topViewController as? UserMenuViewController {
+        } else if let userMenuVC = navigationVC.topViewController as? UserMenuViewController {
             userMenuVC.delegate = self
             userMenuVC.user = users.first
+        } else if let orderVC = navigationVC.topViewController as? OrderTableViewController {
+            guard let user = activeUser else { return }
+            
+            if let indexPath = tableView.indexPathForSelectedRow {
+                orderVC.order = user.orders[indexPath.row]
+            }
         }
-        /* else if let indexPath = tableView.indexPathForSelectedRow {
-         guard let orderDetailsVC = segue.destination as? OrderTableViewController else { return }
-         */
     }
     
     // MARK: - Authorize button setup

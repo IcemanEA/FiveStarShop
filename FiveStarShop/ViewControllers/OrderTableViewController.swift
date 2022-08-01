@@ -15,7 +15,6 @@ class OrderTableViewController: UIViewController {
     @IBOutlet var totalSumLabel: UILabel!
     @IBOutlet var cartInButton: UIButton!
     
-    var purchases: [Purchase]!
     var order: Order!
     
     private var totalSum = 0 {
@@ -27,17 +26,15 @@ class OrderTableViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        title = "Заказ № \(order.id) от \(order.date)"
-        
         cartInButton.layer.cornerRadius = 15
-        
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        title = "Заказ № \(order.id) от \(order.date)"
         getTotalCartSum()
-        
     }
     
     @IBAction func repeatOrderButtonPressed() {
-
-        
         let alert = UIAlertController(
             title: "Повторить заказ?",
             message: "Товары будут перемещены в Корзину",
@@ -56,7 +53,7 @@ class OrderTableViewController: UIViewController {
 // TODO: тут надо перейти в заказы и передать туда сформированный заказ
 // желательно пометить этот заказ как "новый"
         
-        for purchase in purchases {
+        for purchase in order.purchases {
             print("\(purchase.product.article) - \(purchase.count)")
         }
         
@@ -66,18 +63,24 @@ class OrderTableViewController: UIViewController {
     
     private func getTotalCartSum() {
         totalSum = 0
-        for purchase in purchases {
+        for purchase in order.purchases {
             totalSum += purchase.totalPrice
         }
     }
     
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if let indexPath = tableView.indexPathForSelectedRow {
+            guard let detailVC = segue.destination as? ProductDetailViewController else { return }
+            detailVC.product = order.purchases[indexPath.row].product
+        }
+    }
 }
 
 // MARK: - UITableViewDataSource
 extension OrderTableViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        purchases.count
+        order.purchases.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -91,7 +94,7 @@ extension OrderTableViewController: UITableViewDataSource {
             return UITableViewCell()
         }
         
-        let purchase = purchases[indexPath.row]
+        let purchase = order.purchases[indexPath.row]
         
         cell.purchase = purchase
         

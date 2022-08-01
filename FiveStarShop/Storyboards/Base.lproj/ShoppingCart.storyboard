@@ -393,6 +393,7 @@
                                             <outlet property="purchaseModel" destination="I2S-EP-VxP" id="37l-6T-f9D"/>
                                             <outlet property="purchasePrice" destination="trI-0D-V2I" id="lYC-Ex-kK6"/>
                                             <outlet property="purchaseSum" destination="DIB-Lv-6hu" id="fFU-9b-oNN"/>
+                                            <segue destination="Ptw-xa-FXa" kind="show" id="0ja-My-WGJ"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
@@ -464,6 +465,16 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="9Jt-mv-JSG" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1890" y="1013.0281690140845"/>
+        </scene>
+        <!--Product-->
+        <scene sceneID="oxq-hM-Wdi">
+            <objects>
+                <viewControllerPlaceholder storyboardName="Product" referencedIdentifier="Product" id="Ptw-xa-FXa" sceneMemberID="viewController">
+                    <navigationItem key="navigationItem" id="RPb-jH-jzh"/>
+                </viewControllerPlaceholder>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="bwB-8q-f5P" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2650" y="1012"/>
         </scene>
     </scenes>
     <resources>
