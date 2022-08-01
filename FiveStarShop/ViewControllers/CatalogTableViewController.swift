@@ -87,6 +87,13 @@ class CatalogTableViewController: UIViewController {
         }
     }
     
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if let indexPath = tableView.indexPathForSelectedRow {
+            guard let detailVC = segue.destination as? ProductDetailViewController else { return }
+            detailVC.product = purchases[indexPath.row].product
+        }
+    }
+    
 }
 
 // MARK: - UITableViewDataSource

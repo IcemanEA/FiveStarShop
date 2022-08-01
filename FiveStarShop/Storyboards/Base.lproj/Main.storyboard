@@ -89,6 +89,16 @@
             </objects>
             <point key="canvasLocation" x="1494.375" y="73.943661971830991"/>
         </scene>
+        <!--TabCatalog-->
+        <scene sceneID="44k-0e-V02">
+            <objects>
+                <viewControllerPlaceholder storyboardName="Catalog" referencedIdentifier="TabCatalog" id="GV4-7L-cYs" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Item" id="jGb-Ot-Qyw"/>
+                </viewControllerPlaceholder>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="g4A-b2-ewP" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="464" y="-619"/>
+        </scene>
         <!--О нас-->
         <scene sceneID="4nF-C3-vbr">
             <objects>
@@ -117,6 +127,7 @@
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     </tabBar>
                     <connections>
+                        <segue destination="GV4-7L-cYs" kind="relationship" relationship="viewControllers" id="xoF-si-eOM"/>
                         <segue destination="lY3-8a-McQ" kind="relationship" relationship="viewControllers" id="d0y-wg-Aef"/>
                     </connections>
                 </tabBarController>

@@ -16,7 +16,7 @@ class ProductDetailViewController: UIViewController {
     @IBOutlet var price: UILabel!
     @IBOutlet var productDescription: UITextView!
     
-    let product = DataStore.shared.products.first!
+    var product: Product!
     
 // MARK: - Override methods
     
