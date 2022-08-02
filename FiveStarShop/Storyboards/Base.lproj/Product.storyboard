@@ -20,28 +20,25 @@
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="16" translatesAutoresizingMaskIntoConstraints="NO" id="eMc-Xm-kU5">
-                                        <rect key="frame" x="16" y="0.0" width="382" height="437.5"/>
+                                        <rect key="frame" x="16" y="0.0" width="382" height="522.5"/>
                                         <subviews>
                                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="hCz-iR-xwj">
-                                                <rect key="frame" x="0.0" y="0.0" width="382" height="295"/>
-                                                <constraints>
-                                                    <constraint firstAttribute="height" constant="295" id="rJT-UD-zdS"/>
-                                                </constraints>
+                                                <rect key="frame" x="0.0" y="0.0" width="382" height="380"/>
                                             </imageView>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Name of the product" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2Lt-tr-KlV">
-                                                <rect key="frame" x="0.0" y="311" width="382" height="21.5"/>
+                                                <rect key="frame" x="0.0" y="396" width="382" height="21.5"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="18"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Price" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IKA-ft-xog">
-                                                <rect key="frame" x="0.0" y="348.5" width="382" height="23"/>
+                                                <rect key="frame" x="0.0" y="433.5" width="382" height="23"/>
                                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="19"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="fez-Rr-HOH">
-                                                <rect key="frame" x="0.0" y="387.5" width="382" height="50"/>
+                                                <rect key="frame" x="0.0" y="472.5" width="382" height="50"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Описание:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FFD-sP-Zgb">
                                                         <rect key="frame" x="0.0" y="0.0" width="382" height="21.5"/>
@@ -64,6 +61,7 @@
                                     <constraint firstItem="eMc-Xm-kU5" firstAttribute="leading" secondItem="GMa-qD-gug" secondAttribute="leading" constant="16" id="264-Hx-KZm"/>
                                     <constraint firstItem="eMc-Xm-kU5" firstAttribute="bottom" secondItem="GMa-qD-gug" secondAttribute="bottom" id="3a9-ae-Psh"/>
                                     <constraint firstItem="eMc-Xm-kU5" firstAttribute="trailing" secondItem="GMa-qD-gug" secondAttribute="trailing" id="9UE-tG-mBI"/>
+                                    <constraint firstItem="hCz-iR-xwj" firstAttribute="height" secondItem="Kuu-f3-k4r" secondAttribute="height" multiplier="0.424107" id="fZy-oi-I4i"/>
                                     <constraint firstItem="eMc-Xm-kU5" firstAttribute="width" secondItem="QKb-T6-rNh" secondAttribute="width" constant="-32" id="faV-51-UhR"/>
                                     <constraint firstItem="eMc-Xm-kU5" firstAttribute="top" secondItem="GMa-qD-gug" secondAttribute="top" id="yfs-Fg-oSc"/>
                                 </constraints>

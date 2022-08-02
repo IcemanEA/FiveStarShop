@@ -142,6 +142,7 @@ extension CatalogTableViewController: UITableViewDataSource {
         cell.purchasePrice.text = purchase.product.price.toRubleCurrency() + "/шт."
         cell.purchaseSum.text = purchase.totalPrice.toRubleCurrency()
         cell.purchaseImage.image = UIImage(named: purchase.product.article)
+        cell.purchaseImage.layer.cornerRadius = 10
         
         return cell
     }

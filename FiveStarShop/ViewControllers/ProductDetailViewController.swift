@@ -23,11 +23,15 @@ class ProductDetailViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        let tempImage = UIImage(named: product.article) ?? UIImage(named: "imagePlaceholder.png")
-        image.image = tempImage
+        image.image = UIImage(named: product.article) ?? UIImage(named: "imagePlaceholder.png")
+        
         
         name.text = product.name
         price.text = product.price.toRubleCurrency()
         productDescription.text = product.description
+    }
+    
+    override func viewWillLayoutSubviews() {
+        image.layer.cornerRadius = image.frame.height / 10
     }
 }
