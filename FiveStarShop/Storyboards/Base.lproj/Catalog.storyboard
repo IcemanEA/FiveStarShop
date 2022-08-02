@@ -36,14 +36,8 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Ваша корзина пуста" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zeC-Dn-og1">
-                                <rect key="frame" x="16" y="194" width="288" height="20.5"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" systemColor="secondaryLabelColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="bRB-Xr-8Xn">
-                                <rect key="frame" x="0.0" y="91" width="320" height="457"/>
+                                <rect key="frame" x="0.0" y="44" width="320" height="524"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="0.0" reuseIdentifier="CatalogCell" rowHeight="120" id="yrL-rX-852" customClass="CatalogViewCell" customModule="FiveStarShop" customModuleProvider="target">
@@ -77,19 +71,19 @@
                                                     </subviews>
                                                 </stackView>
                                                 <stackView opaque="NO" contentMode="scaleToFill" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="HBV-WG-Df4" userLabel="Sum.+- Stack">
-                                                    <rect key="frame" x="126" y="85" width="178" height="25"/>
+                                                    <rect key="frame" x="126" y="80" width="178" height="30"/>
                                                     <subviews>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="300 000 ₽" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="jgi-Cn-Jtc">
-                                                            <rect key="frame" x="0.0" y="0.0" width="82" height="25"/>
+                                                            <rect key="frame" x="0.0" y="0.0" width="72" height="30"/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                                             <nil key="textColor"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                         <stackView opaque="NO" contentMode="scaleToFill" spacing="3" translatesAutoresizingMaskIntoConstraints="NO" id="C2J-dy-zJb" userLabel="CounterStack">
-                                                            <rect key="frame" x="92" y="0.0" width="86" height="25"/>
+                                                            <rect key="frame" x="82" y="0.0" width="96" height="30"/>
                                                             <subviews>
                                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sLD-uL-9P2">
-                                                                    <rect key="frame" x="0.0" y="0.0" width="25" height="25"/>
+                                                                    <rect key="frame" x="0.0" y="0.0" width="30" height="30"/>
                                                                     <constraints>
                                                                         <constraint firstAttribute="width" secondItem="sLD-uL-9P2" secondAttribute="height" multiplier="1:1" id="JHw-Uj-Ctg"/>
                                                                     </constraints>
@@ -107,16 +101,16 @@
                                                                     </connections>
                                                                 </button>
                                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="2" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="ePZ-XA-OU6">
-                                                                    <rect key="frame" x="28" y="0.0" width="30" height="25"/>
+                                                                    <rect key="frame" x="33" y="0.0" width="30" height="30"/>
                                                                     <constraints>
                                                                         <constraint firstAttribute="width" constant="30" id="WuL-4U-xrm"/>
                                                                     </constraints>
-                                                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                                    <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                                                     <nil key="textColor"/>
                                                                     <nil key="highlightedColor"/>
                                                                 </label>
                                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ygn-Z4-mRN">
-                                                                    <rect key="frame" x="61" y="0.0" width="25" height="25"/>
+                                                                    <rect key="frame" x="66" y="0.0" width="30" height="30"/>
                                                                     <constraints>
                                                                         <constraint firstAttribute="width" secondItem="ygn-Z4-mRN" secondAttribute="height" multiplier="1:1" id="1bv-MU-8sh"/>
                                                                     </constraints>
@@ -155,10 +149,7 @@
                                                     </subviews>
                                                 </stackView>
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HoM-sp-hpj">
-                                                    <rect key="frame" x="242" y="79" width="62" height="31"/>
-                                                    <constraints>
-                                                        <constraint firstAttribute="width" secondItem="HoM-sp-hpj" secondAttribute="height" multiplier="2:1" id="cPH-OT-IR4"/>
-                                                    </constraints>
+                                                    <rect key="frame" x="208" y="80" width="96" height="30"/>
                                                     <state key="normal" title="Button"/>
                                                     <buttonConfiguration key="configuration" style="plain" cornerStyle="capsule">
                                                         <imageReference key="image" image="cart" catalog="system" symbolScale="default"/>
@@ -179,15 +170,17 @@
                                                 <constraint firstAttribute="trailing" secondItem="yea-Hs-2g1" secondAttribute="trailing" constant="16" id="1ej-eM-Twf"/>
                                                 <constraint firstAttribute="right" secondItem="QrC-1c-ipc" secondAttribute="right" constant="16" id="25C-Ku-kvp"/>
                                                 <constraint firstAttribute="trailing" secondItem="HoM-sp-hpj" secondAttribute="trailing" constant="16" id="4mq-YL-Gz3"/>
-                                                <constraint firstItem="HBV-WG-Df4" firstAttribute="top" secondItem="vaR-FU-lNE" secondAttribute="top" constant="85" id="E3p-AF-mz6"/>
+                                                <constraint firstItem="HBV-WG-Df4" firstAttribute="top" secondItem="vaR-FU-lNE" secondAttribute="top" constant="80" id="E3p-AF-mz6"/>
                                                 <constraint firstAttribute="bottom" secondItem="HBV-WG-Df4" secondAttribute="bottom" constant="10" id="Iwy-yi-Geg"/>
-                                                <constraint firstItem="HoM-sp-hpj" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="BK7-Ob-KYS" secondAttribute="trailing" constant="8" symbolic="YES" id="R0m-E4-XFT"/>
                                                 <constraint firstItem="yea-Hs-2g1" firstAttribute="leading" secondItem="BK7-Ob-KYS" secondAttribute="trailing" constant="15" id="U1M-dc-n7Q"/>
+                                                <constraint firstItem="HoM-sp-hpj" firstAttribute="width" secondItem="C2J-dy-zJb" secondAttribute="width" id="Yup-sh-k6p"/>
                                                 <constraint firstAttribute="bottom" secondItem="BK7-Ob-KYS" secondAttribute="bottom" constant="10" id="Yxr-4D-ypg"/>
                                                 <constraint firstItem="QrC-1c-ipc" firstAttribute="top" secondItem="vaR-FU-lNE" secondAttribute="top" constant="10" id="Yxt-de-gov"/>
                                                 <constraint firstAttribute="bottom" secondItem="HoM-sp-hpj" secondAttribute="bottom" constant="10" id="d9H-nJ-hk3"/>
+                                                <constraint firstItem="HoM-sp-hpj" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="BK7-Ob-KYS" secondAttribute="trailing" constant="72" id="dpi-j9-HbC"/>
                                                 <constraint firstItem="yea-Hs-2g1" firstAttribute="top" secondItem="QrC-1c-ipc" secondAttribute="bottom" id="e6x-Ac-zbB"/>
                                                 <constraint firstItem="HBV-WG-Df4" firstAttribute="leading" secondItem="BK7-Ob-KYS" secondAttribute="trailing" constant="10" id="fZg-oE-vjB"/>
+                                                <constraint firstItem="HoM-sp-hpj" firstAttribute="top" secondItem="vaR-FU-lNE" secondAttribute="top" constant="80" id="gw0-Wf-0fc"/>
                                                 <constraint firstItem="BK7-Ob-KYS" firstAttribute="top" secondItem="vaR-FU-lNE" secondAttribute="top" constant="10" id="mHg-Ep-PGB"/>
                                                 <constraint firstAttribute="trailing" secondItem="HBV-WG-Df4" secondAttribute="trailing" constant="16" id="mUh-eO-sMx"/>
                                             </constraints>
@@ -212,32 +205,34 @@
                                 </connections>
                             </tableView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="jBe-rX-yZi">
-                                <rect key="frame" x="0.0" y="498" width="320" height="70"/>
+                                <rect key="frame" x="0.0" y="496" width="320" height="72"/>
                                 <subviews>
-                                    <stackView opaque="NO" contentMode="scaleToFill" distribution="fillProportionally" spacing="39" translatesAutoresizingMaskIntoConstraints="NO" id="4NY-6m-k3x">
-                                        <rect key="frame" x="16" y="7" width="288" height="43"/>
+                                    <stackView opaque="NO" contentMode="scaleToFill" distribution="equalSpacing" spacing="30" translatesAutoresizingMaskIntoConstraints="NO" id="4NY-6m-k3x">
+                                        <rect key="frame" x="16" y="11" width="288" height="45"/>
                                         <subviews>
-                                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" spacing="2" translatesAutoresizingMaskIntoConstraints="NO" id="E6H-Jk-EKM">
-                                                <rect key="frame" x="0.0" y="0.0" width="162.5" height="43"/>
+                                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="4" translatesAutoresizingMaskIntoConstraints="NO" id="E6H-Jk-EKM">
+                                                <rect key="frame" x="0.0" y="0.0" width="138" height="45"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" text="Ваш заказ на сумму:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="siW-IM-2Tb">
-                                                        <rect key="frame" x="0.0" y="0.0" width="149" height="18"/>
+                                                        <rect key="frame" x="0.0" y="0.0" width="138" height="18"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                                         <nil key="textColor"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="300 000 ₽" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XAd-0i-vZt">
-                                                        <rect key="frame" x="0.0" y="20" width="94" height="23"/>
+                                                        <rect key="frame" x="0.0" y="22" width="138" height="23"/>
                                                         <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="19"/>
                                                         <nil key="textColor"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                 </subviews>
                                             </stackView>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="27a-a9-nKR">
-                                                <rect key="frame" x="201.5" y="0.0" width="86.5" height="43"/>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="27a-a9-nKR">
+                                                <rect key="frame" x="168" y="0.0" width="120" height="45"/>
                                                 <color key="backgroundColor" systemColor="systemIndigoColor"/>
-                                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="15"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="120" id="q0y-PH-G4T"/>
+                                                </constraints>
                                                 <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
                                                 <state key="normal" title="В корзину">
                                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -248,14 +243,17 @@
                                             </button>
                                         </subviews>
                                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="45" id="Ofg-Xt-TbI"/>
+                                        </constraints>
                                     </stackView>
                                 </subviews>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <constraints>
-                                    <constraint firstAttribute="trailing" secondItem="4NY-6m-k3x" secondAttribute="trailing" constant="16" id="BnI-k3-jIa"/>
-                                    <constraint firstAttribute="bottom" secondItem="4NY-6m-k3x" secondAttribute="bottom" constant="20" id="HZP-lL-u8a"/>
-                                    <constraint firstAttribute="width" secondItem="jBe-rX-yZi" secondAttribute="height" multiplier="32:7" id="Htf-VO-xtG"/>
-                                    <constraint firstItem="4NY-6m-k3x" firstAttribute="leading" secondItem="jBe-rX-yZi" secondAttribute="leading" constant="16" id="a6P-7Q-aHu"/>
+                                    <constraint firstAttribute="trailing" secondItem="4NY-6m-k3x" secondAttribute="trailing" constant="16" id="AXx-eh-Vnn"/>
+                                    <constraint firstAttribute="bottom" secondItem="4NY-6m-k3x" secondAttribute="bottom" constant="16" id="OAM-Jk-77E"/>
+                                    <constraint firstAttribute="height" constant="72" id="ovl-jB-rfB"/>
+                                    <constraint firstItem="4NY-6m-k3x" firstAttribute="leading" secondItem="jBe-rX-yZi" secondAttribute="leading" constant="16" id="rLb-ZD-uOC"/>
                                 </constraints>
                             </view>
                         </subviews>
@@ -263,17 +261,12 @@
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="bRB-Xr-8Xn" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="0qB-mI-UNZ"/>
-                            <constraint firstItem="zeC-Dn-og1" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" constant="-80" id="D3k-aq-e9p"/>
-                            <constraint firstItem="zeC-Dn-og1" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="16" id="DOH-OC-bgr"/>
                             <constraint firstItem="bRB-Xr-8Xn" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="KX5-xS-wdo"/>
-                            <constraint firstItem="jBe-rX-yZi" firstAttribute="bottom" secondItem="6Tk-OE-BBY" secondAttribute="bottom" id="TPx-2c-7Ci"/>
                             <constraint firstItem="jBe-rX-yZi" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="WXp-HB-IR1"/>
                             <constraint firstAttribute="trailing" secondItem="jBe-rX-yZi" secondAttribute="trailing" id="a2J-Gv-Nua"/>
-                            <constraint firstItem="bRB-Xr-8Xn" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="gWR-O6-54Y"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="zeC-Dn-og1" secondAttribute="trailing" constant="16" id="jnH-KK-4wy"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="jBe-rX-yZi" secondAttribute="bottom" id="d9g-bk-k9f"/>
                             <constraint firstItem="bRB-Xr-8Xn" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="pV0-SA-8P0"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="bRB-Xr-8Xn" secondAttribute="bottom" constant="20" id="va2-wI-yuT"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="jBe-rX-yZi" secondAttribute="bottom" id="z1F-Wt-JoI"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="bRB-Xr-8Xn" secondAttribute="bottom" id="va2-wI-yuT"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Товары" id="DBE-av-AUX"/>
@@ -304,9 +297,6 @@
         <image name="list.bullet.below.rectangle" catalog="system" width="128" height="112"/>
         <image name="minus" catalog="system" width="128" height="24"/>
         <image name="plus" catalog="system" width="128" height="113"/>
-        <systemColor name="secondaryLabelColor">
-            <color red="0.23529411764705882" green="0.23529411764705882" blue="0.2627450980392157" alpha="0.59999999999999998" colorSpace="custom" customColorSpace="sRGB"/>
-        </systemColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>

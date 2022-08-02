@@ -135,15 +135,15 @@
 		485EC618289125B100C95807 /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
+				484D7EEB28980F5800F6C7AA /* TabBarController.swift */,
 				485EC6072891255600C95807 /* CatalogTableViewController.swift */,
-				484D7EE328980CCC00F6C7AA /* OrderTableViewController.swift */,
-				4844ED252897FC3200AACB2E /* AboutUsViewController.swift */,
+				8E7FD73E289193CD0022A14F /* ProductDetailViewController.swift */,
 				484D7EE528980CE200F6C7AA /* PurchaseTableViewController.swift */,
 				484D7EF22898290D00F6C7AA /* OrderListViewController.swift */,
-				8E7FD73E289193CD0022A14F /* ProductDetailViewController.swift */,
+				484D7EE328980CCC00F6C7AA /* OrderTableViewController.swift */,
 				484D7EF42898291500F6C7AA /* LoginViewController.swift */,
 				484D7EF62898291E00F6C7AA /* UserMenuViewController.swift */,
-				484D7EEB28980F5800F6C7AA /* TabBarController.swift */,
+				4844ED252897FC3200AACB2E /* AboutUsViewController.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -477,7 +477,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = T4BFRR442Y;
+				DEVELOPMENT_TEAM = 78KK8BLN83;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = FiveStarShop/App/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -490,7 +490,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = "org.ledkov.FiveStarShop-2";
+				PRODUCT_BUNDLE_IDENTIFIER = org.ledkov.FiveStarShop;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;

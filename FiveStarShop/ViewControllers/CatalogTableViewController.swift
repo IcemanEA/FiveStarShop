@@ -13,7 +13,7 @@ protocol CatalogViewCellDelegate {
 
 class CatalogTableViewController: UIViewController {
         
-// MARK: - IBOutlets and public properties
+    // MARK: - IBOutlets and public properties
     
     @IBOutlet var tableView: UITableView!
     
@@ -22,10 +22,9 @@ class CatalogTableViewController: UIViewController {
     @IBOutlet var cartInButton: UIButton!
     
     var delegate: TabBarControllerDelegate!
-    var purchases: [Purchase]!
+    var purchases: [Purchase] = []
     
-    
-// MARK: - Private properties
+    // MARK: - Private properties
     
     private var totalSum = 0 {
         didSet {
@@ -36,23 +35,33 @@ class CatalogTableViewController: UIViewController {
     
     private let products: [Product]! = DataStore.shared.products
     
-// MARK: - Override methods
+    // MARK: - Override methods
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         cartInButton.layer.cornerRadius = 15
         
-        purchases = []
-        
         for product in products {
             purchases.append(Purchase(product: product, count: 0))
         }
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        purchases = purchases.map { Purchase(product: $0.product, count: 0) }
+        
+        let cart = DataStore.shared.cart
+        cart.forEach { purchase in
+            if let index = purchases.firstIndex(where: { $0 == purchase }) {
+                purchases[index].count = purchase.count
+            }
+        }
+        getTotalCartSum()
         
         updateUI()
     }
     
-// MARK: - IBActions
+    // MARK: - IBActions
     
     @IBAction func cartInButtonPressed() {
         
@@ -60,27 +69,24 @@ class CatalogTableViewController: UIViewController {
             purchase.count > 0
         }
         
-        delegate.setPurchasesInCart(cart, andOpenIt: true)
+        DataStore.shared.cart = cart
         
-        for purchase in cart {
-            print("\(purchase.product.article) - \(purchase.count)")
-        }
-    
+        delegate.openCart()
     }
     
-// MARK: - Private methods
+    // MARK: - Private methods
     
     private func updateUI() {
         var bottom: CGFloat
-        
         if totalSum == 0 {
             purchaseInfo.isHidden = true
             bottom = 0
         } else {
             purchaseInfo.isHidden = false
-            bottom = CGFloat(purchaseInfo.frame.height - 20)
+            bottom = CGFloat(purchaseInfo.frame.height)
         }
         
+        tableView.reloadData()
         tableView.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: bottom, right: 0)
     }
     
@@ -93,6 +99,8 @@ class CatalogTableViewController: UIViewController {
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if let indexPath = tableView.indexPathForSelectedRow {
+            tableView.deselectRow(at: indexPath, animated: true)
+            
             guard let detailVC = segue.destination as? ProductDetailViewController else { return }
             detailVC.product = purchases[indexPath.row].product
         }
@@ -102,6 +110,10 @@ class CatalogTableViewController: UIViewController {
 
 // MARK: - UITableViewDataSource
 extension CatalogTableViewController: UITableViewDataSource {
+    
+    func tableView(_ tableView: UITableView, didDeselectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: true)
+    }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         purchases.count
@@ -155,7 +167,8 @@ extension CatalogTableViewController: CatalogViewCellDelegate {
         let cart = purchases.filter { purchase in
             purchase.count > 0
         }
-        delegate.setPurchasesInCart(cart, andOpenIt: false)
+        
+        DataStore.shared.cart = cart
         
         getTotalCartSum()
     }

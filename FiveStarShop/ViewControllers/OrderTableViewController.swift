@@ -8,7 +8,8 @@
 import UIKit
 
 class OrderTableViewController: UIViewController {
-        
+    // MARK: - IBOutlets and public properties
+    
     @IBOutlet var tableView: UITableView!
     
     @IBOutlet var orderTextStack: UIStackView!
@@ -17,22 +18,30 @@ class OrderTableViewController: UIViewController {
     
     var order: Order!
     
+    // MARK: - private properties
+    
     private var totalSum = 0 {
         didSet {
             totalSumLabel.text = totalSum.toRubleCurrency()
         }
     }
     
+    // MARK: - override methods
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        navigationItem.largeTitleDisplayMode = .never
         
         cartInButton.layer.cornerRadius = 15
     }
     
     override func viewWillAppear(_ animated: Bool) {
+        navigationItem.backButtonTitle = "Назад"
         title = "Заказ № \(order.id) от \(order.date)"
         getTotalCartSum()
     }
+    
+    // MARK: - IBActions
     
     @IBAction func repeatOrderButtonPressed() {
         let alert = UIAlertController(
@@ -41,7 +50,11 @@ class OrderTableViewController: UIViewController {
             preferredStyle: .alert
         )
         
-        let okAction = UIAlertAction(title: "Да", style: .default)
+        let okAction = UIAlertAction(title: "Да", style: .default) { [weak self] _ in
+            DataStore.shared.cart = self?.order.purchases ?? []
+                        
+            self?.performSegue(withIdentifier: "unwindToOrders", sender: nil)
+        }
         
         let cancelAction = UIAlertAction(title: "Отмена", style: .cancel)
         
@@ -49,17 +62,9 @@ class OrderTableViewController: UIViewController {
         alert.addAction(okAction)
         
         present(alert, animated: true)
-        
-// TODO: тут надо перейти в заказы и передать туда сформированный заказ
-// желательно пометить этот заказ как "новый"
-        
-        for purchase in order.purchases {
-            print("\(purchase.product.article) - \(purchase.count)")
-        }
-        
-        
     }
-// до этой строки
+    
+    // MARK: - private methods
     
     private func getTotalCartSum() {
         totalSum = 0
@@ -67,6 +72,8 @@ class OrderTableViewController: UIViewController {
             totalSum += purchase.totalPrice
         }
     }
+    
+    // MARK: - Navigation
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if let indexPath = tableView.indexPathForSelectedRow {
@@ -114,11 +121,9 @@ extension OrderTableViewController: UITableViewDataSource {
 // MARK: - UITableViewDelegate
 extension OrderTableViewController: UITableViewDelegate {
     
-// TODO: удалить может этот блок ???????
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
     }
-// ибо мы по нажатию на ячейку уходим в детализацию и снятие выделения не так необходимо
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         120

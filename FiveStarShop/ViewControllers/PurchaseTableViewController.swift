@@ -13,7 +13,7 @@ protocol PurchaseViewCellDelegate {
 }
 
 class PurchaseTableViewController: UIViewController {
-        
+    // MARK: - IBOutlet and public properties
     @IBOutlet var tableView: UITableView!
     
     @IBOutlet var orderTextStack: UIStackView!
@@ -22,43 +22,107 @@ class PurchaseTableViewController: UIViewController {
     
     var purchases: [Purchase]! {
         didSet {
-            title = "Корзина (\(purchases.count))"
+            navigationItem.title = "Корзина (\(purchases.count))"
         }
     }
     
+    // MARK: - private properties
+    
+    private var clearBarButtonItem: UIBarButtonItem!
     private var totalSum = 0 {
         didSet {
             totalSumLabel.text = totalSum.toRubleCurrency()
         }
     }
     
+    // MARK: - Override methods
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
         cartInButton.layer.cornerRadius = 15
+        clearBarButtonItem = UIBarButtonItem(image: UIImage(systemName: "trash"),
+                                             style: .done,
+                                             target: self,
+                                             action: #selector(clearCart))
         
-        
-        
+        navigationItem.rightBarButtonItem = clearBarButtonItem
     }
     
     override func viewWillAppear(_ animated: Bool) {
+        purchases = DataStore.shared.cart
         
-        print("Всего в корзине \(purchases!.count)")
         tableView.reloadData()
         clearIfCartIsEmpty()
         getTotalCartSum()
-
     }
     
+    // MARK: - IBActions
+    
     @IBAction func cartInButtonPressed() {
-
+        var activeUser: User?
+        var ordersViewController: OrderListViewController?
         
-        for purchase in purchases {
-            print("\(purchase.product.article) - \(purchase.count)")
+        guard let viewControllers = tabBarController?.viewControllers else { return }
+        viewControllers.forEach { viewController in
+            guard let navigatorVC = viewController as? UINavigationController else { return }
+            
+            if let ordersVC = navigatorVC.topViewController as? OrderListViewController {
+                activeUser = ordersVC.activeUser
+                ordersViewController = ordersVC
+            }
+        }
+        
+        if let user = activeUser {
+            newOrder(for: user, on: ordersViewController)
+        } else {
+            authorize(on: ordersViewController)
         }
     }
     
-    @IBAction func clearButtonPressed() {
+    // MARK: - private methods
+    
+    private func newOrder(for user: User, on viewController: OrderListViewController?) {
+        let order = Order(id: user.orders.count + 1,
+                          date: NSDate.now.formatted(date: .numeric, time: .omitted),
+                          purchases: purchases)
+        
+        viewController?.addOrderToActiveUser(order)
+        
+        let alert = UIAlertController(
+            title: "Заказ оформлен",
+            message: "Поздравляем с покупкой!",
+            preferredStyle: .alert
+        )
+        
+        let okAction = UIAlertAction(title: "OK", style: .default) { [weak self] _ in
+            self?.clearCart()
+        }
+                    
+        alert.addAction(okAction)
+        
+        present(alert, animated: true)
+    }
+    
+    private func authorize(on viewController: OrderListViewController?) {
+        let alert = UIAlertController(
+            title: "Авторизация",
+            message: "Вы не вошли в программу. Авторизироваться сейчас?",
+            preferredStyle: .alert
+        )
+        
+        let okAction = UIAlertAction(title: "Да", style: .default) { _ in
+            viewController?.performSegue(withIdentifier: "login", sender: nil)
+        }
+        let cancelAction = UIAlertAction(title: "Отмена", style: .cancel)
+        
+        alert.addAction(cancelAction)
+        alert.addAction(okAction)
+        
+        present(alert, animated: true)
+    }
+    
+    @objc private func clearCart() {
 
         let alert = UIAlertController(
             title: "Очистить корзину?",
@@ -67,10 +131,10 @@ class PurchaseTableViewController: UIViewController {
         )
         
         let okAction = UIAlertAction(title: "OK", style: .destructive) { [weak self] _ in
-                    self?.purchases = []
-                    self?.clearIfCartIsEmpty()
-                }
-        
+            DataStore.shared.cart = []
+            self?.purchases = []
+            self?.clearIfCartIsEmpty()
+        }
         let cancelAction = UIAlertAction(title: "Отмена", style: .cancel)
         
         alert.addAction(cancelAction)
@@ -84,6 +148,10 @@ class PurchaseTableViewController: UIViewController {
             tableView.isHidden = true
             orderTextStack.isHidden = true
             navigationItem.rightBarButtonItem = .none
+        } else {
+            tableView.isHidden = false
+            orderTextStack.isHidden = false
+            navigationItem.rightBarButtonItem = clearBarButtonItem
         }
     }
     
@@ -92,6 +160,7 @@ class PurchaseTableViewController: UIViewController {
         for purchase in purchases {
             totalSum += purchase.totalPrice
         }
+        DataStore.shared.cart = purchases
     }
     
 }
@@ -135,11 +204,9 @@ extension PurchaseTableViewController: UITableViewDataSource {
 // MARK: - UITableViewDelegate
 extension PurchaseTableViewController: UITableViewDelegate {
     
-// TODO: удалить может этот блок ???????
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
     }
-// ибо мы по нажатию на ячейку уходим в детализацию и снятие выделения не так необходимо
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         120
@@ -153,7 +220,6 @@ extension PurchaseTableViewController: UITableViewDelegate {
             getTotalCartSum()
         }
     }
-    
 }
 
 // MARK: - PurchaseViewCellDelegate
@@ -174,5 +240,4 @@ extension PurchaseTableViewController: PurchaseViewCellDelegate {
         }
         getTotalCartSum()
     }
-    
 }

@@ -11,6 +11,8 @@ class DataStore {
     
     static let shared = DataStore()
     
+    var cart: [Purchase] = []
+    
     let products: [Product] = [
         Product(
             article: "EL0001",

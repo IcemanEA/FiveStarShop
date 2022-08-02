@@ -9,7 +9,7 @@ struct User {
     let name: String
     let userName: String
     let password: String
-    let orders: [Order]
+    var orders: [Order]
     
     static func getUsers() -> [User] {
         [

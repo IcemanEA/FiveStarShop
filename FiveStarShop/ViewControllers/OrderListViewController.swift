@@ -15,14 +15,26 @@ protocol LoginViewControllerDelegate {
 
 class OrderListViewController: UITableViewController {
     
-    private let users = User.getUsers()
-    private var activeUser: User? = nil {
+    var delegate: TabBarControllerDelegate!
+    var activeUser: User? = nil {
         didSet {
             navigationItem.rightBarButtonItem?.title = activeUser?.name ?? "Авторизация"
             tableView.reloadData()
         }
     }
     
+    private let users = User.getUsers()
+    private var transitToCartIs = false
+    
+    // MARK: - Override methods
+    
+    override func viewWillAppear(_ animated: Bool) {
+        if transitToCartIs {
+            transitToCartIs = false
+            delegate.openCart()
+        }
+    }
+        
     // MARK: - Table view data source
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -46,24 +58,33 @@ class OrderListViewController: UITableViewController {
         tableView.deselectRow(at: indexPath, animated: true)
     }
     
+    func addOrderToActiveUser(_ order: Order) {
+        guard activeUser != nil else { return }
+        activeUser?.orders.append(order)
+    }
+    
     // MARK: - Navigation
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        guard let navigationVC = segue.destination as? UINavigationController else { return }
-        
-        if let loginVC = navigationVC.topViewController as? LoginViewController {
-            loginVC.delegate = self
-            loginVC.users = users
-        } else if let userMenuVC = navigationVC.topViewController as? UserMenuViewController {
-            userMenuVC.delegate = self
-            userMenuVC.user = users.first
-        } else if let orderVC = navigationVC.topViewController as? OrderTableViewController {
+        if let orderVC = segue.destination as? OrderTableViewController {
             guard let user = activeUser else { return }
             
             if let indexPath = tableView.indexPathForSelectedRow {
                 orderVC.order = user.orders[indexPath.row]
             }
+        } else if let navigationVC = segue.destination as? UINavigationController {
+            if let loginVC = navigationVC.topViewController as? LoginViewController {
+                loginVC.delegate = self
+                loginVC.users = users
+            } else if let userMenuVC = navigationVC.topViewController as? UserMenuViewController {
+                userMenuVC.delegate = self
+                userMenuVC.user = users.first
+            }
         }
+    }
+    
+    @IBAction func unwindToOrders(_ unwindSegue: UIStoryboardSegue) {
+        transitToCartIs = true
     }
     
     // MARK: - Authorize button setup

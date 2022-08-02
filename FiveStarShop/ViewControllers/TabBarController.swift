@@ -8,75 +8,41 @@
 import UIKit
 
 protocol TabBarControllerDelegate {
-    func setPurchasesInCart (_ purchases: [Purchase], andOpenIt: Bool)
+    func openCart()
 }
 
 class TabBarController: UITabBarController {
-
-    var purchases: [Purchase] = []
     
     override func viewDidLoad() {
         guard let viewControllers = viewControllers else { return }
         
         viewControllers.forEach { viewController in
             guard let navigatorVC = viewController as? UINavigationController else { return }
-            let openVC = navigatorVC.topViewController
             
-            if let catalogVC = openVC as? CatalogTableViewController {
+            if let catalogVC = navigatorVC.topViewController as? CatalogTableViewController {
                 catalogVC.delegate = self
-                //                catalogVC.purchases = purchases
-            } else if let purchaseVC = openVC as? PurchaseTableViewController {
-                //                purchaseVC.delegate = self
-                purchaseVC.purchases = purchases
+            } else if let ordersVC = navigatorVC.topViewController as? OrderListViewController {
+                ordersVC.delegate = self
             }
         }
     }
 
-    override func tabBar(_ tabBar: UITabBar, didSelect item: UITabBarItem) {
-//        guard let viewControllers = viewControllers else { return }
-//        
-//        viewControllers.forEach { viewController in
-//            guard let navigatorVC = viewController as? UINavigationController else { return }
-//            let openVC = navigatorVC.topViewController
-//            
-//            if let purchaseVC = openVC as? PurchaseTableViewController {
-//                purchaseVC.purchases = purchases
-//            }
-//        }
-        
-    }
-//
-//    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-//        guard let viewControllers = viewControllers else { return }
-//
-//        viewControllers.forEach { viewController in
-//            guard let navigatorVC = viewController as? UINavigationController else { return }
-//            let openVC = navigatorVC.topViewController
-//
-//            if let purchaseVC = openVC as? PurchaseTableViewController {
-//                purchaseVC.purchases = purchases
-//            }
-//        }
-//    }
 }
 
 // MARK: - TabBarControllerDelegate
 extension TabBarController: TabBarControllerDelegate {
-    func setPurchasesInCart(_ purchases: [Purchase], andOpenIt: Bool) {
-        self.purchases = purchases
-        
+    func openCart() {
         var cartViewIndex = 0
         guard let viewControllers = viewControllers else { return }
         
         for (index, vc) in viewControllers.enumerated() {
             guard let navigatorVC = vc as? UINavigationController else { return }
                         
-            if let purchaseVC = navigatorVC.topViewController as? PurchaseTableViewController {
-                purchaseVC.purchases = purchases
+            if let _ = navigatorVC.topViewController as? PurchaseTableViewController {
                 cartViewIndex = index
             }
         }
      
-        if andOpenIt { selectedIndex = cartViewIndex }
+        selectedIndex = cartViewIndex
     }
 }

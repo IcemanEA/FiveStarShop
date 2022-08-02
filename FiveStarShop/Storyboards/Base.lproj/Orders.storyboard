@@ -187,7 +187,7 @@
                                     </subviews>
                                 </tableViewCellContentView>
                                 <connections>
-                                    <segue destination="rdU-Yg-RC6" kind="show" id="TGc-hO-aqO"/>
+                                    <segue destination="rdU-Yg-RC6" kind="show" id="JDW-tx-JzH"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -204,8 +204,8 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
-                        <segue destination="N5M-cw-BXd" kind="presentation" identifier="login" id="Lgz-z3-8Zo"/>
                         <segue destination="eFu-L5-fXp" kind="presentation" identifier="userMenu" id="Z6e-ug-3tW"/>
+                        <segue destination="N5M-cw-BXd" kind="presentation" identifier="login" id="6Yp-vv-rlO"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Pif-Yx-c4J" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -240,13 +240,14 @@
                 </viewControllerPlaceholder>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="NvA-qh-csr" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2620" y="578"/>
+            <point key="canvasLocation" x="3470" y="531"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="FzM-pJ-dZC">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="eFu-L5-fXp" sceneMemberID="viewController">
                     <toolbarItems/>
+                    <navigationItem key="navigationItem" id="waF-bs-BgD"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="hfF-6o-k02">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="56"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -263,8 +264,10 @@
         <!--Navigation Controller-->
         <scene sceneID="Zh0-fh-T3D">
             <objects>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="JqH-MM-A4L" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="N5M-cw-BXd" sceneMemberID="viewController">
                     <toolbarItems/>
+                    <navigationItem key="navigationItem" id="1UZ-Wn-946"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="2gc-xt-Ay7">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="56"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -274,7 +277,6 @@
                         <segue destination="BYZ-38-t0r" kind="relationship" relationship="rootViewController" id="gDB-c5-e9D"/>
                     </connections>
                 </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="JqH-MM-A4L" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="3470" y="115"/>
         </scene>

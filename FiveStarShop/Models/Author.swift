@@ -30,7 +30,7 @@ struct Author {
                      post: "Model&DataStore manager, раздел каталог, продукт",
                      nickname: "asankul")
             , Author(firstName: "Дмитрий",
-                     lastName: "",
+                     lastName: "Коваленко",
                      post: "раздел Заказы и форма логина",
                      nickname: "DmitryPsycho")
             , Author(firstName: "Дмитрий",
