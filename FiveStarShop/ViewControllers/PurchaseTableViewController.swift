@@ -20,6 +20,7 @@ class PurchaseTableViewController: UIViewController {
     @IBOutlet var totalSumLabel: UILabel!
     @IBOutlet var cartInButton: UIButton!
     
+    var delegate: TabBarControllerDelegate!
     var purchases: [Purchase]! {
         didSet {
             navigationItem.title = "Корзина (\(purchases.count))"
@@ -44,7 +45,7 @@ class PurchaseTableViewController: UIViewController {
         clearBarButtonItem = UIBarButtonItem(image: UIImage(systemName: "trash"),
                                              style: .done,
                                              target: self,
-                                             action: #selector(clearCart))
+                                             action: #selector(clearCartWithAlert))
         
         navigationItem.rightBarButtonItem = clearBarButtonItem
     }
@@ -97,6 +98,7 @@ class PurchaseTableViewController: UIViewController {
         
         let okAction = UIAlertAction(title: "OK", style: .default) { [weak self] _ in
             self?.clearCart()
+            self?.delegate.openTab(with: .orders)
         }
                     
         alert.addAction(okAction)
@@ -122,7 +124,13 @@ class PurchaseTableViewController: UIViewController {
         present(alert, animated: true)
     }
     
-    @objc private func clearCart() {
+    private func clearCart() {
+        DataStore.shared.cart = []
+        purchases = []
+        clearIfCartIsEmpty()
+    }
+    
+    @objc private func clearCartWithAlert() {
 
         let alert = UIAlertController(
             title: "Очистить корзину?",
@@ -131,9 +139,8 @@ class PurchaseTableViewController: UIViewController {
         )
         
         let okAction = UIAlertAction(title: "OK", style: .destructive) { [weak self] _ in
-            DataStore.shared.cart = []
-            self?.purchases = []
-            self?.clearIfCartIsEmpty()
+            self?.clearCart()
+            
         }
         let cancelAction = UIAlertAction(title: "Отмена", style: .cancel)
         

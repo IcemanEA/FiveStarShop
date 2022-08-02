@@ -23,7 +23,7 @@ struct Author {
         [
             Author(firstName: "Егор",
                    lastName: "Ледков",
-                   post: "TeamLead, Git, код ревью, раздел О нас",
+                   post: "TeamLead, Git, код ревью, раздел О нас, финальная вертска",
                    nickname: "IcemanEA")
             , Author(firstName: "Асанкул",
                      lastName: "Садыков",

@@ -31,7 +31,7 @@ class OrderListViewController: UITableViewController {
     override func viewWillAppear(_ animated: Bool) {
         if transitToCartIs {
             transitToCartIs = false
-            delegate.openCart()
+            delegate.openTab(with: .purchases)
         }
     }
         

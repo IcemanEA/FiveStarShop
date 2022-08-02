@@ -71,7 +71,7 @@ class CatalogTableViewController: UIViewController {
         
         DataStore.shared.cart = cart
         
-        delegate.openCart()
+        delegate.openTab(with: .purchases)
     }
     
     // MARK: - Private methods

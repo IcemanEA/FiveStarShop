@@ -8,7 +8,7 @@
 import UIKit
 
 protocol TabBarControllerDelegate {
-    func openCart()
+    func openTab(with tabViewController: TabViewController)
 }
 
 class TabBarController: UITabBarController {
@@ -23,6 +23,8 @@ class TabBarController: UITabBarController {
                 catalogVC.delegate = self
             } else if let ordersVC = navigatorVC.topViewController as? OrderListViewController {
                 ordersVC.delegate = self
+            } else if let cartVC = navigatorVC.topViewController as? PurchaseTableViewController {
+                cartVC.delegate = self
             }
         }
     }
@@ -31,18 +33,31 @@ class TabBarController: UITabBarController {
 
 // MARK: - TabBarControllerDelegate
 extension TabBarController: TabBarControllerDelegate {
-    func openCart() {
+    
+    func openTab(with tabViewController: TabViewController) {
         var cartViewIndex = 0
         guard let viewControllers = viewControllers else { return }
         
         for (index, vc) in viewControllers.enumerated() {
             guard let navigatorVC = vc as? UINavigationController else { return }
-                        
-            if let _ = navigatorVC.topViewController as? PurchaseTableViewController {
-                cartViewIndex = index
+                 
+            switch tabViewController {
+            case .purchases:
+                if let _ = navigatorVC.topViewController as? PurchaseTableViewController {
+                    cartViewIndex = index
+                }
+            case .orders:
+                if let _ = navigatorVC.topViewController as? OrderListViewController {
+                    cartViewIndex = index
+                }
             }
         }
      
         selectedIndex = cartViewIndex
     }
+}
+
+enum TabViewController {
+    case purchases
+    case orders
 }
