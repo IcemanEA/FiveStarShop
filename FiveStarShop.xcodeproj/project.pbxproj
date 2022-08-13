@@ -28,6 +28,7 @@
 		485EC6102891255700C95807 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 485EC60E2891255700C95807 /* LaunchScreen.storyboard */; };
 		485EC6222891A6BE00C95807 /* Author.swift in Sources */ = {isa = PBXBuildFile; fileRef = 485EC6212891A6BE00C95807 /* Author.swift */; };
 		485EC6242891AAC900C95807 /* AuthorViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 485EC6232891AAC900C95807 /* AuthorViewCell.swift */; };
+		48A85BCD28A82EF40030F53B /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48A85BCC28A82EF40030F53B /* NetworkManager.swift */; };
 		48D579B32898040400C2E208 /* Catalog.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 48D579B22898040400C2E208 /* Catalog.storyboard */; };
 		8E7FD734289157A30022A14F /* Product.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E7FD733289157A30022A14F /* Product.swift */; };
 		8E7FD737289158F00022A14F /* Purchase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E7FD736289158F00022A14F /* Purchase.swift */; };
@@ -62,6 +63,7 @@
 		485EC6112891255700C95807 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		485EC6212891A6BE00C95807 /* Author.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Author.swift; sourceTree = "<group>"; };
 		485EC6232891AAC900C95807 /* AuthorViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthorViewCell.swift; sourceTree = "<group>"; };
+		48A85BCC28A82EF40030F53B /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
 		48D579B22898040400C2E208 /* Catalog.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = Catalog.storyboard; path = Base.lproj/Catalog.storyboard; sourceTree = "<group>"; };
 		8E7FD733289157A30022A14F /* Product.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Product.swift; sourceTree = "<group>"; };
 		8E7FD736289158F00022A14F /* Purchase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Purchase.swift; sourceTree = "<group>"; };
@@ -185,6 +187,7 @@
 			isa = PBXGroup;
 			children = (
 				8E7FD73B28915A870022A14F /* DataStore.swift */,
+				48A85BCC28A82EF40030F53B /* NetworkManager.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -296,6 +299,7 @@
 				8E7FD734289157A30022A14F /* Product.swift in Sources */,
 				484D7EF52898291500F6C7AA /* LoginViewController.swift in Sources */,
 				484D7EF32898290D00F6C7AA /* OrderListViewController.swift in Sources */,
+				48A85BCD28A82EF40030F53B /* NetworkManager.swift in Sources */,
 				8E7FD737289158F00022A14F /* Purchase.swift in Sources */,
 				484D7EEC28980F5800F6C7AA /* TabBarController.swift in Sources */,
 				8E7FD73F289193CD0022A14F /* ProductDetailViewController.swift in Sources */,

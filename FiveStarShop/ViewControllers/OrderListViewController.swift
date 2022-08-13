@@ -23,7 +23,8 @@ class OrderListViewController: UITableViewController {
         }
     }
     
-    private let users = User.getUsers()
+    private var orders: [Order] = []
+    
     private var transitToCartIs = false
     
     // MARK: - Override methods
@@ -38,14 +39,12 @@ class OrderListViewController: UITableViewController {
     // MARK: - Table view data source
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        guard let user = activeUser else { return 0 }
-        return user.orders.count
+        orders.count
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "orderCell", for: indexPath)
-        guard let user = activeUser else { return cell }
-        let order = user.orders[indexPath.row]
+        let order = orders[indexPath.row]
         
         var content = cell.defaultContentConfiguration()
         content.text = "Заказ №\(String(order.id))"
@@ -59,26 +58,25 @@ class OrderListViewController: UITableViewController {
     }
     
     func addOrderToActiveUser(_ order: Order) {
-        guard activeUser != nil else { return }
-        activeUser?.orders.append(order)
+        orders.append(order)
     }
     
     // MARK: - Navigation
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        guard let user = activeUser else { return }
+        
         if let orderVC = segue.destination as? OrderTableViewController {
-            guard let user = activeUser else { return }
-            
             if let indexPath = tableView.indexPathForSelectedRow {
-                orderVC.order = user.orders[indexPath.row]
+                orderVC.order = orders[indexPath.row]
             }
         } else if let navigationVC = segue.destination as? UINavigationController {
             if let loginVC = navigationVC.topViewController as? LoginViewController {
                 loginVC.delegate = self
-                loginVC.users = users
+
             } else if let userMenuVC = navigationVC.topViewController as? UserMenuViewController {
                 userMenuVC.delegate = self
-                userMenuVC.user = users.first
+                userMenuVC.user = user
             }
         }
     }

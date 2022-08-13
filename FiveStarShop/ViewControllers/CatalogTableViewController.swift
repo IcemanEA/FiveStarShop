@@ -33,8 +33,6 @@ class CatalogTableViewController: UIViewController {
         }
     }
     
-    private let products: [Product]! = DataStore.shared.products
-    
     // MARK: - Override methods
     
     override func viewDidLoad() {
@@ -42,9 +40,7 @@ class CatalogTableViewController: UIViewController {
         
         cartInButton.layer.cornerRadius = 15
         
-        for product in products {
-            purchases.append(Purchase(product: product, count: 0))
-        }
+        fetchProducts()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -155,6 +151,28 @@ extension CatalogTableViewController: UITableViewDelegate {
         120
     }
     
+}
+// MARK: - NetWorking
+extension CatalogTableViewController {
+    private func fetchProducts() {
+        NetworkManager.shared.fetch(
+            [Product].self,
+            from: NetworkManager.shared.getLink(.allProducts))
+        { [weak self] result in
+            switch result {
+            case .success(let products):
+                DataStore.shared.products = products
+                
+                for product in products {
+                    self?.purchases.append(Purchase(product: product, count: 0))
+                }
+                
+                self?.tableView.reloadData()
+            case .failure(let error):
+                print(error)
+            }
+        }
+    }
 }
 
 // MARK: - PurchaseViewCellDelegate

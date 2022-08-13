@@ -84,7 +84,7 @@ class PurchaseTableViewController: UIViewController {
     // MARK: - private methods
     
     private func newOrder(for user: User, on viewController: OrderListViewController?) {
-        let order = Order(id: user.orders.count + 1,
+        let order = Order(id: 1,
                           date: NSDate.now.formatted(date: .numeric, time: .omitted),
                           purchases: purchases)
         

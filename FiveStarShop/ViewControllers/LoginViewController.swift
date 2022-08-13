@@ -12,10 +12,7 @@ class LoginViewController: UIViewController {
     @IBOutlet var userTextField: UITextField!
     @IBOutlet var passwordTextField: UITextField!
     
-    var users: [User]!
     var delegate: LoginViewControllerDelegate!
-    
-    private var user: User!
     
     private let primaryColor = UIColor(
         red: 210/255,
@@ -33,7 +30,6 @@ class LoginViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         view.addVerticalGradientLayer(topColor: primaryColor, bottomColor: secondaryColor)
-        user = users.first
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
@@ -45,22 +41,38 @@ class LoginViewController: UIViewController {
     // MARK: - Login screen buttons setup
     
     @IBAction func loginBtnPressed() {
-        guard userTextField.text == user.userName, passwordTextField.text == user.password else {
+        guard let username = userTextField.text, let password = passwordTextField.text else {
             showAlert(
                 title: "Неверный логин или пароль!",
                 message: "Пожалуйста, введите корректные данные!"
             )
             return
         }
+        let userCredits = [
+            "username": username,
+            "password": password
+        ]
         
-        delegate.setUser(user)
-        dismiss(animated: true)
+        NetworkManager.shared.postRequest(
+            with: userCredits,
+            to: NetworkManager.shared.getLink(.authentication)) { [weak self] result in
+                switch result {
+                case .success(let userJSON):
+                    print(userJSON)
+                    guard let user = userJSON as? User else { return }
+
+                    self?.delegate.setUser(user)
+                    self?.dismiss(animated: true)
+                case .failure(let error):
+                    print(error)
+                }
+            }
     }
     
-    @IBAction func forgotLoginData(_ sender: UIButton) {
-        sender.tag == 0
-        ? showAlert(title: "Ой!", message: "Ваш логин - \(user.userName)")
-        : showAlert(title: "Ой!", message: "Ваш пароль - \(user.password)")
+    @IBAction func registrationBtnPressed() {
+        
+        // showAlert(title: "Ой!", message: "Ваш логин - \(user.userName)")
+        // showAlert(title: "Ой!", message: "Ваш пароль - \(user.password)")
     }
     
     @IBAction func cancelBtnPressed() {
