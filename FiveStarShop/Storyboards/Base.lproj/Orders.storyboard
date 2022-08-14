@@ -69,11 +69,21 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="JwB-VN-3RJ" userLabel="LoginStackView">
-                                <rect key="frame" x="35" y="271" width="344" height="196"/>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="12" translatesAutoresizingMaskIntoConstraints="NO" id="JwB-VN-3RJ" userLabel="LoginStackView">
+                                <rect key="frame" x="35" y="76" width="344" height="239"/>
                                 <subviews>
+                                    <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="fRN-Qu-Xni">
+                                        <rect key="frame" x="0.0" y="0.0" width="344" height="32"/>
+                                        <segments>
+                                            <segment title="Вход"/>
+                                            <segment title="Регистрация"/>
+                                        </segments>
+                                        <connections>
+                                            <action selector="logInSCChanged:" destination="BYZ-38-t0r" eventType="valueChanged" id="Q0K-Hd-1X2"/>
+                                        </connections>
+                                    </segmentedControl>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="13J-o3-I5x">
-                                        <rect key="frame" x="0.0" y="0.0" width="344" height="88"/>
+                                        <rect key="frame" x="0.0" y="43" width="344" height="142"/>
                                         <subviews>
                                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Имя пользователя" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="WHA-lP-KXe">
                                                 <rect key="frame" x="0.0" y="0.0" width="344" height="34"/>
@@ -85,28 +95,21 @@
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" secureTextEntry="YES" smartDashesType="no" smartInsertDeleteType="no" smartQuotesType="no" textContentType="password"/>
                                             </textField>
+                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Имя" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="EN7-IG-tqd">
+                                                <rect key="frame" x="0.0" y="108" width="344" height="34"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                <textInputTraits key="textInputTraits" autocapitalizationType="words" autocorrectionType="no" spellCheckingType="no" smartDashesType="no" smartInsertDeleteType="no" smartQuotesType="no" textContentType="name"/>
+                                            </textField>
                                         </subviews>
                                     </stackView>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wdg-Vm-Oe2">
-                                        <rect key="frame" x="0.0" y="98" width="344" height="44"/>
+                                        <rect key="frame" x="0.0" y="197" width="344" height="42"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="25"/>
                                         <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                        <state key="normal" title="Button"/>
-                                        <buttonConfiguration key="configuration" style="plain" title="Войти">
-                                            <fontDescription key="titleFontDescription" type="system" pointSize="25"/>
-                                        </buttonConfiguration>
+                                        <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                        <state key="normal" title="Войти"/>
                                         <connections>
                                             <action selector="loginBtnPressed" destination="BYZ-38-t0r" eventType="touchUpInside" id="bcn-Um-N20"/>
-                                        </connections>
-                                    </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="SwN-f7-fTd">
-                                        <rect key="frame" x="0.0" y="152" width="344" height="44"/>
-                                        <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                        <state key="normal" title="Button"/>
-                                        <buttonConfiguration key="configuration" style="plain" title="Зарегистрироваться">
-                                            <fontDescription key="titleFontDescription" type="system" pointSize="25"/>
-                                        </buttonConfiguration>
-                                        <connections>
-                                            <action selector="registrationBtnPressed" destination="BYZ-38-t0r" eventType="touchUpInside" id="49B-tF-xwx"/>
                                         </connections>
                                     </button>
                                 </subviews>
@@ -116,8 +119,8 @@
                         <color key="backgroundColor" systemColor="systemPurpleColor"/>
                         <constraints>
                             <constraint firstItem="JwB-VN-3RJ" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="35" id="I0d-VP-Gey"/>
-                            <constraint firstItem="JwB-VN-3RJ" firstAttribute="centerY" secondItem="6Tk-OE-BBY" secondAttribute="centerY" constant="-80" id="PxK-7a-QDF"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="JwB-VN-3RJ" secondAttribute="trailing" constant="35" id="WqL-EV-odi"/>
+                            <constraint firstItem="JwB-VN-3RJ" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="20" id="wNV-yn-wpp"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="GQD-2T-5Xz">
@@ -129,6 +132,8 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="loginBtn" destination="wdg-Vm-Oe2" id="bdx-su-pO7"/>
+                        <outlet property="nameTextField" destination="EN7-IG-tqd" id="uMR-K1-IUS"/>
                         <outlet property="passwordTextField" destination="jPb-a8-Zbo" id="LB1-mA-ZYg"/>
                         <outlet property="userTextField" destination="WHA-lP-KXe" id="IRV-bV-WlO"/>
                     </connections>

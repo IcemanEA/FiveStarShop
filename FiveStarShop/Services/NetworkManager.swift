@@ -8,20 +8,25 @@
 import Foundation
 
 enum Link: String {
+    case images = "/five_star_shop/"
     case allProducts = "/api/products"
     case authentication = "/api/users"
+    case registration = "/api/users/add"
 }
 
 enum NetworkError: Error {
     case invalidURL
     case noData
+    case notFound
+    case dublicateUser
     case decodingError
+    case notResponse
 }
 
 class NetworkManager {
     static let shared = NetworkManager()
     
-    private let hostname = "http://localhost:8080"
+    private let hostname = "https://ledkov.org" // "http://localhost:8080"
     
     private init() {}
     
@@ -53,7 +58,23 @@ class NetworkManager {
         }.resume()
     }
     
-    func postRequest(with data: [String: Any], to url: String, completion: @escaping(Result<Any, NetworkError>) -> Void) {
+    func fetchImage(from url: String?, completion: @escaping(Result<Data, NetworkError>) -> Void) {
+        guard let url = URL(string: url ?? "") else {
+            completion(.failure(.invalidURL))
+            return
+        }
+        DispatchQueue.global().async {
+            guard let imageData = try? Data(contentsOf: url) else {
+                completion(.failure(.noData))
+                return
+            }
+            DispatchQueue.main.async {
+                completion(.success(imageData))
+            }
+        }
+    }
+    
+    func postRequest(with data: [String: Any], to url: String, completion: @escaping(Result<Data, NetworkError>) -> Void) {
         guard let url = URL(string: url) else {
             completion(.failure(.invalidURL))
             return
@@ -71,47 +92,21 @@ class NetworkManager {
                 print(error?.localizedDescription ?? "No error description")
                 return
             }
-            response.value(forKey: <#T##String#>)
-            do {
-                let jsonData = try JSONSerialization.jsonObject(with: data)
-                completion(.success(jsonData))
-            } catch {
-                completion(.failure(.decodingError))
-            }
-        }.resume()
-    }
-    
-    /*
-    func postRequest(with data: User, to url: String, completion: @escaping(Result<Any, NetworkError>) -> Void) {
-        guard let url = URL(string: url) else {
-            completion(.failure(.invalidURL))
-            return
-        }
-        
-        guard let courseData = try? JSONEncoder().encode(data) else {
-            completion(.failure(.noData))
-            return
-        }
-        
-        var request = URLRequest(url: url)
-        request.httpMethod = "POST"
-        request.addValue("application/json", forHTTPHeaderField: "Content-Type")
-        request.httpBody = courseData
-        
-        URLSession.shared.dataTask(with: request) { data, _, error in
-            guard let data = data else {
-                completion(.failure(.noData))
-                print(error?.localizedDescription ?? "No error description")
-                return
-            }
             
-            do {
-                let course = try JSONDecoder().decode(Course.self, from: data)
-                completion(.success(course))
-            } catch {
-                completion(.failure(.decodingError))
+            if let httpResponse = response as? HTTPURLResponse {
+                switch httpResponse.statusCode {
+                case 404:
+                    completion(.failure(.notFound))
+                    return
+                case 302:
+                    completion(.failure(.dublicateUser))
+                    return
+                default:
+                    completion(.success(data))
+                }
+            } else {
+                completion(.failure(.notResponse))
             }
         }.resume()
     }
-     */
 }

@@ -116,30 +116,19 @@ extension CatalogTableViewController: UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-
-        guard let cell = tableView.dequeueReusableCell(
-            withIdentifier: "CatalogCell",
-            for: indexPath
-        ) as? CatalogViewCell
-        else
-        {
-            return UITableViewCell()
-        }
+        guard
+            let cell = tableView.dequeueReusableCell(
+                withIdentifier: "CatalogCell",
+                for: indexPath
+            ) as? CatalogViewCell
+        else { return UITableViewCell() }
         
         let purchase = purchases[indexPath.row]
         
         cell.purchaseDelegate = self
         cell.purchase = purchase
-        
-        cell.counterGoods.text = purchase.count.formatted()
-        cell.purchaseModel.text = purchase.product.model
-        cell.purchaseCompany.text = purchase.product.company
-        cell.purchaseArticle.text = purchase.product.article
-        cell.purchasePrice.text = purchase.product.price.toRubleCurrency() + "/шт."
-        cell.purchaseSum.text = purchase.totalPrice.toRubleCurrency()
-        cell.purchaseImage.image = UIImage(named: purchase.product.article)
-        cell.purchaseImage.layer.cornerRadius = 10
-        
+        cell.configure()
+                
         return cell
     }
 }

@@ -64,8 +64,6 @@ class OrderListViewController: UITableViewController {
     // MARK: - Navigation
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        guard let user = activeUser else { return }
-        
         if let orderVC = segue.destination as? OrderTableViewController {
             if let indexPath = tableView.indexPathForSelectedRow {
                 orderVC.order = orders[indexPath.row]
@@ -73,8 +71,8 @@ class OrderListViewController: UITableViewController {
         } else if let navigationVC = segue.destination as? UINavigationController {
             if let loginVC = navigationVC.topViewController as? LoginViewController {
                 loginVC.delegate = self
-
             } else if let userMenuVC = navigationVC.topViewController as? UserMenuViewController {
+                guard let user = activeUser else { return }
                 userMenuVC.delegate = self
                 userMenuVC.user = user
             }
