@@ -20,12 +20,14 @@ class CatalogTableViewController: UIViewController {
     @IBOutlet var totalSumLabel: UILabel!
     @IBOutlet var purchaseInfo: UIView!
     @IBOutlet var cartInButton: UIButton!
+    @IBOutlet var activityIndicator: UIActivityIndicatorView!
     
     var delegate: TabBarControllerDelegate!
     var purchases: [Purchase] = []
     
     // MARK: - Private properties
     
+    private var refreshControl = UIRefreshControl()
     private var totalSum = 0 {
         didSet {
             totalSumLabel.text = totalSum.toRubleCurrency()
@@ -38,7 +40,12 @@ class CatalogTableViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        setupRefreshControl()
+        
         cartInButton.layer.cornerRadius = 15
+        
+        activityIndicator.startAnimating()
+        activityIndicator.hidesWhenStopped = true
         
         fetchProducts()
     }
@@ -81,8 +88,7 @@ class CatalogTableViewController: UIViewController {
             purchaseInfo.isHidden = false
             bottom = CGFloat(purchaseInfo.frame.height)
         }
-        
-        tableView.reloadData()
+                
         tableView.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: bottom, right: 0)
     }
     
@@ -93,6 +99,13 @@ class CatalogTableViewController: UIViewController {
         }
     }
     
+    private func setupRefreshControl() {
+        refreshControl.addTarget(self, action: #selector(fetchProducts), for: .valueChanged)
+        refreshControl.tintColor = .systemIndigo
+        tableView.refreshControl = refreshControl
+    }
+    
+    // MARK: - Navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if let indexPath = tableView.indexPathForSelectedRow {
             tableView.deselectRow(at: indexPath, animated: true)
@@ -107,10 +120,6 @@ class CatalogTableViewController: UIViewController {
 // MARK: - UITableViewDataSource
 extension CatalogTableViewController: UITableViewDataSource {
     
-    func tableView(_ tableView: UITableView, didDeselectRowAt indexPath: IndexPath) {
-        tableView.deselectRow(at: indexPath, animated: true)
-    }
-    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         purchases.count
     }
@@ -122,14 +131,16 @@ extension CatalogTableViewController: UITableViewDataSource {
                 for: indexPath
             ) as? CatalogViewCell
         else { return UITableViewCell() }
-        
-        let purchase = purchases[indexPath.row]
-        
-        cell.purchaseDelegate = self
-        cell.purchase = purchase
+
+        cell.delegate = self
+        cell.purchase = purchases[indexPath.row]
         cell.configure()
-                
+
         return cell
+    }
+    
+    func tableView(_ tableView: UITableView, didDeselectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: true)
     }
 }
 
@@ -143,7 +154,8 @@ extension CatalogTableViewController: UITableViewDelegate {
 }
 // MARK: - NetWorking
 extension CatalogTableViewController {
-    private func fetchProducts() {
+    @objc private func fetchProducts() {
+
         NetworkManager.shared.fetch(
             [Product].self,
             from: NetworkManager.shared.getLink(.allProducts))
@@ -152,11 +164,14 @@ extension CatalogTableViewController {
             case .success(let products):
                 DataStore.shared.products = products
                 
+                self?.purchases = []
                 for product in products {
                     self?.purchases.append(Purchase(product: product, count: 0))
                 }
                 
                 self?.tableView.reloadData()
+                self?.refreshControl.endRefreshing()
+                self?.activityIndicator?.stopAnimating()
             case .failure(let error):
                 print(error)
             }

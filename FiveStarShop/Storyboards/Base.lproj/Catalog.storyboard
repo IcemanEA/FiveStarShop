@@ -186,15 +186,15 @@
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>
+                                            <outlet property="articleLabel" destination="viT-Ng-qcr" id="RT7-ma-dBL"/>
                                             <outlet property="cartButton" destination="HoM-sp-hpj" id="xI7-1r-LLM"/>
+                                            <outlet property="companyLabel" destination="m2E-rc-6qT" id="hXz-if-0cL"/>
+                                            <outlet property="countStackView" destination="HBV-WG-Df4" id="ecg-7d-jua"/>
                                             <outlet property="counterGoods" destination="ePZ-XA-OU6" id="Eb1-dd-bZh"/>
-                                            <outlet property="purchaseArticle" destination="viT-Ng-qcr" id="3HF-Xe-Ta0"/>
-                                            <outlet property="purchaseCompany" destination="m2E-rc-6qT" id="hXz-if-0cL"/>
-                                            <outlet property="purchaseCountStack" destination="HBV-WG-Df4" id="ecg-7d-jua"/>
-                                            <outlet property="purchaseImage" destination="BK7-Ob-KYS" id="WHa-LE-bz2"/>
-                                            <outlet property="purchaseModel" destination="O73-AB-8Ja" id="VFJ-DY-iyS"/>
-                                            <outlet property="purchasePrice" destination="SA8-vX-hdv" id="9f1-OM-Vii"/>
-                                            <outlet property="purchaseSum" destination="jgi-Cn-Jtc" id="JUL-LO-EkU"/>
+                                            <outlet property="modelLabel" destination="O73-AB-8Ja" id="VFJ-DY-iyS"/>
+                                            <outlet property="priceLabel" destination="SA8-vX-hdv" id="ONC-0D-50r"/>
+                                            <outlet property="productImageView" destination="BK7-Ob-KYS" id="1Bj-vw-VIF"/>
+                                            <outlet property="sumLabel" destination="jgi-Cn-Jtc" id="qF7-wf-bJI"/>
                                             <segue destination="KgM-nJ-y76" kind="show" id="mvA-Nq-Fk9"/>
                                         </connections>
                                     </tableViewCell>
@@ -256,21 +256,27 @@
                                     <constraint firstItem="4NY-6m-k3x" firstAttribute="leading" secondItem="jBe-rX-yZi" secondAttribute="leading" constant="16" id="rLb-ZD-uOC"/>
                                 </constraints>
                             </view>
+                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="large" translatesAutoresizingMaskIntoConstraints="NO" id="Sda-dU-sGa">
+                                <rect key="frame" x="141.5" y="265.5" width="37" height="37"/>
+                            </activityIndicatorView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="bRB-Xr-8Xn" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="0qB-mI-UNZ"/>
                             <constraint firstItem="bRB-Xr-8Xn" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="KX5-xS-wdo"/>
+                            <constraint firstItem="Sda-dU-sGa" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="UsX-Zf-Tzj"/>
                             <constraint firstItem="jBe-rX-yZi" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="WXp-HB-IR1"/>
                             <constraint firstAttribute="trailing" secondItem="jBe-rX-yZi" secondAttribute="trailing" id="a2J-Gv-Nua"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="jBe-rX-yZi" secondAttribute="bottom" id="d9g-bk-k9f"/>
                             <constraint firstItem="bRB-Xr-8Xn" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="pV0-SA-8P0"/>
+                            <constraint firstItem="Sda-dU-sGa" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="qVP-Zz-hap"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="bRB-Xr-8Xn" secondAttribute="bottom" id="va2-wI-yuT"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Товары" id="DBE-av-AUX"/>
                     <connections>
+                        <outlet property="activityIndicator" destination="Sda-dU-sGa" id="cAk-KI-jGP"/>
                         <outlet property="cartInButton" destination="27a-a9-nKR" id="RbV-4Z-yzw"/>
                         <outlet property="purchaseInfo" destination="jBe-rX-yZi" id="3by-Yw-RL5"/>
                         <outlet property="tableView" destination="bRB-Xr-8Xn" id="cfC-Ny-FFO"/>

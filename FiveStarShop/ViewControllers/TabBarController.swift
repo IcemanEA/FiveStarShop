@@ -13,8 +13,16 @@ protocol TabBarControllerDelegate {
 
 class TabBarController: UITabBarController {
     
+    private var user: User? = nil {
+        didSet {
+            setActivesUser()
+        }
+    }
+    
     override func viewDidLoad() {
         guard let viewControllers = viewControllers else { return }
+        
+        fetchUser()
         
         viewControllers.forEach { viewController in
             guard let navigatorVC = viewController as? UINavigationController else { return }
@@ -28,7 +36,35 @@ class TabBarController: UITabBarController {
             }
         }
     }
+    
+    private func setActivesUser() {
+        guard let viewControllers = viewControllers else { return }
+        
+        viewControllers.forEach { viewController in
+            guard let navigatorVC = viewController as? UINavigationController else { return }
+            
+            if let ordersVC = navigatorVC.topViewController as? OrderListViewController {
+                ordersVC.activeUser = user
+            }
+        }
+    }
+}
 
+// MARK: - NetWorking
+extension TabBarController {
+    private func fetchUser() {
+        guard let userID = StorageManager.shared.fetchUserID() else { return }
+        let link = NetworkManager.shared.getUserLink(for: userID.uuidString, .backslash)
+        
+        NetworkManager.shared.fetch(User.self, from: link) { [weak self] result in
+            switch result {
+            case .success(let user):
+                self?.user = user
+            case .failure(let error):
+                print(error)
+            }
+        }
+    }
 }
 
 // MARK: - TabBarControllerDelegate

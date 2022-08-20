@@ -8,30 +8,32 @@
 import Foundation
 
 enum Link: String {
+    case backslash = "/"
     case images = "/five_star_shop/"
     case allProducts = "/api/products"
     case authentication = "/api/users"
     case registration = "/api/users/add"
+    case activeUser = "/api/users/"
+    case activeUserOrders = "/orders/"
 }
 
-enum NetworkError: Error {
-    case invalidURL
-    case noData
-    case notFound
-    case dublicateUser
-    case decodingError
-    case notResponse
+enum PostRequestType {
+    case checkUserPassword
 }
 
-class NetworkManager {
+final class NetworkManager {
     static let shared = NetworkManager()
     
-    private let hostname = "https://ledkov.org" // "http://localhost:8080"
-    
+    private let hostname = "http://localhost:8080"
+    //private let hostname = "https://ledkov.org"
+
     private init() {}
     
     func getLink(_ link: Link) -> String {
         hostname + link.rawValue
+    }
+    func getUserLink(for userID: String, _ link: Link) -> String {
+        hostname + Link.activeUser.rawValue + userID + link.rawValue
     }
     
     func fetch<T: Decodable>(_ type: T.Type, from url: String?, completion: @escaping(Result<T,NetworkError>) -> Void) {
@@ -39,30 +41,29 @@ class NetworkManager {
             completion(.failure(.invalidURL))
             return
         }
-        
+
         URLSession.shared.dataTask(with: url) { (data, _, error) in
             guard let data = data else {
                 completion(.failure(.noData))
+                print(error?.localizedDescription ?? "No error description")
                 return
             }
+
             do {
                 let decoder = JSONDecoder()
                 decoder.keyDecodingStrategy = .convertFromSnakeCase
-                let type = try decoder.decode(T.self, from: data)
+                let jsonDecodeData = try decoder.decode(T.self, from: data)
                 DispatchQueue.main.async {
-                    completion(.success(type))
+                    completion(.success(jsonDecodeData))
                 }
             } catch {
+                print(error)
                 completion(.failure(.decodingError))
             }
         }.resume()
     }
     
-    func fetchImage(from url: String?, completion: @escaping(Result<Data, NetworkError>) -> Void) {
-        guard let url = URL(string: url ?? "") else {
-            completion(.failure(.invalidURL))
-            return
-        }
+    func fetchImage(from url: URL, completion: @escaping(Result<Data, NetworkError>) -> Void) {        
         DispatchQueue.global().async {
             guard let imageData = try? Data(contentsOf: url) else {
                 completion(.failure(.noData))
@@ -98,7 +99,7 @@ class NetworkManager {
                 case 404:
                     completion(.failure(.notFound))
                     return
-                case 302:
+                case 208:
                     completion(.failure(.dublicateUser))
                     return
                 default:
@@ -108,5 +109,26 @@ class NetworkManager {
                 completion(.failure(.notResponse))
             }
         }.resume()
+    }
+    
+    func setupRequestBody(_ requestType: PostRequestType, data: Any) -> [String: Any] {
+        var request: [String: Any] = [:]
+        
+        switch requestType {
+        case .checkUserPassword:
+            guard let credits = data as? [String] else { return [:] }
+            
+            if credits.count >= 2 {
+                request = [
+                    "username": credits[0],
+                    "password": credits[1]
+                ]
+            }
+            if credits.count == 3 {
+                request["name"] = credits[2]
+            }
+        }
+        
+        return request
     }
 }

@@ -7,30 +7,37 @@
 
 import UIKit
 
-class CatalogViewCell: UITableViewCell {
+class CatalogViewCell: UITableViewCell, ProductCellProtocol {
     
-// MARK: - IBOutlets and public properties
+    // MARK: - IBOutlets and public properties
     
     @IBOutlet var counterGoods: UILabel!
     
-    @IBOutlet var purchaseImage: UIImageView!
+    @IBOutlet var productImageView: UIImageView!
     
-    @IBOutlet var purchaseModel: UILabel!
-    @IBOutlet var purchaseCompany: UILabel!
-    @IBOutlet var purchaseArticle: UILabel!
-    @IBOutlet var purchasePrice: UILabel!
+    @IBOutlet var modelLabel: UILabel!
+    @IBOutlet var companyLabel: UILabel!
+    @IBOutlet var articleLabel: UILabel!
+    @IBOutlet var priceLabel: UILabel!
     
-    @IBOutlet var purchaseSum: UILabel!
-    @IBOutlet var purchaseCountStack: UIStackView!
+    @IBOutlet var sumLabel: UILabel!
+    @IBOutlet var countStackView: UIStackView!
     @IBOutlet var cartButton: UIButton!
     
-    var purchaseDelegate: CatalogViewCellDelegate!
+    var delegate: CatalogViewCellDelegate!
     var purchase: Purchase! {
         didSet {
-            purchaseSum.text = purchase.totalPrice.toRubleCurrency()
+            sumLabel.text = purchase.totalPrice.toRubleCurrency()
         
             cartButton.isHidden = purchase.count > 0
-            purchaseCountStack.isHidden = !cartButton.isHidden
+            countStackView.isHidden = !cartButton.isHidden
+        }
+    }
+    
+    private var imageURL: URL? {
+        didSet {
+            productImageView.image = nil
+            updateImage()
         }
     }
     
@@ -41,7 +48,7 @@ class CatalogViewCell: UITableViewCell {
         counter = counter - 1 <= 0 ? 0 : counter - 1
         counterGoods.text = counter.formatted()
         purchase.count = counter
-        purchaseDelegate.calculateTotalSum(with: purchase)
+        delegate.calculateTotalSum(with: purchase)
     }
     
     @IBAction func plusButtonPressed() {
@@ -49,30 +56,59 @@ class CatalogViewCell: UITableViewCell {
         counter += 1
         counterGoods.text = counter.formatted()
         purchase.count = counter
-        purchaseDelegate.calculateTotalSum(with: purchase)
+        delegate.calculateTotalSum(with: purchase)
     }
     
     // MARK: - Configure UI
     func configure() {
         
         counterGoods.text = purchase.count.formatted()
-        purchaseModel.text = purchase.product.model
-        purchaseCompany.text = purchase.product.company
-        purchaseArticle.text = purchase.product.article
-        purchasePrice.text = purchase.product.price.toRubleCurrency() + "/шт."
-        purchaseSum.text = purchase.totalPrice.toRubleCurrency()
-        purchaseImage.layer.cornerRadius = 10
+        modelLabel.text = purchase.product.model
+        companyLabel.text = purchase.product.company
+        articleLabel.text = purchase.product.article
+        priceLabel.text = (purchase.product.price ?? 0).toRubleCurrency() + "/шт."
+        sumLabel.text = purchase.totalPrice.toRubleCurrency()
+        productImageView.layer.cornerRadius = 10
                 
-        let link = NetworkManager.shared.getLink(.images) + purchase.product.article + ".jpg"
-        
-        NetworkManager.shared.fetchImage(from: link) { [weak self] result in
+        imageURL = getImageURL(for: purchase.product.article)
+    }
+    
+    // MARK: - Private functions
+    private func updateImage() {
+        guard let updateImageURL = imageURL else { return }
+        getImage(from: updateImageURL) { [weak self] result in
             switch result {
-            case .success(let imageData):
-                self?.purchaseImage.image = UIImage(data: imageData)
+            case .success(let image):
+                if updateImageURL == self?.imageURL {
+                    self?.productImageView.image = image
+                }
             case .failure(let error):
                 print(error)
-                self?.purchaseImage.image = UIImage(named: "imagePlaceholder.png")
+                self?.productImageView.image = UIImage(named: "imagePlaceholder.png")
             }
         }
     }
+    
+//    private func getImage(from url: URL, completion: @escaping(Result<UIImage, Error>) -> Void) {
+//        // Загружаем из кэша
+//        if let cachedImage = ImageCacheManager.shared.object(forKey: url.lastPathComponent as NSString) {
+//            print("Image from cache: ", url.lastPathComponent)
+//            completion(.success(cachedImage))
+//            return
+//        }
+//
+//        // Загружаем из сети
+//        NetworkManager.shared.fetchImage(from: url) { result in
+//            switch result {
+//            case .success(let imageData):
+//                guard let uiImage = UIImage(data: imageData) else { return }
+//                ImageCacheManager.shared.setObject(uiImage, forKey: url.lastPathComponent as NSString)
+//                print("Image form NET", url.lastPathComponent)
+//                completion(.success(uiImage))
+//            case .failure(let error):
+//                completion(.failure(error))
+//            }
+//        }
+//
+//    }
 }

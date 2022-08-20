@@ -15,19 +15,29 @@ protocol LoginViewControllerDelegate {
 
 class OrderListViewController: UITableViewController {
     
+    // MARK: - public properties
+    
     var delegate: TabBarControllerDelegate!
     var activeUser: User? = nil {
         didSet {
             navigationItem.rightBarButtonItem?.title = activeUser?.name ?? "Авторизация"
-            tableView.reloadData()
         }
     }
     
-    private var orders: [Order] = []
+    // MARK: - private properties
     
+    private var orders: [Order] = []
     private var transitToCartIs = false
     
     // MARK: - Override methods
+    
+    override func viewDidLoad() {
+        setupRefreshControl()
+        
+        if activeUser != nil {
+            fetchOrders()
+        }
+    }
     
     override func viewWillAppear(_ animated: Bool) {
         if transitToCartIs {
@@ -36,6 +46,16 @@ class OrderListViewController: UITableViewController {
         }
     }
         
+    // MARK: - IBActions
+    
+    @IBAction func authorizeBtnPressed(_ sender: Any) {
+        if activeUser == nil {
+            performSegue(withIdentifier: "login", sender: nil)
+        } else {
+            performSegue(withIdentifier: "userMenu", sender: nil)
+        }
+    }
+    
     // MARK: - Table view data source
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -47,7 +67,7 @@ class OrderListViewController: UITableViewController {
         let order = orders[indexPath.row]
         
         var content = cell.defaultContentConfiguration()
-        content.text = "Заказ №\(String(order.id))"
+        content.text = "Заказ №\(String(order.number))"
         content.secondaryText = order.date
         cell.contentConfiguration = content
         return cell
@@ -55,10 +75,6 @@ class OrderListViewController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
-    }
-    
-    func addOrderToActiveUser(_ order: Order) {
-        orders.append(order)
     }
     
     // MARK: - Navigation
@@ -83,25 +99,48 @@ class OrderListViewController: UITableViewController {
         transitToCartIs = true
     }
     
-    // MARK: - Authorize button setup
+    // MARK: - Private functions
     
-    @IBAction func authorizeBtnPressed(_ sender: Any) {
-        if activeUser == nil {
-            performSegue(withIdentifier: "login", sender: nil)
-        } else {
-            performSegue(withIdentifier: "userMenu", sender: nil)
+    func addOrderToActiveUser(_ order: Order) {
+        orders.append(order)
+    }
+    
+    @objc private func fetchOrders() {
+        guard let userID = StorageManager.shared.fetchUserID() else { return }
+        let link = NetworkManager.shared.getUserLink(for: userID.uuidString, .activeUserOrders)
+        
+        NetworkManager.shared.fetch([Order].self, from: link) { [weak self] result in
+            switch result {
+            case .success(let orders):
+                self?.orders = Order.updateProductInformation(for: orders)
+                self?.tableView.reloadData()
+                self?.refreshControl?.endRefreshing()
+            case .failure(let error):
+                print(error)
+            }
         }
+    }
+    
+    private func setupRefreshControl() {
+        refreshControl = UIRefreshControl()
+        refreshControl?.addTarget(self, action: #selector(fetchOrders), for: .valueChanged)
+        refreshControl?.tintColor = .systemIndigo
     }
 }
 
-// MARK: - User login/logout logic setup
+// MARK: - LoginViewControllerDelegate
 
 extension OrderListViewController: LoginViewControllerDelegate {
     func setUser(_ user: User) {
+        StorageManager.shared.save(userID: user.id)
         activeUser = user
+        fetchOrders()
     }
     
     func logOutUser() {
+        orders = []
+        tableView.reloadData()
+        StorageManager.shared.deleteUserID()
         activeUser = nil
     }
 }

@@ -37,7 +37,7 @@ class OrderTableViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         navigationItem.backButtonTitle = "Назад"
-        title = "Заказ № \(order.id) от \(order.date)"
+        title = "Заказ № \(order.number) от \(order.date)"
         getTotalCartSum()
     }
     
@@ -92,27 +92,17 @@ extension OrderTableViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
 
-        guard let cell = tableView.dequeueReusableCell(
-            withIdentifier: "PurchaseOrderCell",
-            for: indexPath
-        ) as? OrderViewCell
-        else
-        {
+        guard
+            let cell = tableView.dequeueReusableCell(
+                withIdentifier: "PurchaseOrderCell",
+                for: indexPath
+            ) as? OrderViewCell
+        else {
             return UITableViewCell()
         }
         
-        let purchase = order.purchases[indexPath.row]
-        
-        cell.purchase = purchase
-        
-        cell.counterGoods.text = purchase.count.formatted() + " шт."
-        cell.purchaseModel.text = purchase.product.model
-        cell.purchaseCompany.text = purchase.product.company
-        cell.purchaseArticle.text = purchase.product.article
-        cell.purchasePrice.text = purchase.product.price.toRubleCurrency() + "/шт."
-        cell.purchaseSum.text = purchase.totalPrice.toRubleCurrency()
-        cell.purchaseImage.image = UIImage(named: purchase.product.article)
-        cell.purchaseImage.layer.cornerRadius = 10
+        cell.purchase = order.purchases[indexPath.row]
+        cell.configure()
         
         return cell
     }

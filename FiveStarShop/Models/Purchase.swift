@@ -8,11 +8,12 @@
 import Foundation
 
 
-struct Purchase: Equatable {
-    let product: Product
+struct Purchase: Decodable, Equatable {
+    var id: UUID? = nil
+    var product: Product
     var count: Int
     var totalPrice: Int {
-        product.price * count
+        (product.price ?? 0) * count
     }
     
     static func ==(lhs: Purchase, rhs: Purchase) -> Bool {

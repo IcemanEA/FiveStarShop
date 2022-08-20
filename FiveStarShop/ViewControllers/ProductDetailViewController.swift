@@ -7,9 +7,8 @@
 
 import UIKit
 
-class ProductDetailViewController: UIViewController {
-
-// MARK: - IBOutlets
+class ProductDetailViewController: UIViewController, ProductCellProtocol {
+    // MARK: - IBOutlets and properties
     
     @IBOutlet var image: UIImageView!
     @IBOutlet var name: UILabel!
@@ -17,30 +16,38 @@ class ProductDetailViewController: UIViewController {
     @IBOutlet var productDescription: UILabel!
     
     var product: Product!
+    private var imageURL: URL?
     
-// MARK: - Override methods
+    // MARK: - Override methods
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        let link = NetworkManager.shared.getLink(.images) + product.article + ".jpg"
-        
-        NetworkManager.shared.fetchImage(from: link) { [weak self] result in
+        name.text = product.name
+        price.text = (product.price ?? 0).toRubleCurrency()
+        productDescription.text = product.description
+        imageURL = getImageURL(for: product.article)
+        updateImage()
+    }
+    
+    override func viewWillLayoutSubviews() {
+        image.layer.cornerRadius = image.frame.height / 10
+    }
+    
+    // MARK: - Private functions
+    
+    private func updateImage() {
+        guard let updateImageURL = imageURL else { return }
+        getImage(from: updateImageURL) { [weak self] result in
             switch result {
-            case .success(let imageData):
-                self?.image.image = UIImage(data: imageData)
+            case .success(let image):
+                if updateImageURL == self?.imageURL {
+                    self?.image.image = image
+                }
             case .failure(let error):
                 print(error)
                 self?.image.image = UIImage(named: "imagePlaceholder.png")
             }
         }
-        
-        name.text = product.name
-        price.text = product.price.toRubleCurrency()
-        productDescription.text = product.description
-    }
-    
-    override func viewWillLayoutSubviews() {
-        image.layer.cornerRadius = image.frame.height / 10
     }
 }

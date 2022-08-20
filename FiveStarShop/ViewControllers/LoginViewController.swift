@@ -9,12 +9,16 @@ import UIKit
 
 class LoginViewController: UIViewController {
     
+    // MARK: - IBOutlets and public properties
+    
     @IBOutlet var userTextField: UITextField!
     @IBOutlet var passwordTextField: UITextField!
     @IBOutlet var nameTextField: UITextField!
     @IBOutlet var loginBtn: UIButton!
     
     var delegate: LoginViewControllerDelegate!
+    
+    // MARK: - Private properties
     
     private let primaryColor = UIColor(
         red: 210/255,
@@ -29,6 +33,8 @@ class LoginViewController: UIViewController {
         alpha: 1
     )
     
+    // MARK: - Override functions
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         view.addVerticalGradientLayer(topColor: primaryColor, bottomColor: secondaryColor)
@@ -39,14 +45,12 @@ class LoginViewController: UIViewController {
         super.touchesBegan(touches, with: event)
         view.endEditing(true)
     }
-    
-    
-    // MARK: - Login screen buttons setup
+        
+    // MARK: - IBActions
     
     @IBAction func logInSCChanged(_ sender: UISegmentedControl) {
         updateUI(sender.selectedSegmentIndex)
     }
-    
     
     @IBAction func loginBtnPressed() {
         guard
@@ -55,29 +59,26 @@ class LoginViewController: UIViewController {
             passwordTextField.text != "",
             let password = passwordTextField.text
         else {
-            showAlert(
-                title: "Неверный ввод",
-                message: "Пожалуйста, введите имя пользователя и пароль!"
-            )
+            showAlert(("Неверный ввод",
+                       "Пожалуйста, введите имя пользователя и пароль!"))
             return
         }
-        var userCredits = [
-            "username": username,
-            "password": password
-        ]
+        
         if !nameTextField.isHidden {
             guard nameTextField.text != "" else {
-                showAlert(
-                    title: "Неверный ввод",
-                    message: "Пожалуйста, введите Ваше имя!"
-                )
+                showAlert(("Неверный ввод", "Пожалуйста, введите Ваше имя!"))
                 return
             }
             
-            userCredits["name"] = nameTextField.text
-            registration(requestBody: userCredits)
+            registration(requestBody: NetworkManager.shared.setupRequestBody(
+                .checkUserPassword,
+                data: [username, password, nameTextField.text]
+            ))
         } else {
-            logIn(requestBody: userCredits)
+            logIn(requestBody: NetworkManager.shared.setupRequestBody(
+                .checkUserPassword,
+                data: [username, password]
+            ))
         }
     }
     
@@ -85,7 +86,7 @@ class LoginViewController: UIViewController {
         dismiss(animated: true)
     }
     
-    // MARK: - Alert message setup
+    // MARK: - Private func
     
     private func updateUI(_ index: Int = 0) {
         if index == 0 {
@@ -97,7 +98,7 @@ class LoginViewController: UIViewController {
         }
     }
     
-    private func registration(requestBody: [String: String]) {
+    private func registration(requestBody: [String: Any]) {
         NetworkManager.shared.postRequest(
             with: requestBody,
             to: NetworkManager.shared.getLink(.registration)) { [weak self] result in
@@ -112,46 +113,38 @@ class LoginViewController: UIViewController {
                         self?.dismiss(animated: true)
                     }
                 case .failure(let error):
-                    print(error)
-                    if error == .dublicateUser {
-                        self?.showAlert(
-                            title: "Пользователь существует!",
-                            message: "Пожалуйста, введите новые данные!"
-                        )
-                    }
+                    self?.showAlert( ErrorTypeManager.shared.getErrorAlert(error))
                 }
             }
     }
     
-    private func logIn(requestBody: [String: String]) {
+    private func logIn(requestBody: [String: Any]) {
         NetworkManager.shared.postRequest(
             with: requestBody,
-            to: NetworkManager.shared.getLink(.authentication)) { [weak self] result in
-                switch result {
-                case .success(let data):
-                    guard
-                        let user = try? JSONDecoder().decode(User.self, from: data)
-                    else { return }
-
-                    DispatchQueue.main.async {
-                        self?.delegate.setUser(user)
-                        self?.dismiss(animated: true)
-                    }
-                case .failure(let error):
-                    print(error)
-                    if error == .notFound {
-                        self?.showAlert(
-                            title: "Неверный логин или пароль!",
-                            message: "Пожалуйста, введите корректные данные!"
-                        )
-                    }
+            to: NetworkManager.shared.getLink(.authentication))
+        { [weak self] result in
+            switch result {
+            case .success(let data):
+                guard
+                    let user = try? JSONDecoder().decode(User.self, from: data)
+                else {
+                    self?.showAlert( ErrorTypeManager.shared.getErrorAlert(.decodingError))
+                    return
                 }
+
+                DispatchQueue.main.async {
+                    self?.delegate.setUser(user)
+                    self?.dismiss(animated: true)
+                }
+            case .failure(let error):
+                self?.showAlert( ErrorTypeManager.shared.getErrorAlert(error))
             }
+        }
     }
     
-    private func showAlert(title: String, message: String, textField: UITextField? = nil) {
+    private func showAlert(_ text: (String, String), textField: UITextField? = nil) {
         DispatchQueue.main.async {
-            let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
+            let alert = UIAlertController(title: text.0, message: text.1, preferredStyle: .alert)
             let okAction = UIAlertAction(title: "OK", style: .default) { _ in
                 textField?.text = ""
             }

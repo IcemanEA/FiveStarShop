@@ -84,8 +84,8 @@ class PurchaseTableViewController: UIViewController {
     // MARK: - private methods
     
     private func newOrder(for user: User, on viewController: OrderListViewController?) {
-        let order = Order(id: 1,
-                          date: NSDate.now.formatted(date: .numeric, time: .omitted),
+        let order = Order(number: 1,
+                          date: "01.01.2022",
                           purchases: purchases)
         
         viewController?.addOrderToActiveUser(order)
@@ -180,29 +180,18 @@ extension PurchaseTableViewController: UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-
-        guard let cell = tableView.dequeueReusableCell(
-            withIdentifier: "PurchaseCell",
-            for: indexPath
-        ) as? PurchaseViewCell
-        else
-        {
+        guard
+            let cell = tableView.dequeueReusableCell(
+                withIdentifier: "PurchaseCell",
+                for: indexPath
+            ) as? PurchaseViewCell
+        else {
             return UITableViewCell()
         }
-        
-        let purchase = purchases[indexPath.row]
-        
-        cell.purchaseDelegate = self
-        cell.purchase = purchase
-        
-        cell.counterGoods.text = purchase.count.formatted()
-        cell.purchaseModel.text = purchase.product.model
-        cell.purchaseCompany.text = purchase.product.company
-        cell.purchaseArticle.text = purchase.product.article
-        cell.purchasePrice.text = purchase.product.price.toRubleCurrency() + "/шт."
-        cell.purchaseSum.text = purchase.totalPrice.toRubleCurrency()
-        cell.purchaseImage.image = UIImage(named: purchase.product.article)
-        cell.purchaseImage.layer.cornerRadius = 10
+                
+        cell.delegate = self
+        cell.purchase = purchases[indexPath.row]
+        cell.configure()
         
         return cell
     }
@@ -210,11 +199,6 @@ extension PurchaseTableViewController: UITableViewDataSource {
 
 // MARK: - UITableViewDelegate
 extension PurchaseTableViewController: UITableViewDelegate {
-    
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        tableView.deselectRow(at: indexPath, animated: true)
-    }
-    
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         120
     }
@@ -226,6 +210,10 @@ extension PurchaseTableViewController: UITableViewDelegate {
             clearIfCartIsEmpty()
             getTotalCartSum()
         }
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: true)
     }
 }
 
