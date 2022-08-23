@@ -68,7 +68,7 @@ class OrderListViewController: UITableViewController {
         
         var content = cell.defaultContentConfiguration()
         content.text = "Заказ №\(String(order.number))"
-        content.secondaryText = order.date
+        content.secondaryText = order.getLocalizedDate()
         cell.contentConfiguration = content
         return cell
     }
@@ -102,7 +102,9 @@ class OrderListViewController: UITableViewController {
     // MARK: - Private functions
     
     func addOrderToActiveUser(_ order: Order) {
-        orders.append(order)
+        orders.insert(order, at: 0)
+        tableView.reloadData()
+//        tableView.insertRows(at: [IndexPath.init(row: 0, section: 0)], with: .none)
     }
     
     @objc private func fetchOrders() {

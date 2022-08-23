@@ -60,7 +60,7 @@ class CatalogTableViewController: UIViewController {
             }
         }
         getTotalCartSum()
-        
+        tableView.reloadData()
         updateUI()
     }
     

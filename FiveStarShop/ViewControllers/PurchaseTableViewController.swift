@@ -84,27 +84,50 @@ class PurchaseTableViewController: UIViewController {
     // MARK: - private methods
     
     private func newOrder(for user: User, on viewController: OrderListViewController?) {
-        let order = Order(number: 1,
-                          date: "01.01.2022",
-                          purchases: purchases)
-        
-        viewController?.addOrderToActiveUser(order)
-        
-        let alert = UIAlertController(
-            title: "Заказ оформлен",
-            message: "Поздравляем с покупкой!",
-            preferredStyle: .alert
-        )
-        
-        let okAction = UIAlertAction(title: "OK", style: .default) { [weak self] _ in
-            self?.clearCart()
-            self?.delegate.openTab(with: .orders)
+        Order.uploadToServer(for: user.id, with: purchases) { [weak self] result in
+            switch result {
+            case .success(let order):
+                DispatchQueue.main.async {
+                    if let ordersVC = viewController {
+                        ordersVC.addOrderToActiveUser(order)
+                    }
+                    self?.showNewOrderAlert()
+                }
+            case .failure(let error):
+                self?.showAlert(ErrorTypeManager.shared.getErrorAlert(error))
+            }
         }
-                    
-        alert.addAction(okAction)
-        
-        present(alert, animated: true)
     }
+                             
+    private func showNewOrderAlert() {
+     //   DispatchQueue.main.async { [weak self] in
+            let alert = UIAlertController(
+                title: "Заказ оформлен",
+                message: "Поздравляем с покупкой!",
+                preferredStyle: .alert
+            )
+            
+            let okAction = UIAlertAction(title: "OK", style: .default) { [weak self] _ in
+                self?.clearCart()
+                self?.delegate.openTab(with: .orders)
+            }
+            
+            alert.addAction(okAction)
+            
+            present(alert, animated: true)
+     //   }
+    }
+         
+     private func showAlert(_ text: (String, String), textField: UITextField? = nil) {
+         DispatchQueue.main.async {
+             let alert = UIAlertController(title: text.0, message: text.1, preferredStyle: .alert)
+             let okAction = UIAlertAction(title: "OK", style: .default) { _ in
+                 textField?.text = ""
+             }
+             alert.addAction(okAction)
+             self.present(alert, animated: true)
+         }
+     }
     
     private func authorize(on viewController: OrderListViewController?) {
         let alert = UIAlertController(

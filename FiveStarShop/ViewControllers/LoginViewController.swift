@@ -137,7 +137,7 @@ class LoginViewController: UIViewController {
                     self?.dismiss(animated: true)
                 }
             case .failure(let error):
-                self?.showAlert( ErrorTypeManager.shared.getErrorAlert(error))
+                self?.showAlert(ErrorTypeManager.shared.getErrorAlert(error))
             }
         }
     }

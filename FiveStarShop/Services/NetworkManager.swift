@@ -15,10 +15,12 @@ enum Link: String {
     case registration = "/api/users/add"
     case activeUser = "/api/users/"
     case activeUserOrders = "/orders/"
+    case addOrder = "/api/orders/"
 }
 
 enum PostRequestType {
     case checkUserPassword
+    case addOrder
 }
 
 final class NetworkManager {
@@ -111,7 +113,7 @@ final class NetworkManager {
         }.resume()
     }
     
-    func setupRequestBody(_ requestType: PostRequestType, data: Any) -> [String: Any] {
+    func setupRequestBody(_ requestType: PostRequestType, userID: UUID? = nil, data: Any) -> [String: Any] {
         var request: [String: Any] = [:]
         
         switch requestType {
@@ -127,8 +129,23 @@ final class NetworkManager {
             if credits.count == 3 {
                 request["name"] = credits[2]
             }
+        case .addOrder:
+            guard let credits = data as? [Purchase] else { return [:] }
+            
+            var purchases: [[String: Any]] = []
+            for credit in credits {
+                let purchase: [String: Any] = [
+                    "productID": credit.product.id?.uuidString ?? "",
+                    "count": credit.count
+                ]
+                purchases.append(purchase)
+            }
+            
+            request = [
+                "userID": userID?.uuidString ?? "",
+                "purchases": purchases
+            ]
         }
-        
         return request
     }
 }

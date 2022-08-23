@@ -37,7 +37,7 @@ class OrderTableViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         navigationItem.backButtonTitle = "Назад"
-        title = "Заказ № \(order.number) от \(order.date)"
+        title = "Заказ № \(order.number) от \(order.getLocalizedDate())"
         getTotalCartSum()
     }
     
