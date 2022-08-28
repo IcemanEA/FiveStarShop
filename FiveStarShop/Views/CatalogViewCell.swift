@@ -61,16 +61,17 @@ class CatalogViewCell: UITableViewCell, ProductCellProtocol {
     
     // MARK: - Configure UI
     func configure() {
-        
-        counterGoods.text = purchase.count.formatted()
-        modelLabel.text = purchase.product.model
-        companyLabel.text = purchase.product.company
-        articleLabel.text = purchase.product.article
-        priceLabel.text = (purchase.product.price ?? 0).toRubleCurrency() + "/шт."
-        sumLabel.text = purchase.totalPrice.toRubleCurrency()
-        productImageView.layer.cornerRadius = 10
-                
-        imageURL = getImageURL(for: purchase.product.article)
+        DispatchQueue.main.async { [unowned self] in
+            counterGoods.text = purchase.count.formatted()
+            modelLabel.text = purchase.product.model
+            companyLabel.text = purchase.product.company
+            articleLabel.text = purchase.product.article
+            priceLabel.text = (purchase.product.price ?? 0).toRubleCurrency() + "/шт."
+            sumLabel.text = purchase.totalPrice.toRubleCurrency()
+            productImageView.layer.cornerRadius = 10
+            
+            imageURL = getImageURL(for: purchase.product.article)
+        }
     }
     
     // MARK: - Private functions

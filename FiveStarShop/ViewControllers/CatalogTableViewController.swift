@@ -48,6 +48,8 @@ class CatalogTableViewController: UIViewController {
         activityIndicator.hidesWhenStopped = true
         
         fetchProducts()
+                
+        print(NSSearchPathForDirectoriesInDomains(FileManager.SearchPathDirectory.libraryDirectory, FileManager.SearchPathDomainMask.userDomainMask, true))
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -92,6 +94,21 @@ class CatalogTableViewController: UIViewController {
         tableView.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: bottom, right: 0)
     }
     
+    private func loadData(_ products: [Product]) {
+        DataStore.shared.products = products
+        
+        purchases = []
+        for product in products {
+            purchases.append(Purchase(product: product, count: 0))
+            
+            //  CoreDataManager.shared.create(product
+        }
+        
+        tableView.reloadData()
+        refreshControl.endRefreshing()
+        activityIndicator?.stopAnimating()
+    }
+    
     private func getTotalCartSum() {
         totalSum = 0
         for purchase in purchases {
@@ -103,6 +120,17 @@ class CatalogTableViewController: UIViewController {
         refreshControl.addTarget(self, action: #selector(fetchProducts), for: .valueChanged)
         refreshControl.tintColor = .systemIndigo
         tableView.refreshControl = refreshControl
+    }
+    
+    private func showErrorAlert(with message: String) {
+        DispatchQueue.main.async { [weak self] in
+            let alert = UIAlertController.createAlert(withTitle: "Ошибка", andMessage: message)
+            alert.action(buttonTitle: "OK") {
+                    self?.refreshControl.endRefreshing()
+                    self?.activityIndicator?.stopAnimating()
+                }
+            self?.present(alert, animated: true)
+        }
     }
     
     // MARK: - Navigation
@@ -162,23 +190,29 @@ extension CatalogTableViewController {
         { [weak self] result in
             switch result {
             case .success(let products):
-                DataStore.shared.products = products
-                
-                self?.purchases = []
-                for product in products {
-                    self?.purchases.append(Purchase(product: product, count: 0))
-                }
-                
-                self?.tableView.reloadData()
-                self?.refreshControl.endRefreshing()
-                self?.activityIndicator?.stopAnimating()
+                self?.loadData(products)
+            case .failure(let error):
+                self?.showErrorAlert(with: error.description)
+               // self?.fetchProductsFromLocal()
+            }
+        }
+    }
+}
+
+// MARK: - CoreData
+extension CatalogTableViewController {
+    private func fetchProductsFromLocal() {
+        CoreDataManager.shared.fetchProducts { [weak self] result in
+            switch result {
+            case .success(let products):
+                self?.loadData(products)
             case .failure(let error):
                 print(error)
             }
         }
     }
 }
-
+    
 // MARK: - PurchaseViewCellDelegate
 extension CatalogTableViewController: CatalogViewCellDelegate {
     

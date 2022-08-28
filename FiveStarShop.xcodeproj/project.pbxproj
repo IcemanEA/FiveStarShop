@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4817039A28BB7528008309EF /* AlertController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4817039928BB7528008309EF /* AlertController.swift */; };
+		4819F95D28B8252300169B01 /* CoreDataMananger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4819F95C28B8252300169B01 /* CoreDataMananger.swift */; };
+		4819F96028B8260900169B01 /* FiveStarShop.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 4819F95E28B8260900169B01 /* FiveStarShop.xcdatamodeld */; };
 		4844ED262897FC3200AACB2E /* AboutUsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4844ED252897FC3200AACB2E /* AboutUsViewController.swift */; };
 		4844ED2F2897FC6E00AACB2E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4844ED2D2897FC6E00AACB2E /* Main.storyboard */; };
 		484D7EE228980CA700F6C7AA /* ShoppingCart.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 484D7EE028980CA700F6C7AA /* ShoppingCart.storyboard */; };
@@ -29,7 +32,7 @@
 		485EC6222891A6BE00C95807 /* Author.swift in Sources */ = {isa = PBXBuildFile; fileRef = 485EC6212891A6BE00C95807 /* Author.swift */; };
 		485EC6242891AAC900C95807 /* AuthorViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 485EC6232891AAC900C95807 /* AuthorViewCell.swift */; };
 		48A85BCD28A82EF40030F53B /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48A85BCC28A82EF40030F53B /* NetworkManager.swift */; };
-		48A85BCF28B0D95E0030F53B /* ErrorTypeManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48A85BCE28B0D95E0030F53B /* ErrorTypeManager.swift */; };
+		48A85BCF28B0D95E0030F53B /* NetworkError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48A85BCE28B0D95E0030F53B /* NetworkError.swift */; };
 		48A85BD128B0F6F00030F53B /* StorageManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48A85BD028B0F6F00030F53B /* StorageManager.swift */; };
 		48A85BD328B13BA30030F53B /* ImageCacheManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48A85BD228B13BA30030F53B /* ImageCacheManager.swift */; };
 		48A85BD628B163AF0030F53B /* ProductCellProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48A85BD528B163AF0030F53B /* ProductCellProtocol.swift */; };
@@ -44,6 +47,9 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		4817039928BB7528008309EF /* AlertController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertController.swift; sourceTree = "<group>"; };
+		4819F95C28B8252300169B01 /* CoreDataMananger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataMananger.swift; sourceTree = "<group>"; };
+		4819F95F28B8260900169B01 /* FiveStarShop.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = FiveStarShop.xcdatamodel; sourceTree = "<group>"; };
 		4844ED252897FC3200AACB2E /* AboutUsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AboutUsViewController.swift; sourceTree = "<group>"; };
 		4844ED2E2897FC6E00AACB2E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		484D7EE128980CA700F6C7AA /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/ShoppingCart.storyboard; sourceTree = "<group>"; };
@@ -68,7 +74,7 @@
 		485EC6212891A6BE00C95807 /* Author.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Author.swift; sourceTree = "<group>"; };
 		485EC6232891AAC900C95807 /* AuthorViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthorViewCell.swift; sourceTree = "<group>"; };
 		48A85BCC28A82EF40030F53B /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
-		48A85BCE28B0D95E0030F53B /* ErrorTypeManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorTypeManager.swift; sourceTree = "<group>"; };
+		48A85BCE28B0D95E0030F53B /* NetworkError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkError.swift; sourceTree = "<group>"; };
 		48A85BD028B0F6F00030F53B /* StorageManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StorageManager.swift; sourceTree = "<group>"; };
 		48A85BD228B13BA30030F53B /* ImageCacheManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageCacheManager.swift; sourceTree = "<group>"; };
 		48A85BD528B163AF0030F53B /* ProductCellProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductCellProtocol.swift; sourceTree = "<group>"; };
@@ -138,6 +144,7 @@
 			children = (
 				485EC6032891255600C95807 /* AppDelegate.swift */,
 				485EC6052891255600C95807 /* SceneDelegate.swift */,
+				4819F95E28B8260900169B01 /* FiveStarShop.xcdatamodeld */,
 				485EC6112891255700C95807 /* Info.plist */,
 			);
 			path = App;
@@ -155,6 +162,7 @@
 				484D7EF42898291500F6C7AA /* LoginViewController.swift */,
 				484D7EF62898291E00F6C7AA /* UserMenuViewController.swift */,
 				4844ED252897FC3200AACB2E /* AboutUsViewController.swift */,
+				4817039928BB7528008309EF /* AlertController.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -205,9 +213,10 @@
 			children = (
 				8E7FD73B28915A870022A14F /* DataStore.swift */,
 				48A85BCC28A82EF40030F53B /* NetworkManager.swift */,
-				48A85BCE28B0D95E0030F53B /* ErrorTypeManager.swift */,
+				48A85BCE28B0D95E0030F53B /* NetworkError.swift */,
 				48A85BD028B0F6F00030F53B /* StorageManager.swift */,
 				48A85BD228B13BA30030F53B /* ImageCacheManager.swift */,
+				4819F95C28B8252300169B01 /* CoreDataMananger.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -316,10 +325,12 @@
 				4844ED262897FC3200AACB2E /* AboutUsViewController.swift in Sources */,
 				48A85BD628B163AF0030F53B /* ProductCellProtocol.swift in Sources */,
 				8E7FD73928915A010022A14F /* Order.swift in Sources */,
+				4817039A28BB7528008309EF /* AlertController.swift in Sources */,
 				484D7EEE289828D900F6C7AA /* User.swift in Sources */,
 				8E7FD734289157A30022A14F /* Product.swift in Sources */,
 				484D7EF52898291500F6C7AA /* LoginViewController.swift in Sources */,
 				48A85BD328B13BA30030F53B /* ImageCacheManager.swift in Sources */,
+				4819F96028B8260900169B01 /* FiveStarShop.xcdatamodeld in Sources */,
 				48A85BD128B0F6F00030F53B /* StorageManager.swift in Sources */,
 				484D7EF32898290D00F6C7AA /* OrderListViewController.swift in Sources */,
 				48A85BCD28A82EF40030F53B /* NetworkManager.swift in Sources */,
@@ -329,12 +340,13 @@
 				484D7EE628980CE200F6C7AA /* PurchaseTableViewController.swift in Sources */,
 				8E7FD7442896F78B0022A14F /* Int.swift in Sources */,
 				484D7EE828980CED00F6C7AA /* OrderViewCell.swift in Sources */,
+				4819F95D28B8252300169B01 /* CoreDataMananger.swift in Sources */,
 				485EC6042891255600C95807 /* AppDelegate.swift in Sources */,
 				484D7EF72898291E00F6C7AA /* UserMenuViewController.swift in Sources */,
 				485EC6242891AAC900C95807 /* AuthorViewCell.swift in Sources */,
 				485EC6222891A6BE00C95807 /* Author.swift in Sources */,
 				485EC6062891255600C95807 /* SceneDelegate.swift in Sources */,
-				48A85BCF28B0D95E0030F53B /* ErrorTypeManager.swift in Sources */,
+				48A85BCF28B0D95E0030F53B /* NetworkError.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -576,6 +588,19 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		4819F95E28B8260900169B01 /* FiveStarShop.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				4819F95F28B8260900169B01 /* FiveStarShop.xcdatamodel */,
+			);
+			currentVersion = 4819F95F28B8260900169B01 /* FiveStarShop.xcdatamodel */;
+			path = FiveStarShop.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = 485EC5F82891255600C95807 /* Project object */;
 }

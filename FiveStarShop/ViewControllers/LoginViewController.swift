@@ -59,14 +59,17 @@ class LoginViewController: UIViewController {
             passwordTextField.text != "",
             let password = passwordTextField.text
         else {
-            showAlert(("Неверный ввод",
-                       "Пожалуйста, введите имя пользователя и пароль!"))
+            showAlert(
+                withTitle: "Неверный ввод",
+                andMessage: "Пожалуйста, введите имя пользователя и пароль!",
+                textField: passwordTextField
+            )
             return
         }
         
         if !nameTextField.isHidden {
             guard nameTextField.text != "" else {
-                showAlert(("Неверный ввод", "Пожалуйста, введите Ваше имя!"))
+                showAlert(withTitle: "Неверный ввод", andMessage: "Укажите имя пользователя")
                 return
             }
             
@@ -86,8 +89,7 @@ class LoginViewController: UIViewController {
         dismiss(animated: true)
     }
     
-    // MARK: - Private func
-    
+    // MARK: - Private methods    
     private func updateUI(_ index: Int = 0) {
         if index == 0 {
             loginBtn.setTitle("Войти", for: .normal)
@@ -104,16 +106,9 @@ class LoginViewController: UIViewController {
             to: NetworkManager.shared.getLink(.registration)) { [weak self] result in
                 switch result {
                 case .success(let data):
-                    guard
-                        let user = try? JSONDecoder().decode(User.self, from: data)
-                    else { return }
-
-                    DispatchQueue.main.async {
-                        self?.delegate.setUser(user)
-                        self?.dismiss(animated: true)
-                    }
+                    self?.openUser(fromData: data)
                 case .failure(let error):
-                    self?.showAlert( ErrorTypeManager.shared.getErrorAlert(error))
+                    self?.showAlert(withTitle: "Ошибка", andMessage: error.description)
                 }
             }
     }
@@ -125,30 +120,34 @@ class LoginViewController: UIViewController {
         { [weak self] result in
             switch result {
             case .success(let data):
-                guard
-                    let user = try? JSONDecoder().decode(User.self, from: data)
-                else {
-                    self?.showAlert( ErrorTypeManager.shared.getErrorAlert(.decodingError))
-                    return
-                }
-
-                DispatchQueue.main.async {
-                    self?.delegate.setUser(user)
-                    self?.dismiss(animated: true)
-                }
+                self?.openUser(fromData: data)
             case .failure(let error):
-                self?.showAlert(ErrorTypeManager.shared.getErrorAlert(error))
+                self?.showAlert(withTitle: "Ошибка", andMessage: error.description)
             }
         }
     }
     
-    private func showAlert(_ text: (String, String), textField: UITextField? = nil) {
+    private func openUser(fromData data: Data) {
+        do {
+            let user = try JSONDecoder().decode(User.self, from: data)
+            
+            DispatchQueue.main.async { [unowned self] in
+                delegate.setUser(user)
+                dismiss(animated: true)
+            }
+        } catch NetworkError.decodingError {
+            showAlert(withTitle: "Ошибка", andMessage: NetworkError.decodingError.description)
+        } catch {
+            print(error)
+        }
+    }
+    
+    private func showAlert(withTitle title: String, andMessage message: String, textField: UITextField? = nil) {
         DispatchQueue.main.async {
-            let alert = UIAlertController(title: text.0, message: text.1, preferredStyle: .alert)
-            let okAction = UIAlertAction(title: "OK", style: .default) { _ in
+            let alert = UIAlertController.createAlert(withTitle: title, andMessage: message)
+            alert.action(buttonTitle: "OK") {
                 textField?.text = ""
             }
-            alert.addAction(okAction)
             self.present(alert, animated: true)
         }
     }

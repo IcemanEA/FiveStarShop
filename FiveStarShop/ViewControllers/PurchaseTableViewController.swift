@@ -81,8 +81,7 @@ class PurchaseTableViewController: UIViewController {
         }
     }
     
-    // MARK: - private methods
-    
+    // MARK: - Private methods    
     private func newOrder(for user: User, on viewController: OrderListViewController?) {
         Order.uploadToServer(for: user.id, with: purchases) { [weak self] result in
             switch result {
@@ -94,7 +93,7 @@ class PurchaseTableViewController: UIViewController {
                     self?.showNewOrderAlert()
                 }
             case .failure(let error):
-                self?.showAlert(ErrorTypeManager.shared.getErrorAlert(error))
+                self?.showAlert(withTitle: "Ошибка", andMessage: error.description)
             }
         }
     }
@@ -117,17 +116,14 @@ class PurchaseTableViewController: UIViewController {
             present(alert, animated: true)
      //   }
     }
-         
-     private func showAlert(_ text: (String, String), textField: UITextField? = nil) {
-         DispatchQueue.main.async {
-             let alert = UIAlertController(title: text.0, message: text.1, preferredStyle: .alert)
-             let okAction = UIAlertAction(title: "OK", style: .default) { _ in
-                 textField?.text = ""
-             }
-             alert.addAction(okAction)
-             self.present(alert, animated: true)
-         }
-     }
+    
+    private func showAlert(withTitle title: String, andMessage message: String) {
+        DispatchQueue.main.async {
+            let alert = UIAlertController.createAlert(withTitle: title, andMessage: message)
+            alert.action(buttonTitle: "OK")
+            self.present(alert, animated: true)
+        }
+    }
     
     private func authorize(on viewController: OrderListViewController?) {
         let alert = UIAlertController(

@@ -38,6 +38,7 @@ final class NetworkManager {
         hostname + Link.activeUser.rawValue + userID + link.rawValue
     }
     
+    // MARK: - GET methods
     func fetch<T: Decodable>(_ type: T.Type, from url: String?, completion: @escaping(Result<T,NetworkError>) -> Void) {
         guard let url = URL(string: url ?? "") else {
             completion(.failure(.invalidURL))
@@ -77,6 +78,7 @@ final class NetworkManager {
         }
     }
     
+    // MARK: - POST methods
     func postRequest(with data: [String: Any], to url: String, completion: @escaping(Result<Data, NetworkError>) -> Void) {
         guard let url = URL(string: url) else {
             completion(.failure(.invalidURL))
