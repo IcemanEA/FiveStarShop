@@ -26,8 +26,8 @@ enum PostRequestType {
 final class NetworkManager {
     static let shared = NetworkManager()
     
-    private let hostname = "http://localhost:8080"
-    //private let hostname = "https://ledkov.org"
+//    private let hostname = "http://localhost:8080"
+    private let hostname = "https://ledkov.org"
 
     private init() {}
     

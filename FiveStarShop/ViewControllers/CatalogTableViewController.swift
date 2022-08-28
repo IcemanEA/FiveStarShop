@@ -170,6 +170,13 @@ extension CatalogTableViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, didDeselectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
     }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: true)
+        let productVC = ProductViewController()
+        productVC.configure(purchases[indexPath.row].product)        
+        navigationController?.pushViewController(productVC, animated: true)
+    }
 }
 
 // MARK: - UITableViewDelegate

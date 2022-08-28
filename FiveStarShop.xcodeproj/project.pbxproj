@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		4817039A28BB7528008309EF /* AlertController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4817039928BB7528008309EF /* AlertController.swift */; };
+		4817039C28BBA356008309EF /* ProductViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4817039B28BBA356008309EF /* ProductViewController.swift */; };
 		4819F95D28B8252300169B01 /* CoreDataMananger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4819F95C28B8252300169B01 /* CoreDataMananger.swift */; };
 		4819F96028B8260900169B01 /* FiveStarShop.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 4819F95E28B8260900169B01 /* FiveStarShop.xcdatamodeld */; };
 		4844ED262897FC3200AACB2E /* AboutUsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4844ED252897FC3200AACB2E /* AboutUsViewController.swift */; };
@@ -48,6 +49,7 @@
 
 /* Begin PBXFileReference section */
 		4817039928BB7528008309EF /* AlertController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertController.swift; sourceTree = "<group>"; };
+		4817039B28BBA356008309EF /* ProductViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductViewController.swift; sourceTree = "<group>"; };
 		4819F95C28B8252300169B01 /* CoreDataMananger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataMananger.swift; sourceTree = "<group>"; };
 		4819F95F28B8260900169B01 /* FiveStarShop.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = FiveStarShop.xcdatamodel; sourceTree = "<group>"; };
 		4844ED252897FC3200AACB2E /* AboutUsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AboutUsViewController.swift; sourceTree = "<group>"; };
@@ -163,6 +165,7 @@
 				484D7EF62898291E00F6C7AA /* UserMenuViewController.swift */,
 				4844ED252897FC3200AACB2E /* AboutUsViewController.swift */,
 				4817039928BB7528008309EF /* AlertController.swift */,
+				4817039B28BBA356008309EF /* ProductViewController.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -338,6 +341,7 @@
 				484D7EEC28980F5800F6C7AA /* TabBarController.swift in Sources */,
 				8E7FD73F289193CD0022A14F /* ProductDetailViewController.swift in Sources */,
 				484D7EE628980CE200F6C7AA /* PurchaseTableViewController.swift in Sources */,
+				4817039C28BBA356008309EF /* ProductViewController.swift in Sources */,
 				8E7FD7442896F78B0022A14F /* Int.swift in Sources */,
 				484D7EE828980CED00F6C7AA /* OrderViewCell.swift in Sources */,
 				4819F95D28B8252300169B01 /* CoreDataMananger.swift in Sources */,
