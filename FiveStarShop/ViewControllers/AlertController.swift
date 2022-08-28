@@ -21,4 +21,16 @@ extension UIAlertController {
         
         addAction(okAction)
     }
+    
+    func action(firstButton title: String, secondButton cancelTitle: String, completion: (() -> Void)? = nil) {
+        let okAction = UIAlertAction(title: title, style: .default) { _ in
+            guard let completion = completion else { return }
+            completion()
+        }
+        
+        let cancelAction = UIAlertAction(title: cancelTitle, style: .default)
+        
+        addAction(cancelAction)
+        addAction(okAction)
+    }
 }

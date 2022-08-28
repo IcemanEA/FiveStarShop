@@ -45,7 +45,7 @@ class PurchaseTableViewController: UIViewController {
         clearBarButtonItem = UIBarButtonItem(image: UIImage(systemName: "trash"),
                                              style: .done,
                                              target: self,
-                                             action: #selector(clearCartWithAlert))
+                                             action: #selector(showClearCartAlert))
         
         navigationItem.rightBarButtonItem = clearBarButtonItem
     }
@@ -77,7 +77,7 @@ class PurchaseTableViewController: UIViewController {
         if let user = activeUser {
             newOrder(for: user, on: ordersViewController)
         } else {
-            authorize(on: ordersViewController)
+            showAuthorizeAlert(on: ordersViewController)
         }
     }
     
@@ -99,22 +99,15 @@ class PurchaseTableViewController: UIViewController {
     }
                              
     private func showNewOrderAlert() {
-     //   DispatchQueue.main.async { [weak self] in
-            let alert = UIAlertController(
-                title: "Заказ оформлен",
-                message: "Поздравляем с покупкой!",
-                preferredStyle: .alert
-            )
-            
-            let okAction = UIAlertAction(title: "OK", style: .default) { [weak self] _ in
-                self?.clearCart()
-                self?.delegate.openTab(with: .orders)
-            }
-            
-            alert.addAction(okAction)
-            
-            present(alert, animated: true)
-     //   }
+        let alert = UIAlertController.createAlert(
+            withTitle: "Заказ оформлен",
+            andMessage: "Поздравляем с покупкой!"
+        )
+        alert.action(buttonTitle: "OK") { [weak self] in
+            self?.clearCart()
+            self?.delegate.openTab(with: .orders)
+        }
+        present(alert, animated: true)
     }
     
     private func showAlert(withTitle title: String, andMessage message: String) {
@@ -125,22 +118,16 @@ class PurchaseTableViewController: UIViewController {
         }
     }
     
-    private func authorize(on viewController: OrderListViewController?) {
-        let alert = UIAlertController(
-            title: "Авторизация",
-            message: "Вы не вошли в программу. Авторизироваться сейчас?",
-            preferredStyle: .alert
+    private func showAuthorizeAlert(on viewController: OrderListViewController?) {
+        let alert = UIAlertController.createAlert(
+            withTitle: "Авторизация",
+            andMessage: "Вы не вошли в программу. Авторизироваться сейчас?"
         )
         
-        let okAction = UIAlertAction(title: "Да", style: .default) { _ in
+        alert.action(firstButton: "Да", secondButton: "Отмена") {
             viewController?.performSegue(withIdentifier: "login", sender: nil)
         }
-        let cancelAction = UIAlertAction(title: "Отмена", style: .cancel)
-        
-        alert.addAction(cancelAction)
-        alert.addAction(okAction)
-        
-        present(alert, animated: true)
+        present(alert, animated: true)        
     }
     
     private func clearCart() {
@@ -149,23 +136,16 @@ class PurchaseTableViewController: UIViewController {
         clearIfCartIsEmpty()
     }
     
-    @objc private func clearCartWithAlert() {
-
-        let alert = UIAlertController(
-            title: "Очистить корзину?",
-            message: "Из корзины будут удалены все товары",
-            preferredStyle: .alert
+    @objc private func showClearCartAlert() {
+        let alert = UIAlertController.createAlert(
+            withTitle: "Очистить корзину?",
+            andMessage: "Из корзины будут удалены все товары"
         )
         
-        let okAction = UIAlertAction(title: "OK", style: .destructive) { [weak self] _ in
+        alert.action(firstButton: "Да", secondButton: "Отмена") { [weak self] in
             self?.clearCart()
-            
         }
-        let cancelAction = UIAlertAction(title: "Отмена", style: .cancel)
-        
-        alert.addAction(cancelAction)
-        alert.addAction(okAction)
-        
+
         present(alert, animated: true)
     }
     

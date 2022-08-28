@@ -22,7 +22,7 @@ extension NetworkError: CustomStringConvertible {
         case .invalidURL:
             return "Неверный адрес"
         case .noData:
-            return "Данные не найдены"
+            return "Сервер не отвечает. Данные не найдены!"
         case .notFound:
             return "Пожалуйста, введите корректные данные!"
         case .dublicateUser:
