@@ -68,14 +68,17 @@ class LoginViewController: UIViewController {
         }
         
         if !nameTextField.isHidden {
-            guard nameTextField.text != "" else {
-                showAlert(withTitle: "Неверный ввод", andMessage: "Укажите имя пользователя")
+            guard
+                nameTextField.text != "",
+                let name = nameTextField.text
+            else {
+                showAlert(withTitle: "Неверный ввод", andMessage: "Укажите имя")
                 return
             }
             
             registration(requestBody: NetworkManager.shared.setupRequestBody(
                 .checkUserPassword,
-                data: [username, password, nameTextField.text]
+                data: [username, password, name]
             ))
         } else {
             logIn(requestBody: NetworkManager.shared.setupRequestBody(

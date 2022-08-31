@@ -16,7 +16,6 @@ class ProductDetailViewController: UIViewController, ProductCellProtocol {
     @IBOutlet var productDescription: UILabel!
     
     var product: Product!
-    private var imageURL: URL?
     
     // MARK: - Override methods
     
@@ -26,24 +25,19 @@ class ProductDetailViewController: UIViewController, ProductCellProtocol {
         name.text = product.name
         price.text = (product.price ?? 0).toRubleCurrency()
         productDescription.text = product.description
-        imageURL = getImageURL(for: product.article)
+        
         updateImage()
-    }
-    
-    override func viewWillLayoutSubviews() {
-        image.layer.cornerRadius = image.frame.height / 10
+        image.layer.cornerRadius = 10
     }
     
     // MARK: - Private functions
     
     private func updateImage() {
-        guard let updateImageURL = imageURL else { return }
-        getImage(from: updateImageURL) { [weak self] result in
+        guard let url = getImageURL(for: product.article) else { return }
+        getImage(from: url) { [weak self] result in
             switch result {
             case .success(let image):
-                if updateImageURL == self?.imageURL {
-                    self?.image.image = image
-                }
+                self?.image.image = image
             case .failure(let error):
                 print(error)
                 self?.image.image = UIImage(named: "imagePlaceholder.png")

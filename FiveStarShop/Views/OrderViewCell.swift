@@ -35,7 +35,7 @@ class OrderViewCell: UITableViewCell, ProductCellProtocol {
     
     func configure() {
         
-        counterGoods.text = purchase.count.formatted()
+        counterGoods.text = "X " + purchase.count.formatted()
         modelLabel.text = purchase.product.model
         companyLabel.text = purchase.product.company
         articleLabel.text = purchase.product.article

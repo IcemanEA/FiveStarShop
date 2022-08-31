@@ -25,25 +25,24 @@ class ProductViewController: UIViewController, ProductCellProtocol {
     
     private lazy var imageView: UIImageView = {
         let imageView = UIImageView()
-        
         imageView.layer.cornerRadius = 10
         imageView.image = UIImage(named: "imagePlaceholder")
+        imageView.clipsToBounds = true
         
         return imageView
     }()
     
     private lazy var nameLabel: UILabel = {
-        createLabel(with: "Name:", andFont: UIFont.systemFont(ofSize: 18))
+        createLabel(with: "Название:", andFont: UIFont.systemFont(ofSize: 18))
     }()
     private lazy var priceLabel: UILabel = {
-        createLabel(with: "Price:", andFont: UIFont.boldSystemFont(ofSize: 18))
+        createLabel(with: "Цена:", andFont: UIFont.boldSystemFont(ofSize: 19))
     }()
     private lazy var descriptionLabel: UILabel = {
-        createLabel(with: "Description:", andFont: UIFont.boldSystemFont(ofSize: 17))
+        createLabel(with: "Описание:", andFont: UIFont.boldSystemFont(ofSize: 18))
     }()
     private lazy var descriptionTextLabel: UILabel = {
-        let label = createLabel(with: "load text...", andFont: UIFont.systemFont(ofSize: 17))
-        
+        let label = createLabel(with: "", andFont: UIFont.systemFont(ofSize: 17))
         label.numberOfLines = 0
         
         return label
@@ -69,11 +68,15 @@ class ProductViewController: UIViewController, ProductCellProtocol {
         setupConstraints()
     }
     
+    override func viewWillLayoutSubviews() {
+        imageView.layer.cornerRadius = 10
+    }
+    
     // MARK: - Public methods
     func configure(_ product: Product) {
         title = product.article
         nameLabel.text = product.name
-        priceLabel.text = (product.price ?? 0).formatted(.number.grouping(.never))
+        priceLabel.text = (product.price ?? 0).toRubleCurrency()
         descriptionTextLabel.text = product.description
         updateImage(withName: product.article ?? "")
     }
@@ -93,7 +96,6 @@ class ProductViewController: UIViewController, ProductCellProtocol {
     
     private func setupStackView(with subviews: UIView...) {
         subviews.forEach { view in
-            view.tag = stackView.subviews.count + 1
             stackView.addArrangedSubview(view)
         }
     }
