@@ -368,7 +368,6 @@
                                             <outlet property="priceLabel" destination="trI-0D-V2I" id="lYC-Ex-kK6"/>
                                             <outlet property="productImageView" destination="chU-AR-EkO" id="8N9-ld-OK3"/>
                                             <outlet property="sumLabel" destination="DIB-Lv-6hu" id="fFU-9b-oNN"/>
-                                            <segue destination="Ptw-xa-FXa" kind="show" id="0ja-My-WGJ"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
@@ -445,16 +444,6 @@
                 <exit id="jlI-Fm-a0w" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="1890" y="978"/>
-        </scene>
-        <!--Product-->
-        <scene sceneID="oxq-hM-Wdi">
-            <objects>
-                <viewControllerPlaceholder storyboardName="Product" referencedIdentifier="Product" id="Ptw-xa-FXa" sceneMemberID="viewController">
-                    <navigationItem key="navigationItem" id="RPb-jH-jzh"/>
-                </viewControllerPlaceholder>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="bwB-8q-f5P" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="2576" y="978"/>
         </scene>
     </scenes>
     <resources>

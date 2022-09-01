@@ -72,15 +72,6 @@ class OrderTableViewController: UIViewController {
             totalSum += purchase.totalPrice
         }
     }
-    
-    // MARK: - Navigation
-    
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if let indexPath = tableView.indexPathForSelectedRow {
-            guard let detailVC = segue.destination as? ProductDetailViewController else { return }
-            detailVC.product = order.purchases[indexPath.row].product
-        }
-    }
 }
 
 // MARK: - UITableViewDataSource
@@ -113,6 +104,9 @@ extension OrderTableViewController: UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
+        let productVC = ProductViewController()
+        productVC.configure(order.purchases[indexPath.row].product)
+        navigationController?.pushViewController(productVC, animated: true)
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
