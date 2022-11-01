@@ -9,7 +9,6 @@
 /* Begin PBXBuildFile section */
 		4817039A28BB7528008309EF /* AlertController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4817039928BB7528008309EF /* AlertController.swift */; };
 		4817039C28BBA356008309EF /* ProductViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4817039B28BBA356008309EF /* ProductViewController.swift */; };
-		4819F95D28B8252300169B01 /* CoreDataMananger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4819F95C28B8252300169B01 /* CoreDataMananger.swift */; };
 		4819F96028B8260900169B01 /* FiveStarShop.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 4819F95E28B8260900169B01 /* FiveStarShop.xcdatamodeld */; };
 		4844ED262897FC3200AACB2E /* AboutUsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4844ED252897FC3200AACB2E /* AboutUsViewController.swift */; };
 		4844ED2F2897FC6E00AACB2E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4844ED2D2897FC6E00AACB2E /* Main.storyboard */; };
@@ -49,7 +48,6 @@
 /* Begin PBXFileReference section */
 		4817039928BB7528008309EF /* AlertController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertController.swift; sourceTree = "<group>"; };
 		4817039B28BBA356008309EF /* ProductViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductViewController.swift; sourceTree = "<group>"; };
-		4819F95C28B8252300169B01 /* CoreDataMananger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataMananger.swift; sourceTree = "<group>"; };
 		4819F95F28B8260900169B01 /* FiveStarShop.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = FiveStarShop.xcdatamodel; sourceTree = "<group>"; };
 		4844ED252897FC3200AACB2E /* AboutUsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AboutUsViewController.swift; sourceTree = "<group>"; };
 		4844ED2E2897FC6E00AACB2E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -216,7 +214,6 @@
 				48A85BCE28B0D95E0030F53B /* NetworkError.swift */,
 				48A85BD028B0F6F00030F53B /* StorageManager.swift */,
 				48A85BD228B13BA30030F53B /* ImageCacheManager.swift */,
-				4819F95C28B8252300169B01 /* CoreDataMananger.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -268,7 +265,7 @@
 			attributes = {
 				BuildIndependentTargetsInParallel = 1;
 				LastSwiftUpdateCheck = 1340;
-				LastUpgradeCheck = 1340;
+				LastUpgradeCheck = 1400;
 				TargetAttributes = {
 					485EC5FF2891255600C95807 = {
 						CreatedOnToolsVersion = 13.4;
@@ -317,7 +314,6 @@
 				485EC6082891255600C95807 /* CatalogTableViewController.swift in Sources */,
 				484D7EE428980CCC00F6C7AA /* OrderTableViewController.swift in Sources */,
 				A75D0C0028915A6700344E96 /* CatalogViewCell.swift in Sources */,
-				485EC6082891255600C95807 /* CatalogTableViewController.swift in Sources */,
 				8E7FD73C28915A870022A14F /* DataStore.swift in Sources */,
 				484D7EEA28980E9500F6C7AA /* PurchaseViewCell.swift in Sources */,
 				4844ED262897FC3200AACB2E /* AboutUsViewController.swift in Sources */,
@@ -339,7 +335,6 @@
 				4817039C28BBA356008309EF /* ProductViewController.swift in Sources */,
 				8E7FD7442896F78B0022A14F /* Int.swift in Sources */,
 				484D7EE828980CED00F6C7AA /* OrderViewCell.swift in Sources */,
-				4819F95D28B8252300169B01 /* CoreDataMananger.swift in Sources */,
 				485EC6042891255600C95807 /* AppDelegate.swift in Sources */,
 				484D7EF72898291E00F6C7AA /* UserMenuViewController.swift in Sources */,
 				485EC6242891AAC900C95807 /* AuthorViewCell.swift in Sources */,
@@ -523,6 +518,9 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = org.ledkov.FiveStarShop;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;
@@ -551,6 +549,9 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = org.ledkov.FiveStarShop;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;

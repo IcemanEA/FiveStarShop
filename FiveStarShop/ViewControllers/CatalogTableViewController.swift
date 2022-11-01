@@ -209,14 +209,7 @@ extension CatalogTableViewController {
 // MARK: - CoreData
 extension CatalogTableViewController {
     private func fetchProductsFromLocal() {
-        CoreDataManager.shared.fetchProducts { [weak self] result in
-            switch result {
-            case .success(let products):
-                self?.loadData(products)
-            case .failure(let error):
-                print(error)
-            }
-        }
+        
     }
 }
     
